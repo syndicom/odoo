@@ -1,0 +1,80 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_petition_participation">
+        <field name="name">Petitionsteilnahmen</field>
+        <field name="res_model">syndicom.petition.participation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Participations here
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="petition_participation_liste_tree_view">
+        <field name="name">Liste aller Teilnehmer:innen</field>
+        <field name="model">syndicom.petition.participation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="phone" />
+                <field name="email" />
+                <field name="zip" />
+                <field name="city" />
+                <field name="petition_id"/>
+                <field name="description"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="petition_participation_liste_form_view">
+        <field name="name">Teilnahme bearbeiten</field>
+        <field name="model">syndicom.petition.participation</field>
+        <field name="arch" type="xml">
+            <form string="Greminum">
+                <sheet>
+                    <group>
+                        <group name="content_left">
+                           
+                            <field name="partner_id"/>
+                            <field name="petition_id"/>
+                            <field name="date"/>
+                            
+                        </group>
+                        <group name="content_right">                          
+                            <field name="description"/>
+                        </group>
+                    </group>   
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="petition_participation_liste_search" model="ir.ui.view">
+        <field name="name">syndicom.petition.participation.seacrh</field>
+        <field name="model">syndicom.petition.participation</field>
+        <field name="arch" type="xml">
+            <search>
+               
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_petition_participation_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="petition_participation_liste_tree_view"/>
+        <field name="act_window_id" ref="action_petition_participation"/>
+    </record>
+
+    <record id="action_petition_participation_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="petition_participation_liste_form_view"/>
+        <field name="act_window_id" ref="action_petition_participation"/>
+    </record>
+</odoo>
