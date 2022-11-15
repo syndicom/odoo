@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add themes in editor -->
+    <template id="email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
+        <xpath expr="//div[@id='email_designer_themes']" position="inside" sequence="1">
+
+            <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+                <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>                
+            </div>
+            <div data-name="syndicom2" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_standart" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+                <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_second"/>                
+            </div>
+
+        </xpath>
+    </template>
+
+   
+    <!-- Theme "syndicom" default template -->
+    <template id="theme_syndicom_template_second">
+ 
+
+        <div class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+            <div class="row">
+                <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                <div class="s_three_columns o_cc o_cc2 o_mail_snippet_general pt0 pb0 bg-white" data-snippet="s_three_columns" data-name="Columns">
+                            <div class="container">
+                                <div class="row d-flex align-items-stretch">
+                                <div class="col-lg-5 s_col_no_bgcolor pb16 pt4" style="background-color:#49A9D6;height:20px;">
+                                </div>
+                                <div class="s_col_no_bgcolor col-lg-7 pb16 pt0" style="background-color:#EDEA17;height:10px;">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="o_mail_snippet_general o_mail_block_header_social s_header_social" data-snippet="s_mail_block_header_social" data-name="Left Logo">
+                    <div class="o_mail_table_styles container">
+                        <div class="row">
+                            <div class="col-lg-8 pt16 pb16">
+                                <img border="0" src="https://syndicom.ch/fileadmin/templates/syndicom_main/img/syndicom_logo_de.svg" style="height: auto; max-width: 400px;" loading="lazy"/>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_text_block pt40 pb40 px-3 o_mail_snippet_general" data-snippet="s_text_block" data-name="Text">
+                    <div class="container s_allow_columns">
+                        <p class="o_default_snippet_text">::ANSPRACHENAME::,</p>
+                        <p>Mein Name ist ::ABSENDER::&amp;nbsp;und ich schreibe Dir heute, um Dich herzlich zum neuen Job bei ::IMPORT_ARBEITGEBER:: zu beglückwünschen! Alles Gute für Deinen Start!</p>
+                        <p>Die Swisscom bietet schweizweit sehr gute Arbeitsbedingungen. Hast du gewusst, dass dies auch an der langjährigen Sozialpartnerschaft mit syndicom liegt?&amp;nbsp;Als Gewerkschaft haben sie einen der modernsten GAV (Gesamtarbeitsverträge) der ganzen Schweiz mit uns erarbeitet.</p>
+                        <p>syndicom als Gewerkschaft, aber vor allem ihre Mitglieder, haben dies über Jahre erarbeitet.&amp;nbsp;Es freut uns, dass du bei deiner Anstellung die Erlaubnis erteilt hast, dass wir dich als Swisscom-Vertreter deiner Branchengewerkschaft kontaktieren und informieren!</p>
+                        <p>Wir sind stark im Abschliessen von Gesamtarbeitsverträgen (GAV) und st</p>
+                        <p class="o_default_snippet_text"></p>
+                    </div>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general" data-snippet="s_three_columns" data-name="Columns">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-8">
+                                <div class="card bg-white h-100" style="background-color:#023047 !important; border:none !important;">
+                                <div class="card-body" style="background-color:#023047 !important; border:none !important;">
+                                    <p class="card-text">
+                                        <span style="font-weight: bolder; color:#2EB5EA">Wir sind stark im Abschliessen von Gesamtarbeitsverträgen (GAV) und stark bei Mitglieder-Vorteilen. syndicom setzt sich zusammen mit dir für gute Arbeitsbedingungen bei Swisscom ein -- nur gemeinsam sind wir stark!</span>
+                                        <br/>
+                                    </p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card bg-white h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title o_default_snippet_text oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_text_block pt40 pb40 px-3 o_mail_snippet_general" data-snippet="s_text_block" data-name="Text">
+                    <div class="container s_allow_columns">
+                        <p class="o_default_snippet_text"><br/>
+                        </p>
+                        <p>Hast du Lust, mit uns gemeinsam für gute ARbeitsbedingungen zu sorgen?= Dann freue ich mich, wenn Du kurz auf dieses Mail antwortest!</p>
+                        <ul>
+                            <li>GAV Beitrag? Kannst du dir sparen!</li>
+                            <li>Berufsrechtsschutz? syndicom steht dir zur Seite!</li>
+                            <li>Mitsprache? Deine Meinung zählt!</li>
+                        </ul>
+                        <p>Ich freue mich darauf, von Dir zu hören!</p>
+                        <p>Herzlich &amp; solidarisch, Dein Urs</p>
+                        <p class="o_default_snippet_text"></p>
+                    </div>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general" data-snippet="s_three_columns" data-name="Columns" style="background-color: rgb(246, 231, 0) !important;">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title" style="text-align: center; color: #444444 !important;">30'000</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">Mitglieder</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card bg-white h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title o_default_snippet_text" style="text-align: center; color: #444444 !important;">15</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">Regionalsekretariate</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card bg-white h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title" style="text-align: center; color: #444444 !important;">5</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">ALK Standorte</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_center o_mail_snippet_general" data-snippet="s_mail_block_footer_social" data-name="Footer Center" style="background-color: rgb(118, 114, 115) !important;">
+                    <div class="container o_mail_table_styles">
+                        <div class="row">
+                            <div class="col-lg o_mail_footer_social">
+                                <a aria-label="Facebook" title="Facebook">
+                                <span class="fa fa-facebook text-o-color-4" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="LinkedIn" title="LinkedIn">
+                                <span class="fa fa-linkedin text-o-color-3" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="Twitter" title="Twitter">
+                                <span class="fa fa-twitter text-o-color-3" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="Instagram" title="Instagram">
+                                <span class="fa fa-instagram text-o-color-3" contenteditable="false">​</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg o_mail_footer_links">
+                                <a role="button" href="/unsubscribe_from_list" class="btn btn-link o_default_snippet_text">Abmelden</a>
+                                | <a role="button" href="/contactus" class="btn btn-link o_default_snippet_text">Kontakt</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg">
+                                <p class="o_mail_no_margin o_mail_footer_copy o_default_snippet_text">
+                                <span class="fa fa-copyright" role="img" aria-label="Copyright" title="Copyright" contenteditable="false">​</span>
+                                2022 Alle Rechte vorbehalten
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </template>
+
+    <!-- Theme "syndicom header" default template -->
+    <template id="theme_syndicom_template">
+
+        
+     <div class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+            <div class="row">
+                <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                    <div class="s_cover o_mail_snippet_general" data-snippet="s_cover" data-name="Cover">
+                    <img src="https://my.syndicom.ch/header_odoo.jpg" class="img-fluid w-100" loading="lazy" data-original-id="1029" data-original-src="/web/image/1029-c6833690/Illustration_syndicom_Kampagne_gGAV.jpg" data-mimetype="image/jpeg" data-resize-width="undefined"/>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general" data-snippet="s_three_columns" data-name="Columns" style="background-color: rgb(246, 231, 0) !important;">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title" style="text-align: center; color: #444444 !important;">30'000</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">Mitglieder</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card bg-white h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title o_default_snippet_text" style="text-align: center; color: #444444 !important;">15</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">Regionalsekretariate</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                                <div class="card bg-white h-100" style="background-color:#2EB5EA !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important;">
+                                    <h3 class="card-title" style="text-align: center; color: #444444 !important;">5</h3>
+                                    <p class="card-text" style="text-align: center; color: #444444 !important;">ALK Standorte</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general bg-o-color-4" data-snippet="s_three_columns" data-name="Columns">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-6">
+                                <div class="card bg-white h-100" style="border:none !important;">
+                                <div class="card-body">
+                                    <h4>Happy welcome im neuen Job bei der Swisscom</h4>
+                                    <p><span style="font-weight: bolder;">Willkommen in guten Arbeitsbedingungen dank der Sozialpartnerschaft zwischen syndicom und Swisscom</span></p>
+                                    <p>Swisscom hat uns übermittelt, dass du seit dem ::IMPORT_EINTRITT:: bei ::IMPORT_ARBEITGEBER:: eine neue Stelle angetreten hast - herzlichen Glückwunsch!</p>
+                                    <p><span style="font-weight: bolder;">Viel Erfolg, eine gute Zeit und interessante Begegnungen wünschen wir dir.</span></p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-6">
+                                <div class="card bg-white h-100" style="border:none !important;">
+                                <div class="card-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                            <td>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                        <td>
+                                                            <h4>Happy Arbeitsbedingungen dank Branchengewerkschaft</h4>
+                                                            <p><span style="font-weight: bolder;">Wir vertreten in der Sozialpartnerschaft mit Swisscom die Interessen der Mitarbeitenden - also auch deine</span></p>
+                                                            <p>Wir machen uns dafür stark, dass alle Swisscom-Mitarbeitenden auch morgen gute Löhne und Arbeitsbedingungen haben.</p>
+                                                            <p>Herzstück ist die Weiterentwicklung des Gesamtarbeitsvertrags (GAV). Dutzende Swisscom-Mitarbeitende engagieren sich bei uns für die ARbeitswelt von heute und morgen. Tausende unterstützen uns mit ihrer Mitgliedschaft.&amp;nbsp;<span style="font-weight: bolder;">Sei auch du dabei und werde Mitglied bei syndicom!</span></p>
+                                                        </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general" data-snippet="s_three_columns" data-name="Columns">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-8">
+                                <div class="card bg-white h-100" style="background-color:#023047 !important; border:none !important;">
+                                <div class="card-body" style="background-color:#023047 !important; border:none !important;">
+                                    <p class="card-text">
+                                        <span style="font-weight: bolder; color:#2EB5EA">Wir sind stark im Abschliessen von Gesamtarbeitsverträgen (GAV) und stark bei Mitglieder-Vorteilen. syndicom setzt sich zusammen mit dir für gute Arbeitsbedingungen bei Swisscom ein -- nur gemeinsam sind wir stark!</span>
+                                        <br/>
+                                    </p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card bg-white h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title o_default_snippet_text oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_three_columns o_cc o_cc2 pt32 pb32 o_mail_snippet_general" data-snippet="s_three_columns" data-name="Columns">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-8">
+                                <div class="card bg-white h-100" style="background-color:#2EB5EA !important; border:none !important;">
+                                <div class="card-body" style="background-color:#2EB5EA !important; border:none !important;">
+                                    <p><span style="font-weight: bolder;">Ja, ich werde Mitglied!</span></p>
+                                    <p><span style="font-weight: bolder;">Ausfüllen und gemeinsam für gute Arbeitsbedingungen sorgen!</span></p>
+                                    <p><span style="font-weight: bolder;">JETZT SYNDICOM-MITGLIED WERDEN</span></p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="s_col_no_bgcolor pt16 pb16 col-lg-2">
+                                <div class="card bg-white h-100" style="background-color:transparent !important; border:none !important;">
+                                <div class="card-body" style="background-color:transparent !important; border:none !important;">
+                                    <h3 class="card-title o_default_snippet_text oe-hint" placeholder="Heading 3"><br/></h3>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_center o_mail_snippet_general" data-snippet="s_mail_block_footer_social" data-name="Footer Center">
+                    <div class="container o_mail_table_styles">
+                        <div class="row">
+                            <div class="col-lg o_mail_footer_social">
+                                <a aria-label="Facebook" title="Facebook">
+                                <span class="fa fa-facebook" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="LinkedIn" title="LinkedIn">
+                                <span class="fa fa-linkedin" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="Twitter" title="Twitter">
+                                <span class="fa fa-twitter" contenteditable="false">​</span>
+                                </a>&amp;nbsp;&amp;nbsp;
+                                <a style="margin-left:10px" aria-label="Instagram" title="Instagram">
+                                <span class="fa fa-instagram" contenteditable="false">​</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg o_mail_footer_links o_default_snippet_text">
+                                <a role="button" href="/unsubscribe_from_list" class="btn btn-link o_default_snippet_text">Abmelden</a>
+                                | <a role="button" href="/contactus" class="btn btn-link o_default_snippet_text">Kontakt</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg">
+                                <p class="o_mail_no_margin o_mail_footer_copy o_default_snippet_text">
+                                <span class="fa fa-copyright" role="img" aria-label="Copyright" title="Copyright" contenteditable="false">​</span>
+                                2022 Alle Rechte vorbehalten
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </template>
+
+</odoo>
