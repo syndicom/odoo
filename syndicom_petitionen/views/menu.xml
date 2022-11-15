@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <menuitem id="syndicom_petitionen_list"
+                  name="Petitionen"
+                  sequence="21"
+                  parent="contacts.menu_contacts"
+                  groups="base.group_user"/>
+
+        <menuitem id="syndicom_petitionen_liste"
+                  name="Liste Petitionen"
+                  parent="syndicom_petitionen_list"
+                  action="action_petition"
+                  sequence="10"/>
+        <menuitem id="syndicom_petitionen_participation_list"
+                  name="Teilnehmer:innen"
+                  parent="syndicom_petitionen_list"
+                  action="action_petition_participation"
+                  sequence="20"/>
+       
+    </data>
+</odoo>
