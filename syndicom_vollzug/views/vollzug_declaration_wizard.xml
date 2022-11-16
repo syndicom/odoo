@@ -4,9 +4,15 @@
         <field name="model">syndicom.vollzug.declaration.wizard</field>
         <field name="arch" type="xml">     
             
-            <span>Mithilfe dieses Assistenten kann ein neuer Deklarations-Prozess für einen oder mehrere Betriebe gestartet werden. Bitte prüfe den Deklarationszeitraum und passe die Datumsfelder entsprechend an. Anschliessend kannst du mittels "Eintrag hinzufügen" einen oder mehrere Betriebe auswählen</span>
 
-            <form string="DeclarationWizard">         
+            <form string="DeclarationWizard">
+                <span>
+                    Mithilfe dieses Assistenten kann ein neuer Deklarations-Prozess für einen
+                    oder mehrere Betriebe gestartet werden. Bitte prüfe den Deklarationszeitraum
+                    und passe die Datumsfelder entsprechend an. Anschliessend kannst du mittels
+                    "Eintrag hinzufügen" einen oder mehrere Betriebe auswählen
+                </span>
+
                 <group class="oe_title">             
 
 

@@ -95,15 +95,9 @@ class DeclarationEnterpriseToRemind(models.Model):
     def _query(self, with_clause="", fields={}, groupby="", from_clause=""):
 
         cla_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_imputed')
-        cla_imputed = str(cla_imputed)
+        cla_imputed = str(cla_imputed) if cla_imputed else '0'
         stage_id = self.env['syndicom.vollzug.declaration.stage'].search([('process_step','=',1)],limit=1)
-        stage_id_waiting = str(stage_id.id)
-        
-        if cla_imputed == False:
-            cla_imputed = str(0)
-
-        if stage_id_waiting == False:
-            stage_id_waiting = str(0)
+        stage_id_waiting = str(stage_id.id) if stage_id else '0'
 
         return """
 
