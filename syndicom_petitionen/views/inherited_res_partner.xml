@@ -18,7 +18,7 @@
                          <field name="syn_petition_participation_ids" nolabel="1">
                              <tree editable="bottom">
                                  
-                                 <field name="petition_id"/>
+                                 <field name="petition_id" options="{'no_create_edit':True,'no_quick_create':True}" />
                                  <field name="description"/>
                                  <field name="date"/>
                                  

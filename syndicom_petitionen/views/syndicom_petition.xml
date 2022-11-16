@@ -17,10 +17,12 @@
         <field name="model">syndicom.petition</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="category"/>
                 <field name="name"/>
-                <field name="description"/>
                 <field name="date"/>
-                <field name="total_participants"/>
+                <field name="date_end"/>
+                <field name="total_participants" optional="show" />
+                <field name="is_active" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -34,7 +36,9 @@
                     <group>
                         <group name="content_left">
                             <field name="name"/>
+                            <field name="category"/>
                             <field name="date"/>
+                            <field name="date_end"/>
                         </group>
                         <group name="content_right">                          
                             <field name="description"/>

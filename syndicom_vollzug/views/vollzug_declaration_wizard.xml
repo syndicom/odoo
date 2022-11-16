@@ -1,0 +1,51 @@
+<odoo>
+    <record id="syndicom_vollzug_declaration_wizard_view_form" model="ir.ui.view">  
+        <field name="name">syndicom.vollzug.declaration.wizard.form</field>  
+        <field name="model">syndicom.vollzug.declaration.wizard</field>
+        <field name="arch" type="xml">     
+            
+            <span>Mithilfe dieses Assistenten kann ein neuer Deklarations-Prozess für einen oder mehrere Betriebe gestartet werden. Bitte prüfe den Deklarationszeitraum und passe die Datumsfelder entsprechend an. Anschliessend kannst du mittels "Eintrag hinzufügen" einen oder mehrere Betriebe auswählen</span>
+
+            <form string="DeclarationWizard">         
+                <group class="oe_title">             
+
+
+                <field name="periode_from"/>            
+                <field name="periode_to"/>   
+                <field name="date_deadline"/>  
+                <field name="responsible_id"/>  
+                <field name="mail_template_id" domain="[('model','=','syndicom.vollzug.declaration')]"/>
+                </group>   
+                
+                <field name='enterprise_ids'>
+                    <tree editable="bottom">
+                        <field name="name"/>
+                        <field name="lang"/>
+                        <field name="gav"/>
+                        <field name="zip"/> 
+                        <field name="city" />
+                        <field name="email" />
+                        <field name="email_cc"/>
+                        <field name="count_an" />
+                    </tree>
+                </field>
+
+                <footer>
+                    <button name="declaration_create_from_wizard" string="Deklarationen erfassen und Mail verschicken" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+        
+    <record id="syndicom_vollzug_declaration_wizard_action" model="ir.actions.act_window">  
+        <field name="name">Assistent für Deklarations - Aufforderungen</field>  
+        <field name="type">ir.actions.act_window</field> 
+        <field name="res_model">syndicom.vollzug.declaration.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="syndicom_vollzug_declaration_wizard_view_form"/> 
+        <field name="target">new</field>
+    </record>
+
+
+
+</odoo>

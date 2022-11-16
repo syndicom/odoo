@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+   
+           <!--
+           field service
+           -->
+   
+           <record id="view_project_task_form" model="ir.ui.view">
+               <field name="name">project.task.form.inherit</field>
+               <field name="model">project.task</field>
+               <field name="priority">2</field>
+               <field name="inherit_id" ref="project.view_task_form2"/>
+               <field name="groups_id" eval="[(5,)]"/>
+               <field name="arch" type="xml">
+                
+
+              
+                    <xpath expr="//notebook/page[@name='description_page']" position="after">
+                        <page string="Personen" id="personen_tab" attrs="{'invisible': [('is_fsm', '=', False)]}">
+                            <field name='syn_personen_ids'>
+                                <tree editable="bottom">
+                                    <field name="firstname"/>
+                                    <field name="name" />
+                                    <field name="ssn" optional="hide" />
+                                    <field name="street" string="Adresse" optional="hide" />
+                                    <field name="zip"  optional="hide" />
+                                    <field name="city"  optional="hide" />
+                                    <field name="gender" optional="hide" />
+                                    <field name="salary" optional="hide"/>
+                                    <field name="birthday"  optional="hide" />
+                                    <field name="apprentice"  optional="hide" />
+                                    <field name="date_entry" optional="hide"/>
+                                    <field name="date_leave" optional="hide"/>
+                                    <field name="employment_rate" string="BG" />
+                                    <field name="qualification" optional="show" />
+                                    <field name="field" optional="show" />
+                                    <field name="job" optional="show" />
+                                    
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                 
+                   
+               </field>
+           </record>
+   
+   
+    </data>
+   </odoo>
