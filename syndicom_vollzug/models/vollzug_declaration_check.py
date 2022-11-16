@@ -32,11 +32,8 @@ class SyndicomVollzugDeclarationCheck(models.Model):
     def _query(self, with_clause="", fields={}, groupby="", from_clause=""):
 
         cla_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_imputed')
-        cla_imputed = str(cla_imputed)
+        cla_imputed = str(cla_imputed) if cla_imputed else '0'
 
-        if cla_imputed == False:
-            cla_imputed = str(0)
-        
         return """
 
             SELECT 
