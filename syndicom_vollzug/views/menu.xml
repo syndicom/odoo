@@ -7,7 +7,7 @@
                   name="Deklarationen"
                   sequence="21"
                   web_icon="syndicom_vollzug,static/description/odoo_icon.png"
-                  groups="syndicom_vollzug.syndicom_vollzug_officer"/>
+                  groups="syndicom_vollzug.syndicom_vollzug_officer_group"/>
 
         <menuitem id="syndicom_vollzug_declaration_menu"
                   name="Deklarationen"
@@ -44,7 +44,7 @@
         <menuitem id="syndicom_vollzug_configuration" name="Konfiguration"
                   sequence="90"
                   parent="syndicom_vollzug_menu_root"
-                  groups="syndicom_vollzug.syndicom_vollzug_officer"/>
+                  groups="syndicom_vollzug.syndicom_vollzug_officer_group"/>
 
         <menuitem id="syndicom_vollzug_configuration_stages"
                   name="Stufen"

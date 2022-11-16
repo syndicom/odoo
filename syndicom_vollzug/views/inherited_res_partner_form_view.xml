@@ -10,10 +10,9 @@
                <field name="model">res.partner</field>
                <field name="priority">2</field>
                <field name="inherit_id" ref="base.view_partner_form"/>
-               <field name="groups_id" eval="[(5,)]"/>
                <field name="arch" type="xml">
                    <page name="internal_notes" position="after">
-                       <page string="Vollzug" name="vollzug" attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}" groups="syndicom_vollzug.syndicom_vollzug_officer">
+                       <page string="Vollzug" name="vollzug" attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}" groups="syndicom_vollzug.syndicom_vollzug_officer_group">
                           
                         <h3>Deklarationsinformationen</h3>
                         <group class="oe_title">        
