@@ -33,6 +33,9 @@ class SyndicomVollzugDeclarationCheck(models.Model):
 
         cla_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_imputed')
         cla_imputed = str(cla_imputed)
+
+        if cla_imputed == False:
+            cla_imputed = str(0)
         
         return """
 

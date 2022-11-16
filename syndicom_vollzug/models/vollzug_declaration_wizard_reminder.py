@@ -98,6 +98,12 @@ class DeclarationEnterpriseToRemind(models.Model):
         cla_imputed = str(cla_imputed)
         stage_id = self.env['syndicom.vollzug.declaration.stage'].search([('process_step','=',1)],limit=1)
         stage_id_waiting = str(stage_id.id)
+        
+        if cla_imputed == False:
+            cla_imputed = str(0)
+
+        if stage_id_waiting == False:
+            stage_id_waiting = str(0)
 
         return """
 
