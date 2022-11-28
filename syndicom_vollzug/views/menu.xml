@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+
+        <!-- Declaration -->
+
+        <menuitem id="syndicom_vollzug_menu_root"
+                  name="Deklarationen"
+                  sequence="21"
+                  web_icon="syndicom_vollzug,static/description/odoo_icon.png"
+                  groups="syndicom_vollzug.syndicom_vollzug_officer_group"/>
+
+        <menuitem id="syndicom_vollzug_declaration_menu"
+                  name="Deklarationen"
+                  parent="syndicom_vollzug_menu_root"
+                  sequence="10"/>
+
+        <menuitem id="syndicom_vollzug_declaration"
+                  name="Übersicht"
+                  parent="syndicom_vollzug_declaration_menu"
+                  action="action_window_vollzugliste"
+                  sequence="15"/>
+
+        <menuitem id="syndicom_vollzug_declaration_check"
+                  name="Empfängerliste prüfen"
+                  parent="syndicom_vollzug_declaration_menu"
+                  action="action_window_vollzugliste_declaration_check"
+                  sequence="18"/>
+
+        <menuitem id="syndicom_vollzug_declaration_wizard" 
+                  name="Assistent starten" 
+                  parent="syndicom_vollzug_declaration_menu" 
+                  action="syndicom_vollzug_declaration_wizard_action"
+                  sequence="20" />
+
+                  
+        <menuitem id="syndicom_vollzug_declaration_wizard_reminder" 
+                  name="Assistent Mahnungen" 
+                  parent="syndicom_vollzug_declaration_menu" 
+                  action="syndicom_vollzug_declaration_wizard_reminder_action"
+                  sequence="25" />
+
+    <!-- Declaration / Configuration -->
+               
+        <menuitem id="syndicom_vollzug_configuration" name="Konfiguration"
+                  sequence="90"
+                  parent="syndicom_vollzug_menu_root"
+                  groups="syndicom_vollzug.syndicom_vollzug_officer_group"/>
+
+        <menuitem id="syndicom_vollzug_configuration_stages"
+                  name="Stufen"
+                  parent="syndicom_vollzug_configuration"
+                  action="action_window_declaration_stage"
+                  sequence="1"/>
+
+    <!-- Controls / Notice -->
+
+        <menuitem id="syndicom_vollzug_notice"
+                  name="Meldungen"
+                  parent="industry_fsm.fsm_menu_root"
+                  action="action_window_notice"
+                  sequence="10" />
+
+
+    <!-- odoo Settings -->
+
+    <record id="settings_action" model="ir.actions.act_window">
+        <field name="name">Einstellungen</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'syndicom_vollzug'}</field>
+    </record>
+
+    <menuitem name="Settings"
+        id="settings_menu"
+        sequence="0"
+        parent="syndicom_vollzug_configuration"
+        action="syndicom_vollzug.settings_action"/>
+        
+                
+    </data>
+</odoo>
