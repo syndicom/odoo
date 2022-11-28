@@ -18,11 +18,9 @@ class SyndicomVollzugDeclarationCheck(models.Model):
     date_start = fields.Date(string='GAV Unterstellt seit')
     date_end = fields.Date(string='GAV Unterstellt bis')
     partner_id = fields.Integer(string='Kontakt im Betrieb')
+    gav_id = fields.Integer(string="GAV ID")
     lang = fields.Char(string='Sprache')
     
-    
-    
-
     def init(self):
         tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(
@@ -38,7 +36,7 @@ class SyndicomVollzugDeclarationCheck(models.Model):
 
             SELECT 
                         p.id,
-                        c.id partner_id,
+                        c.id gav_id,
                         p.name,
                         c.name gav,
                         p.zip,
@@ -51,6 +49,11 @@ class SyndicomVollzugDeclarationCheck(models.Model):
                             when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '') = 0 then p.email
                             else (select email from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '' limit 1) end as email,
                             
+                        case 
+                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '') = 0 then p.id
+                            else (select id from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '' limit 1) end as partner_id,
+                            
+
                         case 
                             when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '') = 0 then ''
                             else (select name from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '' limit 1) end as name_an,

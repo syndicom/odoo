@@ -44,77 +44,73 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     @api.depends('date_leave','date_entry','employment_rate','apprentice')
     def _compute_duration_in_month(self):
         for record in self:
-            if record.declaration_id.id > 0:
-                date_entry = record.date_entry
-                date_leave = record.date_leave
-            
-                if date_entry == False:
-                    date_entry = record.declaration_id.date_from
-                if date_leave == False:
-                    date_leave = record.declaration_id.date_to
-                if date_entry < record.declaration_id.date_from:
-                    date_entry = record.declaration_id.date_from
-                if date_leave > record.declaration_id.date_to:
-                    date_leave = record.declaration_id.date_to
+
+            date_entry = record.date_entry
+            date_leave = record.date_leave
+        
+            if date_entry == False:
+                date_entry = record.declaration_id.date_from
+            if date_leave == False:
+                date_leave = record.declaration_id.date_to
+            if date_entry < record.declaration_id.date_from:
+                date_entry = record.declaration_id.date_from
+            if date_leave > record.declaration_id.date_to:
+                date_leave = record.declaration_id.date_to
 
 
-                if date_entry.day <= 14:
-                    date_entry = date(date_entry.year,date_entry.month,1)
-                elif date_entry.month in (4,6,9,11) and date_entry.day in (15,16):
-                    date_entry = date(date_entry.year,date_entry.month,1)
-                elif date_entry.month in (1,3,5,7,8,10,12) and date_entry.day in (15,16,17):
-                    date_entry = date(date_entry.year,date_entry.month,1)
-                else:
-                    date_entry = date(date_entry.year,date_entry.month + 1,1)
-                    
-                if date_leave.day >= 15:
-                    if date_leave.month == 2:
-                        date_leave = date(date_leave.year,date_leave.month,28)
-                    elif date_leave.month in (4,6,9,11):
-                        date_leave = date(date_leave.year,date_leave.month,30)
-                    else:
-                        date_leave = date(date_leave.year,date_leave.month,31)
-                else:
-                    date_leave = date(date_leave.year,date_leave.month,1)
-                    date_leave = date_leave - timedelta(days=1)
-                    
-                delta = relativedelta.relativedelta(date_leave,date_entry)
-                #record.duration = delta.months +1
-                total_months = delta.months
-                if delta.years > 0:
-                    total_months = delta.years * 12 + total_months
-                if delta.days >= 15:
-                    total_months = total_months + 1
-                if total_months < 0:
-                    total_months = 0                
-                record.duration = total_months
+            if date_entry.day <= 14:
+                date_entry = date(date_entry.year,date_entry.month,1)
+            elif date_entry.month in (4,6,9,11) and date_entry.day in (15,16):
+                date_entry = date(date_entry.year,date_entry.month,1)
+            elif date_entry.month in (1,3,5,7,8,10,12) and date_entry.day in (15,16,17):
+                date_entry = date(date_entry.year,date_entry.month,1)
             else:
-                record.duration = 0
+                date_entry = date(date_entry.year,date_entry.month + 1,1)
+                
+            if date_leave.day >= 15:
+                if date_leave.month == 2:
+                    date_leave = date(date_leave.year,date_leave.month,28)
+                elif date_leave.month in (4,6,9,11):
+                    date_leave = date(date_leave.year,date_leave.month,30)
+                else:
+                    date_leave = date(date_leave.year,date_leave.month,31)
+            else:
+                date_leave = date(date_leave.year,date_leave.month,1)
+                date_leave = date_leave - timedelta(days=1)
+                
+            delta = relativedelta.relativedelta(date_leave,date_entry)
+            #record.duration = delta.months +1
+            total_months = delta.months
+            if delta.years > 0:
+                total_months = delta.years * 12 + total_months
+            if delta.days >= 15:
+                total_months = total_months + 1
+            if total_months < 0:
+                total_months = 0                
+            record.duration = total_months
+           
 
     # TODO berechnung anhand der GAV Beträge. 
     # TODO Lehrling muss pro GAV als zu berechnen / nicht zu berechenn einstellbar sein
     @api.depends('duration')
     def _compute_total_an(self):
         for record in self:
-            if record.declaration_id.id > 0:
-                if record.employment_rate < 50:
-                    record.total_an = record.duration * 10
-                else:
-                    record.total_an = record.duration * 20
+           
+            if record.employment_rate < 50:
+                record.total_an = record.duration * 10
             else:
-                record.total_an = 0
+                record.total_an = record.duration * 20
+        
 
     @api.depends('duration')
     def _compute_total_ag(self):
         for record in self:
-            if record.declaration_id.id > 0:
-                if record.employment_rate < 50:
-                    record.total_ag = record.duration * 5
-                else:
-                    record.total_ag = record.duration * 10
+            
+            if record.employment_rate < 50:
+                record.total_ag = record.duration * 5
             else:
-                record.total_ag = 0
-
+                record.total_ag = record.duration * 10
+           
 
 
             
