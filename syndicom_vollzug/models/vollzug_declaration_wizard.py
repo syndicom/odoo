@@ -65,22 +65,23 @@ class DeclarationStart(models.TransientModel):
                 if declaration_date_to > check_tbl.date_end:
                     declaration_date_to = check_tbl.date_end
 
-            record = self.env['syndicom.vollzug.declaration'].create({  'name':'Deklaration',
-                                                                        'enterprise_id':enterprise.id,
-                                                                        'date_from':declaration_date_from,
-                                                                        'date_to':declaration_date_to,
-                                                                        'date_deadline':self.date_deadline,
-                                                                        'responsible_id':self.responsible_id.id,
-                                                                        'partner_id':check_tbl.partner_id,
-                                                                        'email':check_tbl.email,
-                                                                        'email_cc':check_tbl.email_cc,
-                                                                        'count_mailings':1,
-                                                                        'stage_id':stage_id})
-            self.env.cr.commit()
+            if declaration_date_to > declaration_date_from:
+                record = self.env['syndicom.vollzug.declaration'].create({  'name':'Deklaration',
+                                                                            'enterprise_id':enterprise.id,
+                                                                            'date_from':declaration_date_from,
+                                                                            'date_to':declaration_date_to,
+                                                                            'date_deadline':self.date_deadline,
+                                                                            'responsible_id':self.responsible_id.id,
+                                                                            'partner_id':check_tbl.partner_id,
+                                                                            'email':check_tbl.email,
+                                                                            'email_cc':check_tbl.email_cc,
+                                                                            'count_mailings':1,
+                                                                            'stage_id':stage_id})
+                self.env.cr.commit()
 
-            if nomail == False:
-                template = self.env['mail.template'].search([('id','=',self.mail_template_id.id)],limit=1)
-                template.send_mail(record.id)
+                if nomail == False:
+                    template = self.env['mail.template'].search([('id','=',self.mail_template_id.id)],limit=1)
+                    template.send_mail(record.id)
            
         return {
             'type': 'ir.actions.client',
