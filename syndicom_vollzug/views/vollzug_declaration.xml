@@ -1,4 +1,13 @@
 <odoo>
+
+    <record id="action_import_declaration_data" model="ir.actions.client">
+        <field name="name">Deklaration Importieren</field>
+        <field name="tag">import</field>
+        <field name="params">{ 'model': 'syndicom.vollzug.declaration.person' }</field>
+
+        <field name="context">{'default_declaration_id':1}</field>
+    </record>
+
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="action_window_vollzugliste">
         <field name="name">Vollzugskosten Deklarationen</field>
@@ -16,14 +25,23 @@
         <field name="name">Vollzugskosten Deklarationen</field>
         <field name="model">syndicom.vollzug.declaration</field>
         <field name="arch" type="xml">
-          
 
             <tree create="false">
                 <field name="name"/>
+                <field name="cla_partner"/>
+                <field name="enterprise_id"/>
                 <field name="partner_id"/>
                 <field name="responsible_id"/>
+                <field name="date_deadline" widget="remaining_days"/>
                 <field name="email" string="Mail"/>
                 <field name="description"/>
+                <field name="overdue" />
+
+                <field name="total_ma" optional="hide" />
+                <field name="total_m" optional="hide" />
+                <field name="total_w" optional="hide" />
+                <field name="total_n" optional="hide" />
+                <field name="total_a" optional="hide" />
             </tree>
         </field>
  
@@ -131,7 +149,12 @@
                             <field name="date_from"/>
                             <field name="date_to"/>
                             <field name="date_deadline"/>
+                            <field name="cla_partner"/>
                             <field name="description" string="Notizen"/>
+                            <field name="id" string="declaration_id"  />
+
+                            <button name="%(action_import_declaration_data)d" string="Excel Importieren" type="action" class="oe_highlight" />
+
                         </group>
                     </group>
 
@@ -142,6 +165,7 @@
                            
                             <field name="person_ids">
                                 <tree editable="bottom">
+                                    <field name="salutation" optional="hide"/>
                                     <field name="firstname"/>
                                     <field name="name" />
                                     <field name="ssn" optional="hide" />
@@ -152,6 +176,7 @@
                                     <field name="salary" optional="hide"/>
                                     <field name="birthday"  optional="hide" />
                                     <field name="apprentice"  optional="hide" />
+                                    <field name="is_apprentice"  optional="hide" />
                                     <field name="date_entry"/>
                                     <field name="date_leave" />
                                     <field name="employment_rate" string="BG" />
@@ -166,7 +191,7 @@
 
                             <group>
                                 <group name="content_left">
-                                    
+
                                     <field name="total_ag" />
                                     <field name="total_an_tz" />
                                     <field name="total_an_vz" />
@@ -175,9 +200,33 @@
                                 </group>
                                 <group name="content_right">
                                    
+                                    <button name="create_declaration_bill"  string="Rechnung erstellen"  type="object" attrs="{'invisible':[('move_id','>',0)]}" />
+                                    <field name="move_id" type="object" attrs="{'invisible':[('move_id','=',False)]}" />
+
                                 </group>
                             </group>
 
+
+                            <hr/>
+
+                            <group>
+                                <group name="content_left">
+                                    
+                                    <field name="total_ma" />
+                                    <field name="total_m" />
+                                    <field name="total_w" />
+                                    <field name="total_n" />
+                                    <field name="total_a" />
+                                   
+                                </group>
+                                <group name="content_right">
+                                   
+                                    <field name="duration_tz" />
+                                    <field name="duration_vz" />
+                                    <field name="duration" />
+
+                                </group>
+                            </group>
                             
                         
                         </page>
@@ -199,13 +248,21 @@
 
 
     <!-- search view -->
-    <record id="vollzugliste_search" model="ir.ui.view">
+    <record id="vollzugliste_search_view" model="ir.ui.view">
         <field name="name">syndicom.vollzug.declaration.search</field>
         <field name="model">syndicom.vollzug.declaration</field>
         <field name="arch" type="xml">
-            <search>
-                <field name="name"/>
+            
+            <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
+            <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
+
+
+            <search string="Deklarationen durchsuchen">
+                <field name="enterprise_id"/>
+                <field name="partner_id"/>
+                <field name="cla_partner"/>
                 <field name="description"/>
+                <field name="responsible_id"/>
             </search>
         </field>
     </record>
@@ -234,6 +291,7 @@
         <field name="view_id" ref="vollzugliste_form_view"/>
         <field name="act_window_id" ref="action_window_vollzugliste"/>
     </record>
+
 
     
 </odoo>

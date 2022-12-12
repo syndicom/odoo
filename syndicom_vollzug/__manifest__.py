@@ -4,7 +4,7 @@
     'author': "syndicom, Pascal Arnold",
     'website': "https://syndicom.ch",
     'category': 'Sales/CRM',
-    'version': '15.0.1.0.2',
+    'version': '15.0.1.0.3',
     'license': 'LGPL-3',
     'summary': "Vollzug",
     'description': "Modul zum verwalten der GAV-Unterstellungen und entsprechenden Deklarationsaufforderungen",
@@ -13,6 +13,7 @@
         'contacts',
         'mass_mailing',
         'industry_fsm',
+        'syndicom_partner_multi_relation',
     ],
     'data': [
         'security/vollzug_officer.xml',
