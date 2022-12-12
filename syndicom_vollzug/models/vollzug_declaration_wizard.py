@@ -59,13 +59,14 @@ class DeclarationStart(models.TransientModel):
 
             if check_tbl.date_start != False:
                 if declaration_date_from < check_tbl.date_start:
-                    print('Nachträglicher Eintritt GAV')
                     declaration_date_from = check_tbl.date_start
             if check_tbl.date_end != False:
                 if declaration_date_to > check_tbl.date_end:
                     declaration_date_to = check_tbl.date_end
 
+   
             if declaration_date_to > declaration_date_from:
+                
                 record = self.env['syndicom.vollzug.declaration'].create({  'name':'Deklaration',
                                                                             'enterprise_id':enterprise.id,
                                                                             'date_from':declaration_date_from,
@@ -76,6 +77,7 @@ class DeclarationStart(models.TransientModel):
                                                                             'email':check_tbl.email,
                                                                             'email_cc':check_tbl.email_cc,
                                                                             'count_mailings':1,
+                                                                            'cla_partner':check_tbl.gav_id,
                                                                             'stage_id':stage_id})
                 self.env.cr.commit()
 

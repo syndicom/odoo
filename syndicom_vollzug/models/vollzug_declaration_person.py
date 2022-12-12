@@ -5,6 +5,7 @@ from dateutil import relativedelta
 
 class SyndicomvollzugDeclarationPerson(models.Model):
     _name = 'syndicom.vollzug.declaration.person'
+ #   _inherit = 'member.cla.payback.request'
     name = fields.Char('Name')
     declaration_id = fields.Many2one('syndicom.vollzug.declaration', 'Deklaration')
     notice_id = fields.Many2one('syndicom.vollzug.notice', 'Meldung')
@@ -28,17 +29,39 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     zip = fields.Char(string='PLZ')
     city = fields.Char(string='Ort')
     birthday = fields.Date(string='Geburtstag')
-    apprentice = fields.Boolean(string='Lehrling')
+    apprentice = fields.Char(string='Lehrling')
+    is_apprentice = fields.Boolean(string='Ist Lehrling', compute='_compute_apprentice')
     ssn = fields.Char(string='AHV-Nummer')
-    gender = fields.Selection([('m','Männlich'),('w','Weiblich'),('n','Neutral')])
+    gender = fields.Selection([('m','Männlich'),('w','Weiblich'),('n','Neutral')], compute='_compute_gender')
     salary = fields.Float(string='Bruttolohn')
     zemis = fields.Char(string='Zemis')
     qualification = fields.Char(string='Qualifikation')
     field = fields.Char(string='Einsatzgebiet')
     job = fields.Char(string='Tätigkeit')
+    cla_partner = fields.Many2one(string='GAV Partner',related='declaration_id.cla_partner')
     
     
-    
+  #  def compute_cla_period_amount(self):
+  #      return super().compute_cla_period_amount()
+
+    @api.depends('apprentice')
+    def _compute_apprentice(self):
+        for record in self:
+            if str(record.apprentice).lower() in ['lehrling','apprentice','ja','si','oui','1','true','yes','apprenti','apprendi','apprendista','lernender','azubi','auszubildender']:
+                record.is_apprentice = True
+            else:
+                record.is_apprentice = False
+
+    @api.depends('salutation')
+    def _compute_gender(self):
+        for record in self:
+            if record.salutation.lower() in ['herr','monsieur','mister','m','male','signor','mänlich','mrs','mrs.','m.']:
+                record.gender = 'm'
+            elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme']:
+                record.gender = 'w'
+            else:
+                record.gender = 'n'
+            
 
 
     @api.depends('date_leave','date_entry','employment_rate','apprentice')
@@ -90,26 +113,67 @@ class SyndicomvollzugDeclarationPerson(models.Model):
             record.duration = total_months
            
 
-    # TODO berechnung anhand der GAV Beträge. 
-    # TODO Lehrling muss pro GAV als zu berechnen / nicht zu berechenn einstellbar sein
     @api.depends('duration')
     def _compute_total_an(self):
         for record in self:
-           
-            if record.employment_rate < 50:
-                record.total_an = record.duration * 10
+        #    record.total_an = self.env['member.cla.payback.request'].compute_cla_period_amount(   
+        #        date_to="01.01.2022",
+        #        date_from="31.12.2022",
+        #        member_cla_id="1",
+        #        charged_to="employer",
+        #        consolidate="year",
+        #        amount_computation="",
+        #    )
+
+            cla_partner_cc = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_cc')
+            cla_partner_cc = str(cla_partner_cc) if cla_partner_cc else '0'
+            cla_partner_nz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_nz')
+            cla_partner_nz = str(cla_partner_nz) if cla_partner_nz else '0'
+
+            # Calculation Logic Call Center
+            if cla_partner_cc == str(record.cla_partner.id):
+                if record.employment_rate < 50:
+                    record.total_an = record.duration * 10
+                else:
+                    record.total_an = record.duration * 20
+            # Calculation Logic Netzinfrastruktur
+            elif cla_partner_nz == str(record.cla_partner.id):    
+                if record.is_apprentice == True:
+                    record.total_an = 0
+                else:
+                    if record.employment_rate < 50:
+                        record.total_an = record.duration * 10
+                    else:
+                        record.total_an = record.duration * 20
             else:
-                record.total_an = record.duration * 20
+                # Logic not found
+                record.total_an = 0
+               
+
+            
         
 
     @api.depends('duration')
     def _compute_total_ag(self):
         for record in self:
             
-            if record.employment_rate < 50:
-                record.total_ag = record.duration * 5
+            cla_partner_cc = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_cc')
+            cla_partner_cc = str(cla_partner_cc) if cla_partner_cc else '0'
+            cla_partner_nz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_nz')
+            cla_partner_nz = str(cla_partner_nz) if cla_partner_nz else '0'
+
+            # Calculation Logic Call Center
+            if cla_partner_cc == str(record.cla_partner.id):
+                record.total_ag = 0
+            # Calculation Logic Netzinfrastruktur
+            elif cla_partner_nz == str(record.cla_partner.id):    
+                if record.is_apprentice == True:
+                    record.total_ag = 0
+                else:
+                    record.total_ag = record.duration * 5
             else:
-                record.total_ag = record.duration * 10
+                # Logic not found
+                record.total_ag = 0
            
 
 

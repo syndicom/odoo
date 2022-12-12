@@ -20,6 +20,7 @@
                             <field name="syn_declaration_frees_till" string="Beitragsbefreit bis"/>
                             <field name="syn_declaration_no_mail" />
 
+                            <field name="syn_contact_type_ids" />
                             
                         </group>
                        </page>

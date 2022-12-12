@@ -35,6 +35,7 @@ class SyndicomVollzugDeclarationCheck(models.Model):
         return """
 
             SELECT 
+            distinct
                         p.id,
                         c.id gav_id,
                         p.name,
