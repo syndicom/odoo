@@ -252,12 +252,9 @@
         <field name="name">syndicom.vollzug.declaration.search</field>
         <field name="model">syndicom.vollzug.declaration</field>
         <field name="arch" type="xml">
-            
-            <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
-            <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
-
-
             <search string="Deklarationen durchsuchen">
+                <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
+                <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
                 <field name="enterprise_id"/>
                 <field name="partner_id"/>
                 <field name="cla_partner"/>
