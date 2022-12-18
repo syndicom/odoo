@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+   
+           <!--
+           Ticket Extension
+           -->
+   
+           <record id="view_helpdesk_team_view_form_legal" model="ir.ui.view">
+               <field name="name">helpdesk.team.form.inherit.legal</field>
+               <field name="model">helpdesk.team</field>
+               <field name="priority">2</field>
+               <field name="inherit_id" ref="helpdesk.helpdesk_team_view_form"/>
+               <field name="groups_id" eval="[(5,)]"/>
+              
+                    <field name="arch" type="xml">
+
+                        <xpath expr="//field[@name='company_id']" position="before">
+                            <field name="is_legal" />                    
+                            <field name="is_firstlevel" />
+                        </xpath>
+                    
+                    </field>
+
+               
+           </record>
+
+    </data>
+</odoo>
