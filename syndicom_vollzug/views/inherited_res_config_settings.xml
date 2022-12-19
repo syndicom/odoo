@@ -45,6 +45,25 @@
                                         <field name="syn_prod_cc_ag" class="oe_inline" style="width: 70% !important;"/>
                                         <label class="col-lg-3 o_light_label" string="Produkt Deklaration Rabatt" for="syn_prod_cc_discount"/>
                                         <field name="syn_prod_cc_discount" class="oe_inline" style="width: 70% !important;"/>
+
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_ertrag_ver"/>
+                                        <field name="syn_account_cc_ertrag_ver" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_ertrag_ave"/>
+                                        <field name="syn_account_cc_ertrag_ave" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_ertrag_org"/>
+                                        <field name="syn_account_cc_ertrag_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_ertrag_n_org"/>
+                                        <field name="syn_account_cc_ertrag_n_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_deb_ver"/>
+                                        <field name="syn_account_cc_deb_ver" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_deb_ave"/>
+                                        <field name="syn_account_cc_deb_ave" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_deb_org"/>
+                                        <field name="syn_account_cc_deb_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_cc_deb_n_org"/>
+                                        <field name="syn_account_cc_deb_n_org" class="oe_inline" style="width: 70% !important;" />
+
+
                                     </div>
                                         <div class="text-muted">
                                            Netzinfrastruktur
@@ -63,6 +82,25 @@
                                         <label class="col-lg-3 o_light_label" string="Produkt Deklaration Rabatt" for="syn_prod_nz_discount"/>
                                         <field name="syn_prod_nz_discount" class="oe_inline" style="width: 70% !important;"/>
                                     
+                                    
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_ertrag_ver"/>
+                                        <field name="syn_account_nz_ertrag_ver" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_ertrag_ave"/>
+                                        <field name="syn_account_nz_ertrag_ave" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_ertrag_org"/>
+                                        <field name="syn_account_nz_ertrag_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_ertrag_n_org"/>
+                                        <field name="syn_account_nz_ertrag_n_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_deb_ver"/>
+                                        <field name="syn_account_nz_deb_ver" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_deb_ave"/>
+                                        <field name="syn_account_nz_deb_ave" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_deb_org"/>
+                                        <field name="syn_account_nz_deb_org" class="oe_inline" style="width: 70% !important;" />
+                                        <label class="col-lg-3 o_light_label" for="syn_account_nz_deb_n_org"/>
+                                        <field name="syn_account_nz_deb_n_org" class="oe_inline" style="width: 70% !important;" />
+
+
                                     </div>
 
                                     

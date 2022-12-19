@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree editable="bottom">
                 <field name="personal_nr" />
+                <field name="salutation" optional="hide"/>
                 <field name="firstname"/>
                 <field name="name" />
                 <field name="gender" optional="hide" />
@@ -21,6 +22,8 @@
                 <field name="date_leave" />
                 <field name="employment_rate" string="BG" />
                 <field name="duration" />
+                <field name="duration_correction" />
+                <field name="duration_consolidated" optional="hide" />
                 <field name="total_an" />
                 <field name="total_ag" />
             </tree>
