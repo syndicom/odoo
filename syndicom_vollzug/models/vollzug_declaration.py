@@ -42,12 +42,20 @@ class SyndicomvollzugDeclaration(models.Model):
     duration_tz = fields.Integer(string='Anz. TZ',readonly=True,compute='_compute_duration')
     duration_vz = fields.Integer(string='Anz. VZ',readonly=True,compute='_compute_duration')
     duration = fields.Integer(string='Anz. Monate',readonly=True,compute='_compute_duration')
-    
+    duration_declaration = fields.Integer(string='Anz. Deklarationsmonate',readonly=True,compute='_compute_declaration_months')
     
     
     
 
     @api.model
+    def _compute_declaration_months(self):
+        for record in self:
+            months = 0
+            if record.date_from and record.date_to:
+                months = (record.date_to.year - record.date_from.year) * 12 + (record.date_to.month - record.date_from.month)
+                months = months + 1
+            record.duration_declaration = months
+
 
     def _compute_duration(self):
         for record in self:
@@ -57,10 +65,10 @@ class SyndicomvollzugDeclaration(models.Model):
             duration_vz = 0
             for p in person:
                 if p.employment_rate < 50:
-                    duration_tz = duration_tz + p.duration
+                    duration_tz = duration_tz + p.duration_consolidated
                 else:
-                    duration_vz = duration_vz + p.duration
-                duration = duration + p.duration
+                    duration_vz = duration_vz + p.duration_consolidated
+                duration = duration + p.duration_consolidated
             record.duration_tz = duration_tz
             record.duration_vz = duration_vz
             record.duration = duration
@@ -236,11 +244,27 @@ class SyndicomvollzugDeclaration(models.Model):
                 product_tz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_tz')
                 product_vz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_vz')
                 product_discount = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_discount')
+                ertrag_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_ver')
+                ertrag_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_ave')
+                ertrag_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_org')
+                ertrag_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_n_org')
+                deb_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_ver')
+                deb_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_ave')
+                deb_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_org')
+                deb_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_n_org')
             else:
                 product_ag = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_ag')
                 product_tz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_tz')
                 product_vz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_vz')
                 product_discount = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_discount')
+                ertrag_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_ver')
+                ertrag_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_ave')
+                ertrag_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_org')
+                ertrag_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_n_org')
+                deb_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_ver')
+                deb_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_ave')
+                deb_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_org')
+                deb_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_n_org')
 
             lines = []
 
@@ -249,6 +273,12 @@ class SyndicomvollzugDeclaration(models.Model):
                     'product_id': int(product_ag),
                     'quantity': 1,
                     'price_unit': record.total_ag,
+                    'account_id' : int(ertrag_ave),
+                    }))
+                lines.append((0, None, {
+                    'debit': record.total_ag,
+                    'account_id' : int(deb_ave),
+                    'exclude_from_invoice_tab' : True,
                     }))
 
             if record.total_an_tz > 0:
@@ -256,6 +286,12 @@ class SyndicomvollzugDeclaration(models.Model):
                     'product_id': int(product_tz),
                     'quantity': record.duration_tz,
                     'price_unit': record.total_an_tz / record.duration_tz,
+                    'account_id' : int(ertrag_org),
+                    }))
+                lines.append((0, None, {
+                    'debit': record.total_an_tz,
+                    'account_id' : int(deb_org),
+                    'exclude_from_invoice_tab' : True,
                     }))
 
             if record.total_an_vz > 0:
@@ -263,6 +299,12 @@ class SyndicomvollzugDeclaration(models.Model):
                     'product_id': int(product_vz),
                     'quantity': record.duration_vz,
                     'price_unit': record.total_an_vz / record.duration_vz,
+                    'account_id' : int(ertrag_org),
+                    }))
+                lines.append((0, None, {
+                    'debit': record.total_an_vz,
+                    'account_id' : int(deb_org),
+                    'exclude_from_invoice_tab' : True,
                     }))
 
             if record.total_discount > 0:
@@ -270,11 +312,17 @@ class SyndicomvollzugDeclaration(models.Model):
                     'product_id': int(product_discount),
                     'quantity': 1,
                     'price_unit': record.total_discount,
+                    'account_id' : int(ertrag_ave),
+                    }))
+                lines.append((0, None, {
+                    'debit': record.total_discount,
+                    'account_id' : int(deb_ave),
+                    'exclude_from_invoice_tab' : True,
                     }))
 
 
             move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
+            'move_type': 'out_invoice',
             'partner_id': record.enterprise_id.id,
             'company_id' : company,
             'currency_id': 5,
