@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="1">
+        <record id="syndicom_create_legal_ticket" model="ir.actions.server">
+            <field name="name">[SYN] Rechtsfall aus Ticket erstellen</field>
+            <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
+            <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
+            <field name="code">
+                # Server Actions Rechtsfall
+            </field>
+        </record>
+        <record id="syndicom_create_legal_process_nonmember" model="ir.actions.server">
+            <field name="name">[SYN] Start Nicht-Mitglied Prozess</field>
+            <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
+            <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
+            <field name="code">
+                # Server Actions Rechtsfall
+            </field>
+        </record>
+    </data>
+</odoo>

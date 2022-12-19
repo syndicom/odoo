@@ -1,0 +1,226 @@
+<odoo>
+    <data>
+   
+           <!--
+           Ticket Extension
+           -->
+   
+           <record id="view_helpdesk_ticket_view_form_legal" model="ir.ui.view">
+               <field name="name">helpdesk.ticket.form.inherit.legal</field>
+               <field name="model">helpdesk.ticket</field>
+               <field name="priority">2</field>
+               <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+               <field name="groups_id" eval="[(5,)]"/>
+              
+               <field name="arch" type="xml"  >
+
+                
+
+                  <xpath expr="//field[@name='priority']" position="after" >    
+                    <field name="syn_is_legal" invisible='1' />
+                    <field name="syn_is_firstlevel" invisible='1' />
+                    <field name="syn_received_on"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                    <field name="syn_closed_on"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                  </xpath>
+
+                  <field name='partner_id' position="after"   attrs="{'invisible': [('syn_is_legal','=',False)]}">
+                    <field name="syn_no_lock"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                    <field name="syn_external_lawyer_id"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                    <field name="syn_cost_approved"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                    <field name="syn_final_comment"  attrs="{'invisible': [('syn_is_legal','=',False)]}" />
+                  </field>
+
+               </field>
+           </record>
+
+           <record id="view_helpdesk_ticket_view_form_withdrawal" model="ir.ui.view">
+               <field name="name">helpdesk.ticket.form.inherit.withdrawal</field>
+               <field name="model">helpdesk.ticket</field>
+               <field name="priority">3</field>
+               <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+               <field name="groups_id" eval="[(5,)]"/>
+              
+               <field name="arch" type="xml">
+
+                  <field name='partner_id' position="after">
+
+                    <field name="syn_withdrawal_repayment" />
+                   
+                  </field>
+
+               </field>
+           </record>
+
+           
+           
+
+           <record id="view_helpdesk_ticket_view_form_legal_tabs" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.form.inherit.legal_tabs</field>
+            <field name="key" eval="False"/>
+            <field name="mode">extension</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="type">form</field>
+            <field name="priority">100</field>
+            <field name="inherit_id" ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            
+            
+            <field name="arch" type="xml">
+             
+             
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='timesheets']/field[@name='timesheet_ids']/tree[1]/field[@name='employee_id']" position="after">
+                    <field optional="show" name="syn_consulting_id"/>
+                </xpath>
+
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside" >
+
+                    <page string="Kosten" name="legal_costs"  attrs="{'invisible': [('syn_is_legal','=',False)]}"  >                     
+
+                        <field name="syn_legal_cost_ids" nolabel="1" >
+                            <tree editable="bottom">
+                                
+                                <field name="name"/>
+                                <field name="cost_id" domain=""/>
+                                <field name="date"/>
+                                <field name="description"/>
+                                <field name="amount"/>
+                                
+                                
+                            </tree>
+                        </field>
+                        <group>
+                            <group class="oe_subtotal_footer oe_right" name="total_cost_amount">
+                                <field name="syn_total_cost"/>
+                            </group>
+                        </group>
+
+                    </page>
+                    <page string="Rechtsanfrage" name="legal_request"  attrs="{'invisible': [('syn_is_legal','=',False),('syn_is_firstlevel','=',False)]}" >
+                    
+                    <group>
+                        <group name="content_left">
+
+                            
+                            <field name="syn_legal_request_type" />
+                            
+                            <!-- Kollektiv -->
+                            <field name="syn_legal_request_employer" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kollektiv')]}" />
+                            <field name="syn_legal_request_workplace" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kollektiv')]}" />
+                            <!-- Kündigung -->
+                            <field name="syn_legal_request_notice_date" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}" />
+                            <field name="syn_legal_request_notice_termination_date" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}" />
+                            <field name="syn_legal_request_notice_working_since" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}" />
+                            <field name="syn_legal_request_notice_periode" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}" />
+                            <field name="syn_legal_request_notice_reason" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}" />
+                            <!-- General -->
+                            <field name="syn_legal_request_deadline" attrs="{'invisible': ['|','|',('syn_legal_request_type', '=', False),('syn_legal_request_type', '=', 'privat'),('syn_legal_request_type','=','non-member')]}" />
+                            <field name="syn_legal_request_notes"  attrs="{'invisible': ['|',('syn_legal_request_type', '=', False),('syn_legal_request_type', '=', 'privat')]}" />
+                            <!-- Privatrechtschutz -->
+                            <span attrs="{'invisible': [('syn_legal_request_type', '!=', 'privat')]}" >
+                            <h3 style='color:red;'>Hier anzeige ob Coop Ja / Nein</h3>
+                            </span>
+                            <!-- Nicht Mitglied -->
+                            <field name="syn_legal_nonmember_sel" attrs="{'invisible': ['|','|',('syn_legal_request_type', '=', False),('syn_legal_request_type', '!=', 'non-member'),('syn_is_legal','=',False)]}" />
+                            <button class="btn btn-primary" type="action" name="%(syndicom_create_legal_process_nonmember)d"  attrs="{'invisible': ['|','|',('syn_legal_request_type', '=', False),('syn_legal_request_type', '!=', 'non-member'),('syn_is_legal','=',False)]}">Prozess Nicht-Mitglied starten</button>
+
+
+                        </group>
+                      
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', False)]}">
+                            <span>
+                            Wähle ein treffendes Thema unter "Anliegen" aus
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'non-member')]}">
+                            <span>
+                            <h3 style='color:red;'>Achtung!</h3>
+                            syndicom gewährt keine Rechtsberatung an nicht-Mitglieder. Das Mitglied hat aber die Möglichkeit
+                            direkt beizutreten, wodurch der syndicom Rechtsdienst eine Beratung in reduziertem Mass (ca. 1h)
+                            anbieten kann. Das Anliegen kann in jedemfall hier erfasst werden, der Rechtsdienst entscheidet
+                            dann ob es sich um einen Einzellfall handelt, oder ob der Fall ggf. ein Kollektivfall (via Sektoren)
+                            oder um ein GAV-Anliegen handelt, zu welchem das Nicht-Mitglied auch ohne Beitritt beraten werden würde.
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kollektiv')]}">
+                            <span>
+                            Kollektivfälle werden den zuständigen RS via Sektoren übermittelt
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'kuendigung')]}">
+                            <span>
+                            Fragen für Bemerkungsfeld:
+                            <ul>
+                                <li>Schriftliche Kündigungsbegründung vorhanden?</li>
+                                <li>Warst du zum Zeitpunkt der Kündigung
+                                    <ul>
+                                        <li>Arbeitsunfähig wegen Krankheit oder Unfall?</li>
+                                        <li>im Militär oder Zivildienst?</li>
+                                        <li>schwanger?</li>
+                                        <li>an einer Hilfsaktion im Ausland beteiligt?</li>
+                                    </ul>
+                                </li>
+                                <li>Bist du während der Kündiungsfrist krank geworden, verunfallt, schwanger geworden, in Militär oder Zivildienst eingerückt?</li>
+                                <li>Ist die Kündigung deiner Meinung nach missbräuchlich?</li>
+                            </ul>
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'sozial')]}">
+                            <span>
+                            <ul>
+                                <li>IV</li>
+                                <li>SUVA</li>
+                                <li>Arbeitslosenkasse</li>
+                                <li>...</li>
+                            </ul>
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'anderes')]}">
+                            <span>
+                            Beschreibe den Sachverhalt und das Anliegen des Mitglieds im Bemerkungsfeld. Falls eine Frist läuft,
+                            gib diese bitte im entsprechenden Formularfeld ein!
+                            </span>
+                        </group>
+
+                        <group name="content_right" attrs="{'invisible': [('syn_legal_request_type', '!=', 'privat')]}">
+                            <span>
+                            Kontaktnummern Coop Rechtsschutzversicherung:<br/>
+                            Deutsch: 062 836 00 36<br/>
+                            Französisch: 021 641 61 20<br/>
+                            Italienisch: 091 825 81 80
+                            <hr/>
+                            Rechtsfälle betreffend die <b>Private Person und Freizeit</b><br/>
+                            <ul>
+                            <li>Familienrecht (Scheidung, Trennung, Unterhaltsklagen)</li>
+                            <li>Baurecht (Baubewilligungen, Architekten, Bauunternehmer)</li>
+                            <li>Nachbarrechtliche Streitigkeiten</li>
+                            <li>Steuerrecht</li>
+                            <li>Strassenverkehrsrecht (Ereignisse in der Freizeit und auf dem Arbeitsweg</li>
+                            <li>Strafrecht</li>
+                            <li>Krankenkasse</li>
+                            <li>Wohnungsmiete</li>
+                            <li>Privatversicherungsrecht (Hausrat, Motorfahrzeug, Gebäude, ...)</li>
+                            <li>Haftpflichtrecht</li>
+                            <li>...</li>
+                            </ul>
+                            </span>
+                        </group>
+                    </group>
+
+                    <group>
+                        <button class="btn btn-primary" type="action" name="%(syndicom_create_legal_ticket)d"  attrs="{'invisible': ['|','|',('syn_legal_request_type', '=', False),('syn_legal_request_type', '=', 'privat'),('syn_is_legal','=',True)]}">Rechtsanfrage erfassen und an den Rechtsdienst weiterleiten</button>
+                    </group>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+   </odoo>

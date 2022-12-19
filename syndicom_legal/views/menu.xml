@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+
+        <menuitem id="syndicom_ticket_cost_list"
+                  name="Kostenarten"
+                  parent="helpdesk.helpdesk_menu_config"
+                  action="action_ticket_cost"
+                  sequence="50"/>
+        <menuitem id="syndicom_ticket_consulting_list"
+                  name="Beratungsformen"
+                  parent="helpdesk.helpdesk_menu_config"
+                  action="action_ticket_consulting"
+                  sequence="51"/>
+  
+    </data>
+</odoo>
