@@ -8,16 +8,21 @@
 Design gorgeous mails
     """,
     'version': '15.0.1.0.2',
+    'author': 'syndicom, Pascal Arnold',
     'license': 'LGPL-3',
     'sequence': 10,
-    'website': 'https://www.odoo.com/app/mailing',
+    'website': 'https://syndicom.ch',
     'category': 'Marketing/Email Marketing',
     'depends': [
         'mass_mailing',
     ],
     'data': [
+
+        'views/snippets/syndicom_buttons.xml',
+        'views/snippets_themes.xml',
         'views/mass_mailing_themes_templates.xml'
     ],
+    
     'installable': True,
     'auto_install': True,
 }
