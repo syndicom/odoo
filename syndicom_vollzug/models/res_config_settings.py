@@ -47,6 +47,15 @@ class ResConfigSettings(models.TransientModel):
     syn_prod_cc_discount = fields.Many2one(comodel_name='product.product',string='Produkt Rabatt CC',
         config_parameter='syndicom_vollzug.syn_prod_cc_discount',
         default=0)
+
+    syn_account_cc_ertrag_ver = fields.Many2one(comodel_name='account.account',string="Ertragskonto CC Verbandsfirmen",default=0,     config_parameter='syndicom_vollzug.syn_account_cc_ertrag_ver')
+    syn_account_cc_ertrag_ave = fields.Many2one(comodel_name='account.account',string="Ertragskonto CC AVE Firmen",default=0,         config_parameter='syndicom_vollzug.syn_account_cc_ertrag_ave')
+    syn_account_cc_ertrag_org = fields.Many2one(comodel_name='account.account',string="Ertragskonto CC AN Organisiert",default=0,     config_parameter='syndicom_vollzug.syn_account_cc_ertrag_org')
+    syn_account_cc_ertrag_n_org = fields.Many2one(comodel_name='account.account',string="Ertragskonto CC AN nicht-Organ.",default=0,  config_parameter='syndicom_vollzug.syn_account_cc_ertrag_n_org')
+    syn_account_cc_deb_ver = fields.Many2one(comodel_name='account.account',string="Debitorenkonto CC Verbandsfirmen",default=0,      config_parameter='syndicom_vollzug.syn_account_cc_deb_ver')
+    syn_account_cc_deb_ave = fields.Many2one(comodel_name='account.account',string="Debitorenkonto CC AVE Firmen",default=0,          config_parameter='syndicom_vollzug.syn_account_cc_deb_ave')
+    syn_account_cc_deb_org = fields.Many2one(comodel_name='account.account',string="Debitorenkonto CC AN Organisiert",default=0,      config_parameter='syndicom_vollzug.syn_account_cc_deb_org')
+    syn_account_cc_deb_n_org = fields.Many2one(comodel_name='account.account',string="Debitorenkonto CC AN nicht-Organ.",default=0,   config_parameter='syndicom_vollzug.syn_account_cc_deb_n_org')
         
     # NZ Products
     syn_prod_nz_tz = fields.Many2one(comodel_name='product.product',string='Produkt TZ nz',
@@ -64,3 +73,12 @@ class ResConfigSettings(models.TransientModel):
     syn_prod_nz_discount = fields.Many2one(comodel_name='product.product',string='Produkt Rabatt nz',
         config_parameter='syndicom_vollzug.syn_prod_nz_discount',
         default=0)
+
+    syn_account_nz_ertrag_ver = fields.Many2one(comodel_name='account.account',string="Ertragskonto nz Verbandsfirmen",default=0,     config_parameter='syndicom_vollzug.syn_account_nz_ertrag_ver')
+    syn_account_nz_ertrag_ave = fields.Many2one(comodel_name='account.account',string="Ertragskonto NZ AVE Firmen",default=0,         config_parameter='syndicom_vollzug.syn_account_nz_ertrag_ave')
+    syn_account_nz_ertrag_org = fields.Many2one(comodel_name='account.account',string="Ertragskonto NZ AN Organisiert",default=0,     config_parameter='syndicom_vollzug.syn_account_nz_ertrag_org')
+    syn_account_nz_ertrag_n_org = fields.Many2one(comodel_name='account.account',string="Ertragskonto NZ AN nicht-Organ.",default=0,  config_parameter='syndicom_vollzug.syn_account_nz_ertrag_n_org')
+    syn_account_nz_deb_ver = fields.Many2one(comodel_name='account.account',string="Debitorenkonto NZ Verbandsfirmen",default=0,      config_parameter='syndicom_vollzug.syn_account_nz_deb_ver')
+    syn_account_nz_deb_ave = fields.Many2one(comodel_name='account.account',string="Debitorenkonto NZ AVE Firmen",default=0,          config_parameter='syndicom_vollzug.syn_account_nz_deb_ave')
+    syn_account_nz_deb_org = fields.Many2one(comodel_name='account.account',string="Debitorenkonto NZ AN Organisiert",default=0,      config_parameter='syndicom_vollzug.syn_account_nz_deb_org')
+    syn_account_nz_deb_n_org = fields.Many2one(comodel_name='account.account',string="Debitorenkonto NZ AN nicht-Organ.",default=0,   config_parameter='syndicom_vollzug.syn_account_nz_deb_n_org')

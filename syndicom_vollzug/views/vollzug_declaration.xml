@@ -4,8 +4,6 @@
         <field name="name">Deklaration Importieren</field>
         <field name="tag">import</field>
         <field name="params">{ 'model': 'syndicom.vollzug.declaration.person' }</field>
-
-        <field name="context">{'default_declaration_id':1}</field>
     </record>
 
     <!-- actions opening views on models -->
@@ -148,10 +146,11 @@
                         <group name="content_right">
                             <field name="date_from"/>
                             <field name="date_to"/>
+                            <field name="duration_declaration"/>
                             <field name="date_deadline"/>
                             <field name="cla_partner"/>
                             <field name="description" string="Notizen"/>
-                            <field name="id" string="declaration_id"  />
+                            <field name="id" string="declaration/declaration_id"  />
 
                             <button name="%(action_import_declaration_data)d" string="Excel Importieren" type="action" class="oe_highlight" />
 
@@ -181,6 +180,8 @@
                                     <field name="date_leave" />
                                     <field name="employment_rate" string="BG" />
                                     <field name="duration" />
+                                    <field name="duration_correction" />
+                                    <field name="duration_consolidated" optional="hide" />
                                     <field name="total_an" />
                                     <field name="total_ag" />
                                 </tree>
@@ -253,11 +254,9 @@
         <field name="model">syndicom.vollzug.declaration</field>
         <field name="arch" type="xml">
             
-            <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
-            <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
-
-
             <search string="Deklarationen durchsuchen">
+                <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
+                <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
                 <field name="enterprise_id"/>
                 <field name="partner_id"/>
                 <field name="cla_partner"/>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syndicom_ticket_costs,syndicom_legal.syndicom_legal,model_syndicom_ticket_costs,base.group_user,1,1,1,1
+access_syndicom_ticket_costs_type,syndicom_legal.syndicom_legal,model_syndicom_ticket_costs_type,base.group_user,1,1,1,1
+access_syndicom_ticket_consulting_type,syndicom_legal.syndicom_legal,model_syndicom_ticket_consulting_type,base.group_user,1,1,1,1
+access_syndicom_ticket_ticket,syndicom_legal.syndicom_legal_ticket,model_helpdesk_ticket,base.group_user,1,1,1,1
+access_syndicom_ticket_team,syndicom_legal.syndicom_legal_team,model_helpdesk_team,base.group_user,1,1,1,1

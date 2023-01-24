@@ -5,7 +5,6 @@ from dateutil import relativedelta
 
 class SyndicomvollzugDeclarationPerson(models.Model):
     _name = 'syndicom.vollzug.declaration.person'
- #   _inherit = 'member.cla.payback.request'
     name = fields.Char('Name')
     declaration_id = fields.Many2one('syndicom.vollzug.declaration', 'Deklaration')
     notice_id = fields.Many2one('syndicom.vollzug.notice', 'Meldung')
@@ -20,7 +19,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     date_entry = fields.Date(string='Eintrittsdatum')
     date_leave = fields.Date(string='Austrittsdatum')
     personal_nr = fields.Char(string='Personalnummer')
-    employment_rate = fields.Integer(string='Beschäftigungsgrad')
+    employment_rate = fields.Float(string='Beschäftigungsgrad')
     duration = fields.Integer(string='Anz. Monate',compute="_compute_duration_in_month")
     total_an = fields.Monetary(string='AN Beitrag',compute="_compute_total_an")
     total_ag = fields.Monetary(string='AG Beitrag',compute="_compute_total_ag")
@@ -39,10 +38,18 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     field = fields.Char(string='Einsatzgebiet')
     job = fields.Char(string='Tätigkeit')
     cla_partner = fields.Many2one(string='GAV Partner',related='declaration_id.cla_partner')
+    duration_correction = fields.Integer(string='Korrektur')
+    duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', compute='_compute_duration_consolidated')
     
-    
-  #  def compute_cla_period_amount(self):
-  #      return super().compute_cla_period_amount()
+    @api.depends('duration','duration_correction')
+    def _compute_duration_consolidated(self):
+        for record in self:
+            consolidated = record.duration + record.duration_correction
+            if consolidated < 0: 
+                consolidated = 0
+            if consolidated > record.declaration_id.duration_declaration:
+                consolidated = record.declaration_id.duration_declaration
+            record.duration_consolidated = consolidated
 
     @api.depends('apprentice')
     def _compute_apprentice(self):
@@ -55,14 +62,12 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     @api.depends('salutation')
     def _compute_gender(self):
         for record in self:
-            if record.salutation.lower() in ['herr','monsieur','mister','m','male','signor','mänlich','mrs','mrs.','m.']:
-                record.gender = 'm'
-            elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme']:
-                record.gender = 'w'
-            else:
-                record.gender = 'n'
-            
-
+            record.gender = 'n'
+            if record.salutation:
+                if record.salutation.lower() in ['herr','monsieur','mister','m','male','signor','mänlich','mrs','mrs.','m.','homme']:
+                    record.gender = 'm'
+                elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
+                    record.gender = 'w'
 
     @api.depends('date_leave','date_entry','employment_rate','apprentice')
     def _compute_duration_in_month(self):
@@ -102,7 +107,6 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 date_leave = date_leave - timedelta(days=1)
                 
             delta = relativedelta.relativedelta(date_leave,date_entry)
-            #record.duration = delta.months +1
             total_months = delta.months
             if delta.years > 0:
                 total_months = delta.years * 12 + total_months
@@ -116,14 +120,10 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     @api.depends('duration')
     def _compute_total_an(self):
         for record in self:
-        #    record.total_an = self.env['member.cla.payback.request'].compute_cla_period_amount(   
-        #        date_to="01.01.2022",
-        #        date_from="31.12.2022",
-        #        member_cla_id="1",
-        #        charged_to="employer",
-        #        consolidate="year",
-        #        amount_computation="",
-        #    )
+
+            if record.employment_rate:
+                if record.employment_rate <= 1 and record.employment_rate > 0:
+                    record.employment_rate = record.employment_rate * 100
 
             cla_partner_cc = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_cc')
             cla_partner_cc = str(cla_partner_cc) if cla_partner_cc else '0'
@@ -133,25 +133,22 @@ class SyndicomvollzugDeclarationPerson(models.Model):
             # Calculation Logic Call Center
             if cla_partner_cc == str(record.cla_partner.id):
                 if record.employment_rate < 50:
-                    record.total_an = record.duration * 10
+                    record.total_an = record.duration_consolidated * 10
                 else:
-                    record.total_an = record.duration * 20
+                    record.total_an = record.duration_consolidated * 20
             # Calculation Logic Netzinfrastruktur
             elif cla_partner_nz == str(record.cla_partner.id):    
                 if record.is_apprentice == True:
                     record.total_an = 0
                 else:
                     if record.employment_rate < 50:
-                        record.total_an = record.duration * 10
+                        record.total_an = record.duration_consolidated * 10
                     else:
-                        record.total_an = record.duration * 20
+                        record.total_an = record.duration_consolidated * 20
             else:
                 # Logic not found
                 record.total_an = 0
                
-
-            
-        
 
     @api.depends('duration')
     def _compute_total_ag(self):
@@ -170,7 +167,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 if record.is_apprentice == True:
                     record.total_ag = 0
                 else:
-                    record.total_ag = record.duration * 5
+                    record.total_ag = record.duration_consolidated * 5
             else:
                 # Logic not found
                 record.total_ag = 0
