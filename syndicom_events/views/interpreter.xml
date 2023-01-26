@@ -1,0 +1,99 @@
+<odoo>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_interpreter">
+        <field name="name">Intrepreter</field>
+        <field name="res_model">event.syndicom.interpreter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Here you can modifiy the syndicom Interpreters
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="interpreter_tree_view">
+        <field name="name">Interpreter</field>
+        <field name="model">event.syndicom.interpreter</field>
+        <field name="arch" type="xml">
+
+            <tree >
+                  
+                    <field name="partner_id"/>
+                    <field name="amount_fee"/>
+                    <field name="is_salary"/>
+                
+            </tree>
+        </field>
+ 
+    </record>
+
+
+    <record model="ir.ui.view" id="interpreter_form_view">
+        <field name="name">Interpreter</field>
+        <field name="model">event.syndicom.interpreter</field>
+        <field name="arch" type="xml">
+            <form string="Interpreter">
+        
+                    <group>
+                        <group name="content_left">
+
+                            <field name="name" invisible="True"/>
+                            <field name="partner_id"/>
+                            <field name="amount_fee"/>
+                            <field name="is_salary"/>   
+                        </group>
+                        <group name="content_right">
+                        
+                        </group>
+                    </group>
+
+            </form>
+        </field>
+    </record>
+
+
+    <!-- search view -->
+    <record id="interpreter_search_view" model="ir.ui.view">
+        <field name="name">event.syndicom.interpreter.search</field>
+        <field name="model">event.syndicom.interpreter</field>
+        <field name="arch" type="xml">
+            
+            <search string="Interpreteren durchsuchen">
+
+                <field name="partner_id"/>
+                
+            </search>
+        </field>
+    </record>
+
+
+
+
+    <!-- Actions -->
+    <record id="action_window_interpreter_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="interpreter_tree_view"/>
+        <field name="act_window_id" ref="action_window_interpreter"/>
+    </record>
+
+
+    <record id="action_window_interpreter_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="interpreter_form_view"/>
+        <field name="act_window_id" ref="action_window_interpreter"/>
+    </record>
+
+
+    <data>
+        <menuitem id="syndicom_event_interpreter"
+                  name="Dolmetscher"
+                  parent="event.menu_event_configuration"
+                  action="action_window_interpreter"
+                  sequence="15"/>
+    </data>
+    
+</odoo>

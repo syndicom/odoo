@@ -15,8 +15,10 @@
 
                         <field name="subtitle" />
                         <field name="description" />
+                        <field name="syn_is_public"/>
                         <field name="syn_teamslink" />
                         <field name="syn_interactio" />  
+                        
                       </group>
 
 
@@ -24,7 +26,10 @@
 
                       <field name="syn_event_interpreter_ids" nolabel="1">
                           <tree editable="bottom">
-                              <field name="partner_id" domain="[('category_id.name','=','Dolmetscher')]"/>
+                              <field name="interpreter_id" />
+                              <field name="amount_fee" />
+                              <field name="amount_expenses" />
+                              <field name="amount_transport" />
                           </tree>
                       </field>
                     

@@ -18,6 +18,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/inherited_event_event_view.xml',
+        'views/interpreter.xml',
     ],
    
     
