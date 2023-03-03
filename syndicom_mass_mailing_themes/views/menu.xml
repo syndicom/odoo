@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <menuitem id="mass_mailing_sender"
+                  name="Absender"
+                  parent="mass_mailing.mass_mailing_configuration"
+                  action="mail_sender"
+                  sequence="50"/>
+        <menuitem id="mass_mailing_filter"
+                  name="Filter"
+                  parent="mass_mailing.mass_mailing_configuration"
+                  action="recipient_filter"
+                  sequence="60"/>
+    <menuitem
+            name="Verteiler"
+            id="syndicom_mailing_domain_menu"
+            parent="mass_mailing.mass_mailing_configuration"
+            action="syndicom_mailing_domain_menu_act_window"
+            sequence="70"/>
+            />
+    </data>
+</odoo>

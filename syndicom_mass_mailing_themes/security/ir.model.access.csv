@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mailing_mailing,syndicom_mass_mailing_themes.mailing_mailing,model_mailing_mailing,base.group_user,1,1,1,1
+access_syndicom_mail_sender,syndicom_mass_mailing_themes.syndicom_mail_sender,model_syndicom_mail_sender,base.group_user,1,1,1,1
+access_syndicom_recipient_filter,syndicom_mass_mailing_themes.syndicom_recipient_filter,model_syndicom_recipient_filter,base.group_user,1,1,1,1
+access_syndicom_mailing_domain,syndicom_mass_mailing_themes.syndicom_mailing_domain,model_syndicom_mailing_domain,base.group_user,1,1,1,1
