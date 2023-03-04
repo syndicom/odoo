@@ -1,0 +1,53 @@
+<odoo>
+
+<!-- model.name action window -->
+<record id="mail_sender" model="ir.actions.act_window">
+    <field name="name">syndicom.mail.sender.action</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">syndicom.mail.sender</field>
+    <field name="view_mode">tree,form</field>
+    
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+        </p><p>
+            <!-- More details about what a user can do with this object will be OK --> 
+        
+        </p>
+    </field>
+</record>
+
+<!-- model.name tree view -->
+<record id="mail_sender_view_tree" model="ir.ui.view">
+    <field name="name">syndicom.mail.sender.view.tree</field>
+    <field name="model">syndicom.mail.sender</field>
+    <field name="arch" type="xml">
+        <tree>
+            <!-- Add your fields here -->
+            <field name="name"/>
+            <field name="mail_from"/>
+            <field name="reply_to"/>
+        </tree>
+    </field>
+</record>
+
+<!-- model.name form view -->
+<record id="mail_sender_view_form" model="ir.ui.view">
+    <field name="name">syndicom.mail.sender.view.form</field>
+    <field name="model">syndicom.mail.sender</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <!-- Add your fields here -->
+                    <field name="name" />
+                    <field name="mail_from"/>
+                    <field name="reply_to"/>
+
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+</odoo>

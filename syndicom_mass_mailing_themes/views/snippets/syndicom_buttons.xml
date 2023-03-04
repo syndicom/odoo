@@ -23,6 +23,11 @@
             style="background-color: #5fbeec; border-color: #5fbeec;  border-radius: 1px; padding: 12px 18px; display: inline-block; font-weight: 700; letter-spacing: 0.0625rem; text-transform: uppercase;">syndicom Violett</a>
         </div>
     </template>
+    <template id="syndicom_placeholder">
+        <div class="o_inline_text" t-attf-class="{{ classes }}">
+          <!--- <t t-out="object.name or ''" data-oe-t-inline="true" style="box-sizing:border-box;" contenteditable="false">Hallo</t> --> Hallo
+        </div>
+    </template>
 
     <!--  Assets  -->
     <record id="mass_mailing.s_alert_001_scss" model="ir.asset">

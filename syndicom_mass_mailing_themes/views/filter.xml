@@ -1,0 +1,51 @@
+<odoo>
+
+<!-- model.name action window -->
+<record id="recipient_filter" model="ir.actions.act_window">
+    <field name="name">syndicom.recipient.filter.action</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">syndicom.recipient.filter</field>
+    <field name="view_mode">tree,form</field>
+    
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+        </p><p>
+            <!-- More details about what a user can do with this object will be OK --> 
+        
+        </p>
+    </field>
+</record>
+
+<!-- model.name tree view -->
+<record id="recipient_filter_view_tree" model="ir.ui.view">
+    <field name="name">syndicom.recipient.filter.view.tree</field>
+    <field name="model">syndicom.recipient.filter</field>
+    <field name="arch" type="xml">
+        <tree>
+            <!-- Add your fields here -->
+            <field name="name"/>
+            <field name="description" />
+        </tree>
+    </field>
+</record>
+
+<!-- model.name form view -->
+<record id="recipient_filter_view_form" model="ir.ui.view">
+    <field name="name">syndicom.recipient.filter.view.form</field>
+    <field name="model">syndicom.recipient.filter</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <!-- Add your fields here -->
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="domain" widget="domain" options="{'model':'res.partner'}" />
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+</odoo>
