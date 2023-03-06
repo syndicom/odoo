@@ -49,7 +49,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     duration_correction = fields.Integer(string='Korrektur')
     duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', compute='_compute_duration_consolidated')
     
-    discount_ag = fields.Float(string='Rabatt AG Beitrag')
+    discount_ag = fields.Float(string='AG nach Rabatt')
 
 
     @api.depends('birthday','ssn','zip')
