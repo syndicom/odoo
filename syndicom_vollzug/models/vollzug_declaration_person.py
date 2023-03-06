@@ -137,7 +137,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
         
         for record in self:
 
-            if(record.declaration_id.id > 0 ):
+            if(record.declaration_id.id):
                 record._compute_apprentice()
 
                 # getting settings records
