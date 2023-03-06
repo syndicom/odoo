@@ -49,7 +49,9 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     duration_correction = fields.Integer(string='Korrektur')
     duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', compute='_compute_duration_consolidated')
     
-    
+    discount_ag = fields.Float(string='Rabatt AG Beitrag')
+
+
     @api.depends('birthday','ssn','zip')
     def _compute_search_partner(self):
 
@@ -172,6 +174,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 duration_none = 0
                 total_ag = 0
                 total_an = 0
+                discount_ag = 0
 
                 # Check Employment Rate
                 if record.employment_rate:
@@ -253,6 +256,9 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                                 else:
                                     total_ag = total_ag + (record.salary / 100 * pricelist.amount_ag_vz)
                                     total_an = total_an + (record.salary / 100 * pricelist.amount_vz)
+                            print(pricelist.discount)
+                            discount_ag = discount_ag + (total_ag - (total_ag / 100 * pricelist.discount))
+
                                 
                 record.duration_association = max(0, duration_asso)
                 record.duration_ev = max(0,duration_ev)
@@ -260,6 +266,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none)
                 record.total_an = total_an
                 record.total_ag = total_ag
+                record.discount_ag = discount_ag
 
             else:
                 record.duration_association = 0
@@ -268,3 +275,4 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.duration = 0
                 record.total_an = 0
                 record.total_ag = 0
+                record.discount_ag = 0
