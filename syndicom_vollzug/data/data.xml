@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+      <!-- Declaration stages -->
+      <record id="stage0" model="syndicom.vollzug.declaration.stage">
+        <field name="name">Brief drucken</field>
+        <field name="process_step">0</field>
+        <field name="fold">0</field>
+        <field name="sequence">5</field>
+      </record>
+      <record id="stage1" model="syndicom.vollzug.declaration.stage">
+        <field name="name">Warte auf Deklaration</field>
+        <field name="process_step">1</field>
+        <field name="fold">0</field>
+        <field name="sequence">10</field>
+      </record>
+      <record id="stage2" model="syndicom.vollzug.declaration.stage">
+        <field name="name">Nachricht erhalten</field>
+        <field name="process_step">2</field>
+        <field name="fold">0</field>
+        <field name="sequence">20</field>
+      </record>
+      <record id="stage3" model="syndicom.vollzug.declaration.stage">
+        <field name="name">In Bearbeitung</field>
+        <field name="process_step">3</field>
+        <field name="fold">0</field>
+        <field name="sequence">30</field>
+      </record>
+      <record id="stage4" model="syndicom.vollzug.declaration.stage">
+        <field name="name">Erledigt</field>
+        <field name="process_step">4</field>
+        <field name="fold">1</field>
+        <field name="sequence">40</field>
+      </record>
+      <!-- Vollzug Contact Types -->
+      <record id="ctype1" model="syndicom.vollzug.contact.type">
+        <field name="name">Deklaration</field>
+      </record>
+      <record id="ctype2" model="syndicom.vollzug.contact.type">
+        <field name="name">GAV-Info</field>
+      </record>
+      <record id="ctype3" model="syndicom.vollzug.contact.type">
+        <field name="name">Rechnungen</field>
+      </record>
+      <record id="ctype4" model="syndicom.vollzug.contact.type">
+        <field name="name">Kontrollen</field>
+      </record>
+      <record id="ctype5" model="syndicom.vollzug.contact.type">
+        <field name="name">Privatadresse</field>
+      </record>
+
+    </data>
+</odoo>

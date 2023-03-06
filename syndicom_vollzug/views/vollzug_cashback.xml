@@ -1,0 +1,147 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_cashback">
+        <field name="name">Rückerstattungen</field>
+        <field name="res_model">syndicom.vollzug.declaration.person</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Rückerstattungen aufrufen
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="cashback_tree_view">
+        <field name="name">Rückerstattungen</field>
+        <field name="model">syndicom.vollzug.declaration.person</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="firstname"/>
+                <field name="name"/>
+                <field name="declaration_id"/>
+                <field name="notice_id"         optional="hide" />
+                <field name="task_id"           optional="hide" />
+                <field name="place_id"          optional="hide" />
+                <field name="contact_id"/>
+                <field name="employeer_id"/>
+                <field name="date_entry"/>
+                <field name="date_leave"/>
+                <field name="personal_nr"/>
+                <field name="employment_rate"/>
+                <field name="duration"/>
+                <field name="duration_association"/>
+                <field name="duration_ev"/>
+                <field name="duration_none"/>
+
+                <field name="total_an"/>
+                <field name="total_ag"/>
+
+                <field name="salutation"        optional="hide" />
+                <field name="street"            optional="hide" />
+                <field name="zip"               optional="hide" />
+                <field name="city"              optional="hide" />
+                <field name="birthday"          optional="hide" />
+                <field name="apprentice"        optional="hide" />
+                <field name="is_apprentice"     optional="hide" />
+                <field name="ssn"               optional="hide" />
+                <field name="gender"            optional="hide" />
+                <field name="salary"            optional="hide" />
+                <field name="zemis"             optional="hide" />
+                <field name="qualification"     optional="hide" />
+                <field name="field"             optional="hide" />
+                <field name="job"               optional="hide" />
+                <field name="cla_partner"       optional="hide" />
+
+
+                
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="cashback_form_view">
+        <field name="name">Rückerstattungen</field>
+        <field name="model">syndicom.vollzug.declaration.person</field>
+        <field name="arch" type="xml">
+            <form string="Rückerstattungen">
+                <sheet>
+                    <group>
+                        <group name="content_left">
+                            
+                                <field name="firstname"/>
+                                <field name="name"/>
+                                <field name="declaration_id"/>
+                                <field name="notice_id"/>
+                                <field name="task_id"/>
+                                <field name="place_id"/>
+                                <field name="contact_id"/>
+                                <field name="employeer_id"/>
+                                <field name="date_entry"/>
+                                <field name="date_leave"/>
+                                <field name="personal_nr"/>
+                                <field name="employment_rate"/>
+                                <field name="duration"/>
+                                <field name="duration_association"/>
+                                <field name="duration_ev"/>
+                                <field name="duration_none"/>
+
+                                <field name="total_an"/>
+                                <field name="total_ag"/>
+
+                            
+                        </group>
+                        <group name="content_right">
+                           
+                                <field name="salutation"/>
+                                <field name="street"/>
+                                <field name="zip"/>
+                                <field name="city"/>
+                                <field name="birthday"/>
+                                <field name="apprentice"/>
+                                <field name="is_apprentice"/>
+                                <field name="ssn"/>
+                                <field name="gender"/>
+                                <field name="salary"/>
+                                <field name="zemis"/>
+                                <field name="qualification"/>
+                                <field name="field"/>
+                                <field name="job"/>
+                                <field name="cla_partner"/>
+
+                        </group>
+                    </group>
+
+                   
+                      
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="cashback_search" model="ir.ui.view">
+        <field name="name">syndicom.vollzug.declaration.person.search</field>
+        <field name="model">syndicom.vollzug.declaration.person</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="firstname"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_cashback_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="cashback_tree_view"/>
+        <field name="act_window_id" ref="action_window_cashback"/>
+    </record>
+
+    <record id="action_window_cashback_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="cashback_form_view"/>
+        <field name="act_window_id" ref="action_window_cashback"/>
+    </record>
+</odoo>

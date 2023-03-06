@@ -1,0 +1,301 @@
+<odoo>
+
+    <record id="action_import_declaration_data" model="ir.actions.client">
+        <field name="name">Deklaration Importieren</field>
+        <field name="tag">import</field>
+        <field name="params">{ 'model': 'syndicom.vollzug.declaration.person' }</field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_vollzugliste">
+        <field name="name">Vollzugskosten Deklarationen</field>
+        <field name="res_model">syndicom.vollzug.declaration</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Hier werden die Deklarationen verwaltet
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="vollzugliste_tree_view">
+        <field name="name">Vollzugskosten Deklarationen</field>
+        <field name="model">syndicom.vollzug.declaration</field>
+        <field name="arch" type="xml">
+
+            <tree create="false">
+                <field name="name"/>
+                <field name="cla_partner"/>
+                <field name="enterprise_id"/>
+                <field name="partner_id"/>
+                <field name="responsible_id"/>
+                <field name="date_deadline" widget="remaining_days"/>
+                <field name="email" string="Mail"/>
+                <field name="description"/>
+                <field name="overdue" />
+
+                <field name="total_ma" optional="hide" />
+                <field name="total_m" optional="hide" />
+                <field name="total_w" optional="hide" />
+                <field name="total_n" optional="hide" />
+                <field name="total_a" optional="hide" />
+            </tree>
+        </field>
+ 
+    </record>
+
+    
+
+    <record model="ir.ui.view" id="vollzugliste_kanban_view">
+        <field name="name">declarationsliste.kanban</field>
+        <field name="model">syndicom.vollzug.declaration</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" create="false" class="o_kanban_small_column o_kanban_project_tasks" on_create="quick_create" quick_create_view="project.quick_create_task_form" examples="project" js_class="project_task_kanban" sample="1">
+            <field name="name"/>
+            <field name="description"/>
+            <field name="is_closed"/>
+            <field name="kanban_state"/>
+            <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger", "normal": "muted"}'/>
+                <templates>
+          
+
+
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">    
+                                    <strong class="o_kanban_record_title">
+                                    <field name="enterprise_id"/>
+                                    </strong>               
+                                </div>
+                                <div class="o_dropdown_kanban dropdown" t-if="!selection_mode" groups="base.group_user">
+                                    <a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a t-if="widget.editable" role="menuitem" type="set_cover" class="dropdown-item" data-field="displayed_image_id">Set Cover Image</a>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                Anzahl Aufforderungen: <field name="count_mailings" /><br/>
+                                <field name="date_from"/> - <field name="date_to"/> 
+                            </div>
+                            <div class="o_kanban_record_bottom" t-if="!selection_mode">
+                                <div class="oe_kanban_bottom_left">
+                                    <div t-if="record.date_deadline.raw_value" name="date_deadline" attrs="{'invisible': [('is_closed', '=', True)]}">
+                                        <field name="date_deadline" widget="remaining_days"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_bottom_right" t-if="!selection_mode">
+                                    <field name="kanban_state" widget="state_selection" groups="base.group_user" invisible="context.get('fsm_mode', False)"/>
+                                    <field name="responsible_id" widget="many2one_avatar_user"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="oe_clear"/>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="vollzugliste_form_view">
+        <field name="name">declarationsliste</field>
+        <field name="model">syndicom.vollzug.declaration</field>
+        <field name="arch" type="xml">
+            <form string="Deklaration" class="o_form_project_tasks" js_class="project_form" create="false">
+
+                <field name="is_closed" invisible="1"/>
+
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" attrs="{'invisible': [('stage_id', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box">
+                        <button class="oe_stat_button" name="button_declaration_person_backend" type="object" icon="fa-user">
+                            <field name="person_count" string="Personen" widget="statinfo" />
+                        </button>
+                        <button class="oe_stat_button" name="button_declaration_bill_backend" type="object" icon="fa-money">
+                            <field name="bill_count" string="Rechnung" widget="statinfo"/>
+                        </button>
+                    </div>
+                    
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name"/>
+                        </h1>
+                    </div>
+                   
+                    <group>
+                        <group name="content_left">
+                            
+                            <field name="enterprise_id"/>
+                            <field name="responsible_id"/>
+                            <field name="partner_id"/>
+                            <field name="email"/>
+                            <field name="email_cc" />
+                            <field name="stage_id"/>
+                           
+                        </group>
+                        <group name="content_right">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="duration_declaration"/>
+                            <field name="date_deadline"/>
+                            <field name="cla_partner"/>
+                            <field name="description" string="Notizen"/>
+                            <field name="id" string="declaration/declaration_id"  />
+
+                            <button name="%(action_import_declaration_data)d" string="Excel Importieren" type="action" class="oe_highlight" />
+
+                        </group>
+                    </group>
+
+
+                   
+                    <notebook name="notebook_vollzug_declaration_person">
+                        <page string="Deklarierte Personen" name="page_vollzug_declaration_person">
+                           
+                            <field name="person_ids">
+                                <tree editable="bottom">
+                                    <field name="salutation" optional="hide"/>
+                                    <field name="firstname"/>
+                                    <field name="name" />
+                                    <field name="ssn" optional="hide" />
+                                    <field name="street" string="Adresse" optional="hide" />
+                                    <field name="zip"  optional="hide" />
+                                    <field name="city"  optional="hide" />
+                                    <field name="gender" optional="hide" />
+                                    <field name="salary" optional="hide"/>
+                                    <field name="birthday"  optional="hide" />
+                                    <field name="apprentice"  optional="hide" />
+                                    <field name="is_apprentice"  optional="hide" />
+                                    <field name="date_entry"/>
+                                    <field name="date_leave" />
+                                    <field name="employment_rate" string="BG" />
+                                    <field name="duration" />
+                                    <field name="duration_correction" />
+                                    <field name="duration_consolidated" optional="hide" />
+                                    <field name="duration_association"/>
+                                    <field name="duration_ev"/>
+                                    <field name="duration_none"/>
+                                    <field name="total_an" />
+                                    <field name="total_ag" />
+                                </tree>
+                            </field>
+                           
+                        </page>
+                        <page string="Rechnungsdaten" name="page_vollzug_declaration_bill">
+
+                            <group>
+                                <group name="content_left">
+
+                                    <field name="total_ag" />
+                                    <field name="total_an_tz" />
+                                    <field name="total_an_vz" />
+                                    <field name="total_discount" />
+                                   
+                                </group>
+                                <group name="content_right">
+                                   
+                                    <button name="create_declaration_bill"  string="Rechnung erstellen"  type="object" attrs="{'invisible':[('move_id','>',0)]}" />
+                                    <field name="move_id" type="object" attrs="{'invisible':[('move_id','=',False)]}" />
+
+                                </group>
+                            </group>
+
+
+                            <hr/>
+
+                            <group>
+                                <group name="content_left">
+                                    
+                                    <field name="total_ma" />
+                                    <field name="total_records" />
+
+                                    <field name="total_m" />
+                                    <field name="total_w" />
+                                    <field name="total_n" />
+                                    <field name="total_a" />
+                                   
+                                </group>
+                                <group name="content_right">
+                                   
+                                    <field name="duration_tz" />
+                                    <field name="duration_vz" />
+                                    <field name="duration" />
+
+                                </group>
+                            </group>
+                            
+                        
+                        </page>
+                    </notebook>   
+                    
+                
+                      
+                </sheet>
+                
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+              
+            </form>
+        </field>
+    </record>
+
+
+    <!-- search view -->
+    <record id="vollzugliste_search_view" model="ir.ui.view">
+        <field name="name">syndicom.vollzug.declaration.search</field>
+        <field name="model">syndicom.vollzug.declaration</field>
+        <field name="arch" type="xml">
+            
+            <search string="Deklarationen durchsuchen">
+                <filter string="Nach GAV gruppieren" name="Nach GAV gruppieren" context="{'group_by':'cla_partner'}"/>
+                <!-- <filter string="Frist abgelaufen" name="Frist abgelaufen" domain="[('overdue','=',True)]"/> -->
+                <field name="enterprise_id"/>
+                <field name="partner_id"/>
+                <field name="cla_partner"/>
+                <field name="description"/>
+                <field name="responsible_id"/>
+            </search>
+        </field>
+    </record>
+
+
+
+
+    <!-- Actions -->
+    <record id="action_window_vollzugliste_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="vollzugliste_tree_view"/>
+        <field name="act_window_id" ref="action_window_vollzugliste"/>
+    </record>
+
+    <record id="action_window_vollzugliste_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="vollzugliste_kanban_view"/>
+        <field name="act_window_id" ref="action_window_vollzugliste"/>
+    </record>
+
+    <record id="action_window_vollzugliste_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="vollzugliste_form_view"/>
+        <field name="act_window_id" ref="action_window_vollzugliste"/>
+    </record>
+
+
+    
+</odoo>
