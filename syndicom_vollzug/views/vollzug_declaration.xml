@@ -187,6 +187,7 @@
                                     <field name="duration_none"/>
                                     <field name="total_an" />
                                     <field name="total_ag" />
+                                    <field name="discount_ag" />
                                 </tree>
                             </field>
                            
