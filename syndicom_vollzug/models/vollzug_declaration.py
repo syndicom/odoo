@@ -35,9 +35,10 @@ class SyndicomvollzugDeclaration(models.Model):
     overdue = fields.Boolean(string='Fällig', compute='_compute_overdue')
     total_m = fields.Integer(string='Anz M.',readonly=True,compute='_compute_ma')
     total_w = fields.Integer(string='Anz W.',readonly=True,compute='_compute_ma')
-    total_n = fields.Integer(string='Anz N.',readonly=True,compute='_compute_ma')
-    total_ma = fields.Integer(string='Anz Ma.',readonly=True, compute='_compute_ma')
+    total_n = fields.Integer(string='Anz N.',readonly=True,compute='_compute_ma')    
     total_a = fields.Integer(string='Anz Lehrlinge',readonly=True,compute='_compute_ma')
+    total_ma = fields.Integer(string='Anzahl Mitarbeiter',readonly=True, compute='_compute_ma')
+    total_records = fields.Integer(string='Anz. Zeilen',readonly=True, compute='_compute_ma')
     move_id = fields.Many2one(comodel_name='account.move', string='Rechnung')
     duration_tz = fields.Integer(string='Anz. TZ',readonly=True,compute='_compute_duration')
     duration_vz = fields.Integer(string='Anz. VZ',readonly=True,compute='_compute_duration')
@@ -77,26 +78,35 @@ class SyndicomvollzugDeclaration(models.Model):
     def _compute_ma(self):
         for record in self:
             person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
+
+            record.total_records = len(person)
+
             total_m = 0
             total_w = 0
             total_n = 0
-            total_ma = 0
             total_a = 0
+            ahv = []
+
             for p in person:
-                if p.gender == 'w':
-                    total_w+=1
-                elif p.gender == 'n':
-                    total_n+=1
-                else:
-                    total_m+=1
-                total_ma+=1
-                if p.is_apprentice == True:
-                    total_a+=1
+                if p.ssn not in ahv:
+                    ahv.append(p.ssn)
+                    if p.gender == 'w':
+                        total_w+=1
+                    elif p.gender == 'n':
+                        total_n+=1
+                    else:
+                        total_m+=1
+                    if p.is_apprentice == True:
+                        total_a+=1
+
             record.total_m = total_m
             record.total_w = total_w
             record.total_n = total_n
-            record.total_ma = total_ma
+            record.total_ma = len(ahv)
             record.total_a = total_a
+            
+
+
 
 
     def _compute_total_ag(self):
