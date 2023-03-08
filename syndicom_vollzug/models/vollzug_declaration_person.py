@@ -15,7 +15,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     country_id = fields.Many2one('res.country', 'Land')
     firstname = fields.Char('Vorname')
     description = fields.Text(string='Beschreibung')
-    contact_id = fields.Many2one('res.partner', 'Verbundener Kontakt', compute="_compute_search_partner")
+    contact_id = fields.Many2one('res.partner', 'Verbundener Kontakt', stored=True, compute="_compute_search_partner")
     contact_match = fields.Selection(string='Gefunden durch', selection=[('ahv', 'AHV Nummer'), ('birthday1', 'Geburtsd./Vor- Nachname'),('adresse', 'Vor-/Nachname / Adresse'),('birthday2', 'Geburtsd. / Vorname'),('birthday3', 'Geburtsd. / Teil-Vorname'),('birthday4', 'Geburtsd. / Str / PLZ'),])
     
     employeer_id = fields.Many2one('res.partner', 'Verbundener Betrieb')
@@ -23,7 +23,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     date_leave = fields.Date(string='Austrittsdatum')
     personal_nr = fields.Char(string='Personalnummer')
     employment_rate = fields.Float(string='Beschäftigungsgrad')
-    duration = fields.Integer(string='Anz. Monate',compute="_compute_duration_in_month")
+    duration = fields.Integer(string='Anz. Monate', stored=True, compute="_compute_duration_in_month")
 
     duration_association = fields.Integer(string='Verband (mt.)')
     duration_ev = fields.Integer(string='EV (mt.)')
@@ -37,7 +37,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     city = fields.Char(string='Ort')
     birthday = fields.Date(string='Geburtstag')
     apprentice = fields.Char(string='Lehrling')
-    is_apprentice = fields.Boolean(string='Ist Lehrling', compute='_compute_apprentice')
+    is_apprentice = fields.Boolean(string='Ist Lehrling', stored=True, compute='_compute_apprentice')
     ssn = fields.Char(string='AHV-Nummer')
     gender = fields.Selection([('m','Männlich'),('w','Weiblich'),('n','Neutral')], compute='_compute_gender')
     salary = fields.Float(string='Bruttolohn')
@@ -47,98 +47,12 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     job = fields.Char(string='Tätigkeit')
     cla_partner = fields.Many2one(string='GAV Partner',related='declaration_id.cla_partner')
     duration_correction = fields.Integer(string='Korrektur')
-    duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', compute='_compute_duration_consolidated')
+    duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', stored=True, compute='_compute_duration_consolidated')
     
-    discount_ag = fields.Float(string='AG nach Rabatt')
+    discount_ag = fields.Float(string='Rabatt AG')
 
-
-    @api.depends('birthday','ssn','zip')
-    def _compute_search_partner(self):
-
-        for rec in self:
-            #gefunden durch?
-            match = False
-            plz_list = []
-
-            # Finde Kontakt mit AHV
-            mitglied =  self.env['res.partner'].search([('ahv_number','=',rec.ssn)] , order="is_syndicom_member desc", limit = 1)
-            if len(mitglied) > 0:
-                match = 'ahv'
-            
-            # Keine AHV übereinstimmung
-            # Prüfe Geburtsdatum, Vor und Nachnamen
-            if len(mitglied) == 0:
-                
-                mitglied =  self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname),('lastname','=',rec.name)], order="is_syndicom_member desc", limit = 1)
-                if len(mitglied) > 0:      
-                    match = 'birthday1'
-            
-            # Prüfe komplette Adresse: Vor- / Nachname, strasse, plz ort
-            if len(mitglied) == 0:
-                
-                plz_list = rec.city.split(" ")
-                mitglied =  self.env['res.partner'].search([('street','=',rec.street),('firstname','=',rec.firstname),('lastname','=',rec.name),('zip','in',plz_list)], order="is_syndicom_member desc", limit = 1)
-                if len(mitglied) > 0:
-                    match = 'adresse'
-            
-            # Prüfe Geburtsdatum, Vorname
-            if len(mitglied) == 0:
-                
-                mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname)], order="is_syndicom_member desc", limit = 1)
-                if len(mitglied) > 0:
-                    match = 'birthday2'
-                
-            # Prüfe Geburtsdatum, Teil- Vorname
-            if len(mitglied) == 0:
-                
-                mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname)], order="is_syndicom_member desc", limit = 1)
-                if len(mitglied) > 0:
-                    match = 'birthday3'
-            
-            # Prüfe Geburtsdatum, Str / Plz 
-            if len(mitglied) == 0:
-                
-                mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('street','=',rec.street),('lastname','=',rec.name)], order="is_syndicom_member desc", limit = 1)
-                if len(mitglied) > 0:
-                    match = 'birthday4'
-
-            rec.contact_id = mitglied
-            rec.contact_match = match
-
-    @api.depends('duration','duration_correction')
-    def _compute_duration_consolidated(self):
-        for record in self:
-            consolidated = record.duration + record.duration_correction
-            if consolidated < 0: 
-                consolidated = 0
-            if consolidated > record.declaration_id.duration_declaration:
-                consolidated = record.declaration_id.duration_declaration
-            record.duration_consolidated = consolidated
-
-    @api.depends('apprentice')
-    def _compute_apprentice(self):
-        for record in self:
-            if str(record.apprentice).lower() in ['lehrling','apprentice','ja','si','oui','1','true','yes','apprenti','apprendi','apprendista','lernender','azubi','auszubildender']:
-                record.is_apprentice = True
-            else:
-                record.is_apprentice = False
-
-    @api.depends('salutation')
-    def _compute_gender(self):
-        for record in self:
-            record.gender = 'n'
-            if record.salutation:
-                if record.salutation.lower() in ['herr','monsieur','mister','m','male','signor','mänlich','mrs','mrs.','m.','homme']:
-                    record.gender = 'm'
-                elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
-                    record.gender = 'w'
-
-    @api.depends('date_leave','date_entry','employment_rate','apprentice','salary')
     def _compute_duration_in_month(self):
-        
-        
         for record in self:
-
             if(record.declaration_id.id):
                 record._compute_apprentice()
 
@@ -235,38 +149,50 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                         ["&","&","&","&",("gav_id","=",record.declaration_id.cla_partner.id),("date_from","<=",first_month),("category","=",logic),"|",("date_to","=",False),("date_to",">=",end_month),"|",("active","=",True),("active","=",False)]
                         , limit = 1)
 
+                        total_ag_this_month = 0
+
                         if(len(pricelist) == 1):
                             if(pricelist.logic == 'absolut'):
                                 if(record.is_apprentice == True):
                                     total_ag = total_ag + pricelist.amount_ag_lernend
+                                    total_ag_this_month = pricelist.amount_ag_lernend
                                     total_an = total_an + pricelist.amount_lernend
                                 elif(record.employment_rate < 50):
                                     total_ag = total_ag + pricelist.amount_ag_tz
+                                    total_ag_this_month = pricelist.amount_ag_tz
                                     total_an = total_an + pricelist.amount_tz
                                 else:
                                     total_ag = total_ag + pricelist.amount_ag_vz
+                                    total_ag_this_month = pricelist.amount_ag_vz
                                     total_an = total_an + pricelist.amount_vz
                             elif(pricelist.logic == 'prozent'):
                                 if(record.is_apprentice == True):
                                     total_ag = total_ag + (record.salary / 100 * pricelist.amount_ag_lernend)
+                                    total_ag_this_month = (record.salary / 100 * pricelist.amount_ag_lernend)
                                     total_an = total_an + (record.salary / 100 * pricelist.amount_lernend)
                                 elif(record.employment_rate < 50):
                                     total_ag = total_ag + (record.salary / 100 * pricelist.amount_ag_tz)
+                                    total_ag_this_month = (record.salary / 100 * pricelist.amount_ag_tz)
                                     total_an = total_an + (record.salary / 100 * pricelist.amount_tz)
                                 else:
                                     total_ag = total_ag + (record.salary / 100 * pricelist.amount_ag_vz)
+                                    total_ag_this_month = (record.salary / 100 * pricelist.amount_ag_vz)
                                     total_an = total_an + (record.salary / 100 * pricelist.amount_vz)
-                            print(pricelist.discount)
-                            discount_ag = discount_ag + (total_ag - (total_ag / 100 * pricelist.discount))
+                            discount_ag = discount_ag + (total_ag_this_month / 100 * pricelist.discount)
 
-                                
+                if record.duration_correction != 0 and m > 0:
+                    if (m == record.duration_association) or (m == duration_ev) or (m == duration_none):
+                        total_an = total_an / m * (m + record.duration_correction)
+                        total_ag = total_ag / m * (m + record.duration_correction)
+                        discount_ag = discount_ag / m * (m + record.duration_correction)
+
                 record.duration_association = max(0, duration_asso)
                 record.duration_ev = max(0,duration_ev)
                 record.duration_none = max(0,duration_none)
                 record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none)
-                record.total_an = total_an
-                record.total_ag = total_ag
-                record.discount_ag = discount_ag
+                record.total_an = max(0,total_an)
+                record.total_ag = max(0,total_ag)
+                record.discount_ag = max(0,discount_ag)
 
             else:
                 record.duration_association = 0
@@ -276,3 +202,92 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.total_an = 0
                 record.total_ag = 0
                 record.discount_ag = 0
+
+
+    @api.depends('birthday','ssn','zip')
+    def _compute_search_partner(self):
+
+        for rec in self:
+            
+            if rec.contact_id == False:
+                #gefunden durch?
+                match = False
+                plz_list = []
+
+                # Finde Kontakt mit AHV
+                mitglied =  self.env['res.partner'].search([('ahv_number','=',rec.ssn)] , order="is_syndicom_member desc", limit = 1)
+                if len(mitglied) > 0:
+                    match = 'ahv'
+                
+                # Keine AHV übereinstimmung
+                # Prüfe Geburtsdatum, Vor und Nachnamen
+                if len(mitglied) == 0:
+                    
+                    mitglied =  self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname),('lastname','=',rec.name)], order="is_syndicom_member desc", limit = 1)
+                    if len(mitglied) > 0:      
+                        match = 'birthday1'
+                
+                # Prüfe komplette Adresse: Vor- / Nachname, strasse, plz ort
+                if len(mitglied) == 0:
+                    
+                    plz_list = rec.city.split(" ")
+                    mitglied =  self.env['res.partner'].search([('street','=',rec.street),('firstname','=',rec.firstname),('lastname','=',rec.name),('zip','in',plz_list)], order="is_syndicom_member desc", limit = 1)
+                    if len(mitglied) > 0:
+                        match = 'adresse'
+                
+                # Prüfe Geburtsdatum, Vorname
+                if len(mitglied) == 0:
+                    
+                    mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname)], order="is_syndicom_member desc", limit = 1)
+                    if len(mitglied) > 0:
+                        match = 'birthday2'
+                    
+                # Prüfe Geburtsdatum, Teil- Vorname
+                if len(mitglied) == 0:
+                    
+                    mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('firstname','=',rec.firstname)], order="is_syndicom_member desc", limit = 1)
+                    if len(mitglied) > 0:
+                        match = 'birthday3'
+                
+                # Prüfe Geburtsdatum, Str / Plz 
+                if len(mitglied) == 0:
+                    
+                    mitglied = self.env['res.partner'].search([('contact_birthday','=',rec.birthday),('street','=',rec.street),('lastname','=',rec.name)], order="is_syndicom_member desc", limit = 1)
+                    if len(mitglied) > 0:
+                        match = 'birthday4'
+
+                rec.contact_id = mitglied
+                rec.contact_match = match
+            else:
+                rec.contact_id = rec.contact_id
+
+
+    @api.depends('duration','duration_correction')
+    def _compute_duration_consolidated(self):
+        for record in self:
+            consolidated = record.duration + record.duration_correction
+            if consolidated < 0: 
+                consolidated = 0
+            if consolidated > record.declaration_id.duration_declaration:
+                consolidated = record.declaration_id.duration_declaration
+            record.duration_consolidated = consolidated
+
+    @api.depends('apprentice')
+    def _compute_apprentice(self):
+        for record in self:
+            if str(record.apprentice).lower() in ['lehrling','apprentice','ja','si','oui','1','true','yes','apprenti','apprendi','apprendista','lernender','azubi','auszubildender']:
+                record.is_apprentice = True
+            else:
+                record.is_apprentice = False
+
+    @api.depends('salutation')
+    def _compute_gender(self):
+        for record in self:
+            record.gender = 'n'
+            if record.salutation:
+                if record.salutation.lower() in ['herr','monsieur','mister','m','male','signor','mänlich','mrs','mrs.','m.','homme']:
+                    record.gender = 'm'
+                elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
+                    record.gender = 'w'
+
+    

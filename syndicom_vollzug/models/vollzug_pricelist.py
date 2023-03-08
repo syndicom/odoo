@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields, api
+from datetime import datetime, timedelta, date
 
 class SyndicomVollzugPricelist(models.Model):
     _name = 'syndicom.vollzug.pricelist'
     _description = 'Vollzug Preisliste'
 
     # TODO: compute aktiv aufgrund von date_from und date_to
-    active = fields.Boolean(string='Aktiv')
+    active = fields.Boolean(string='Aktiv',compute="_compute_is_active", store=True)
 
     gav_id = fields.Many2one(comodel_name='res.partner', string='GAV Partner')
     category = fields.Selection(string='Beitrag für', selection=[('verband', 'Verbandsmitglieder'), ('ev', 'Einzelverbandsmitglieder'), ('nicht', 'Nicht-Verband')])
@@ -27,6 +28,19 @@ class SyndicomVollzugPricelist(models.Model):
     date_from = fields.Date(string='Gültig ab')
     date_to = fields.Date(string='Gültig bis')
 
+    def _compute_is_active(self):
+        for rec in self:
+            date_start = rec.date_from
+            date_end = rec.date_to
+
+            if date_start == False:
+                date_start = date.today()
+            
+            if date_start <= date.today() and (date_end == False or date_end >= date.today()):
+                rec.active = True
+            else:
+                rec.active = False
+
 
     
 
@@ -34,17 +48,3 @@ class SyndicomVollzugPricelist(models.Model):
     
     
     
-
-
-
-
-    """
-
-
-    GAV         category
-    CC          * Verbands
-    CC          * EV
-    CC          * Lernende
-
-
-    """
