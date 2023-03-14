@@ -99,11 +99,19 @@ class SyndicomvollzugDeclarationPerson(models.Model):
 
                 # Iterate all possible months, to check the membership of the linked enterprise for every single month
                 # Count
-                for dt in rrule.rrule(rrule.MONTHLY,dtstart=date_entry, until=date_leave):
+
+                dt_start = date(date_entry.year,date_entry.month,1)
+                dt_end = date(date_leave.year,date_leave.month,28)
+                dt_end = dt_end.replace(day=28) + timedelta(days=4)
+                dt_end = dt_end - timedelta(days=dt_end.day)
+
+                for dt in rrule.rrule(rrule.MONTHLY,dtstart=dt_start, until=dt_end):
+                  
                     m_total = m_total + 1
 
                 # Check every month
-                for dt in rrule.rrule(rrule.MONTHLY,dtstart=date_entry, until=date_leave):
+                for dt in rrule.rrule(rrule.MONTHLY,dtstart=dt_start, until=dt_end):
+                    
                     m = m+1
                     actual_month = dt
                     delta_days = 31
@@ -112,24 +120,31 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                     end_month = end_month - timedelta(days=end_month.day)
                     first_month = date(dt.year,dt.month,1)
 
-                    # First Month (only counted if at least 15 days)
-                    if(m==1):
+                    # First Month (only counted if at least 15 days) multiple months
+                    if(m==1 and m != m_total ):
                         if(date_leave < end_month.date()):
                             end_month = datetime.combine(date_leave, datetime.min.time())
-                        delta_day = end_month - actual_month
+                        delta_day = end_month.date() - date_entry
+                        delta_days = delta_day.days
+                       
+
+                    # only one month
+                    elif(m==1 and m == m_total):
+                        delta_day = date_leave - date_entry
                         delta_days = delta_day.days
 
-                    # Last Month (only counted if at least 15 days)
-                    if(m == m_total):
+                    # all others
+                    else:
                         delta_day = date_leave - date(dt.year,dt.month,1)
                         delta_days = delta_day.days
 
+
                     # Enough Days, check witch kind of calculation logic
-                    if(delta_days >= 15):
+                    if(delta_days >= 14 ):
 
                         # check the relation table to see if the enterprise is in a association, a ev or none of them
                         is_association_this_month = self.env['res.partner.relation.all'].search(
-                        ["&","&","&",("is_inverse","=",False),("this_partner_id","=",record.declaration_id.enterprise_id.id),("type_id","=",int(association_imputed)),"|",("date_start","<=",dt),"&",("date_end","=",False),("date_end",">=",dt)]
+                        ["&","&","&","|",("active","=",True),("active","=",False),("is_inverse","=",False),("this_partner_id","=",record.declaration_id.enterprise_id.id),("type_id","=",int(association_imputed)),"|",("date_start","<=",dt),"&",("date_end","=",False),("date_end",">=",dt)]
                         ,limit=1)
 
                         logic = 'nicht'
