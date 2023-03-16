@@ -15,6 +15,7 @@ Design gorgeous mails
     'depends': [
 
         'mass_mailing',
+        'syndicom_mailing_topic',
         'base_user_role',
     ],
     'data': [
@@ -23,6 +24,7 @@ Design gorgeous mails
         'views/snippets_themes.xml',
         'views/mass_mailing_themes_templates.xml',
         'views/inherited_mailing_mailing_form.xml',
+        'views/inherited_res_users_role.xml',
         'views/syndicom_mailing_domain_view.xml',
         'views/sender.xml',
         'views/filter.xml',

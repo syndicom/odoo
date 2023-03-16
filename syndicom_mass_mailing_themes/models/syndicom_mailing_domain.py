@@ -22,9 +22,6 @@ class MailingDomain(models.Model):
 
     domain = fields.Char(default='[]')
 
-    domain_usage = fields.Selection(
-        [('mailing', 'Mailing'), ('print', 'Print')], default='mailing')
-
     @api.depends('mailing_model_id.model')
     def _compute_mailing_model_real(self):
         for record in self:
