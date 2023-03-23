@@ -3,21 +3,44 @@
 
         <xpath expr="//div[@id='email_designer_default_headers']" position="before">
             <div id="syndicom_new_designer_default" class="o_panel">
-                <div class="o_panel_header">syndicom</div>
+                <div class="o_panel_header">syndicom Buttons</div>
                 <div class="o_panel_body" id="syndicom_new_designer_default">
 
-                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_blue" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/syndicom_call_to_action.svg"/>
-                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_black" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/syndicom_call_to_action.svg"/>
-                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_yellow" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/syndicom_call_to_action.svg"/>
-<!---
-                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_firstname" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/syndicom_call_to_action.svg"/>
-                    <t t-raw="widget.add_inline_text(widget.block.body_html)"/>
-                    <t t-call="my_inline_text_snippet"
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_blue" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/button_blau.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_black" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/button_schwarz.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_yellow" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/button_gelb.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_new_buttons_purple" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/button_violett.png"/>
 
+                </div>
+            </div>
+            <div id="syndicom_layout" class="o_panel">
+                <div class="o_panel_header">syndicom Layouts</div>
+                <div class="o_panel_body" id="syndicom_layout">
 
-                    <t  t-snippet="syndicom_mass_mailing_themes.syndicom_placeholder" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/syndicom_call_to_action.svg"
-                        t-set="{'classes': 'my-class', 'text': 'mein text'}"/>
--->
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_header_de" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/header_de.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_header_fr" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/header_fr.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_header_it" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/header_it.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_header_en" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/header_en.png"/>
+
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_footer_de" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/footer_de.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_footer_fr" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/footer_fr.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_footer_it" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/footer_it.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_footer_en" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/footer_en.png"/>
+
+    
+                </div>
+            </div>
+            <div id="syndicom_content" class="o_panel">
+                <div class="o_panel_header">syndicom Content</div>
+                <div class="o_panel_body" id="syndicom_content">
+
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_text_block" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/text.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_image_text" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/bild_text.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_text_image" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/text_bild.png"/>
+
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_title1" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/titel_1.png"/>
+                    <t t-snippet="syndicom_mass_mailing_themes.syndicom_title2" t-thumbnail="/syndicom_mass_mailing_themes/static/src/img/snippets_thumbs/titel_2.png"/>
+
                 </div>
             </div>
         </xpath>
