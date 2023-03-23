@@ -17,7 +17,7 @@ class MailingMailing(models.Model):
    def default_get(self, fields):
       res = super(MailingMailing, self).default_get(fields)
       res.update({
-         'subject':'pasc3i',
+         
          'mailing_model_id' :  self.env.ref('base.model_res_partner').id
          
       })
@@ -26,11 +26,9 @@ class MailingMailing(models.Model):
    @api.depends('mailing_model_id', 'contact_list_ids', 'mailing_type','syndicom_mailing_domain_ids','syndicom_filter_ids','syndicom_mailing_topic_id')
    def _compute_recipient_count(self):
       domain = ast.literal_eval(self.mailing_domain)
-      if self.mailing_model_id.model == 'res.partner':
-         contacts = self.env['res.partner'].search(domain)  # this can only be used when the model is partner
-         self.syndicom_count = len(contacts)
-      else:
-         self.syndicom_count = 0
+      contacts = self.env['res.partner'].search(domain)
+      self.syndicom_count = len(contacts)
+
    @api.onchange('syndicom_mail_sender')
    def _onchange_syndicom_mail_sender(self):
       sender = self.env['syndicom.mail.sender'].search([('id','=',self.syndicom_mail_sender.id)], limit= 1)

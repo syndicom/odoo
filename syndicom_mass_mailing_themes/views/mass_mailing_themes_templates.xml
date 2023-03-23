@@ -5,6 +5,10 @@
         <xpath expr="//div[@id='email_designer_themes']" position="inside" sequence="1">
 
 
+            <div data-name="theme_syndicom_blank" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_blank" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+                <t t-call="syndicom_mass_mailing_themes.theme_syndicom_blank"/>    
+            </div>
+
             <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>                
             </div>
@@ -152,6 +156,90 @@
         </div>
         </div>
     </template>
+
+
+
+<template id="theme_syndicom_blank">
+<div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing"><div class="container o_mail_wrapper oe_unremovable o_mail_regular"><div class="row"><div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable"><div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+            <div class="row">
+                <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+
+
+                    <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+                    <div class="o_mail_table_styles container">
+                        <div class="row">
+                            <div class="col-lg-8 pt16 pb16">
+                                <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 text-right o_mail_no_resize">
+                                <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                online Version
+                                </font></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" >
+                    <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+                        <p><strong class="o_default_snippet_text">Slogan</strong></p>
+                    </div>
+                    </div>
+                    <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                    <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
+                    </div>
+                    <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
+                    <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px;">
+                        <h2><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Titel 1</font></h2>
+                        <h3 class="o_default_snippet_text" style="font-family: SourceSansPro, verdana,sans-serif;">Titel 2</h3>
+                    </div>
+                    </div>
+                    <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text" >
+                    <div class="container s_allow_columns"  style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;" >
+                       <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text" >Hallo {{ object.firstname }}<br/>Das ist ein Standart Text Block. Dieser ist auch in verschiedenen Spalten zu haben</p>
+                       <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text"> Den Text kann man einfach anklicken und überschreiben. Weitere Inhaltselemente findest du rechts in der Bearbeitungsliste</p>
+                    </div>
+                    </div>
+
+                       
+                    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+                        <div class="container o_mail_table_styles">
+                            <div class="row">
+                                <div align="right" class="col-lg">
+                                    <div class="o_mail_footer_social pb16" style="text-align: left;">
+                                    <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                    <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                    </font>
+                                    <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                    <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                    </font>
+                                    <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                    <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                    </font>
+                                    <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                    <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                    </font>
+                                    <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                                    <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                                    <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                                    <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+        <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                </div>
+            </div>
+        </div>
+    </div></div></div></div></div>
+</template>
+
 
 
 <template id="theme_syndicom_german">

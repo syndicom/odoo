@@ -3,7 +3,7 @@
         <field name="name">mailing.mailing.syndicom.settings</field>
         <field name="model">mailing.mailing</field>
         <field name="priority">2</field>
-        <field name="inherit_id" ref="mass_mailing.mailing_mailing_view_form_full_width"/>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
         <field name="groups_id" eval="[(5,)]"/>
         
         <field name="arch" type="xml">
@@ -21,7 +21,7 @@
                 <field name="syndicom_mail_sender" />
                 <field name="syndicom_mailing_domain_ids" widget="many2many_tags"  />
                 <field name="syndicom_filter_ids" widget="many2many_tags"/>
-                <field name="syndicom_role_ids" widget="many2many_tags"/>
+                <field name="syndicom_role_ids" widget="many2many_tags" domain="[('for_newsletter','=',True)]"/>
 
             </xpath>
 

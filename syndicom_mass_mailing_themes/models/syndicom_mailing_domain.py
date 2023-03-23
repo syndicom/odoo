@@ -12,6 +12,8 @@ class MailingDomain(models.Model):
     _description = "Domains for Mailing"
 
     name = fields.Char('Name', required=True)
+    category = fields.Selection(string='Kategorie', selection=[('intern', 'syndicom Intern'), ('s1', 'Sektor 1'), ('s2', 'Sektor 2'), ('s3', 'Sektor 3'), ('ig', 'IG'), ('gremien', 'Gremien'), ('andere', 'Andere')])
+    
     mailing_model_id = fields.Many2one(
         'ir.model', string='Recipients Model', ondelete='cascade', required=True,
         domain=[('is_mailing_enabled', '=', True)],
