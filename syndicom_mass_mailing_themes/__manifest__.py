@@ -21,6 +21,7 @@ Design gorgeous mails
     'data': [
         'security/ir.model.access.csv', 
         'views/snippets/syndicom_buttons.xml',
+        'views/snippets/syndicom_layout.xml',
         'views/snippets_themes.xml',
         'views/mass_mailing_themes_templates.xml',
         'views/inherited_mailing_mailing_form.xml',

@@ -17,7 +17,7 @@ class MailingMailing(models.Model):
    def default_get(self, fields):
       res = super(MailingMailing, self).default_get(fields)
       res.update({
-         'subject':'pasc3i',
+         
          'mailing_model_id' :  self.env.ref('base.model_res_partner').id
          
       })
