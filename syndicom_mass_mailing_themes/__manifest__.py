@@ -13,10 +13,10 @@ Design gorgeous mails
     'website': 'https://syndicom.ch',
     'category': 'Marketing/Email Marketing',
     'depends': [
-
         'mass_mailing',
         'syndicom_mailing_topic',
         'base_user_role',
+        # 'base'
     ],
     'data': [
         'security/ir.model.access.csv', 
