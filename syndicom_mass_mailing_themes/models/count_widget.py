@@ -1,5 +1,7 @@
 from odoo import fields, models
 from odoo.exceptions import UserError
+from odoo.osv import expression
+
 
 class CountWidget(fields.Field):
     type = 'count'
@@ -13,8 +15,8 @@ class CountWidget(fields.Field):
         return value
 
     @staticmethod
-    def _domain_to_sql(domain):
-        return expression.AND(domain).to_sql(self.model_name, self.env.cr)
+    def _domain_to_sql(cls, domain):
+        return expression.AND(domain).to_sql(cls.model_name, cls.env.cr)
 
     def _get_domain(self, values):
         return values.get('domain', [])
