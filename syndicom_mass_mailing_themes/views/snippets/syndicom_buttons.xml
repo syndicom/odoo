@@ -1,38 +1,81 @@
 <odoo>
-    <template id="syndicom_new_buttons_blue" name="Button Blau">
-        <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_blue">
-            <a href="#" class="btn btn-primary btn-lg btn-block"
-            style="background-color: #5fbeec; border-color: #5fbeec; color:black !important;  border-radius: 1px; padding: 6px 8px; display: inline-block; font-weight: 700; letter-spacing: 0.0625rem; text-transform: uppercase;">syndicom Blau</a>
-        </div>
-    </template>
-    <template id="syndicom_new_buttons_black" name="Button Schwarz">
-        <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_black">
-            <a href="#" class="btn btn-primary btn-lg btn-block"
-            style="background-color: #000000; border-color: #000000; color:white !important; border-radius: 1px; padding: 6px 8px; display: inline-block; font-weight: 700; letter-spacing: 0.0625rem; text-transform: uppercase;">syndicom Schwarz</a>
-        </div>
-    </template>
-    <template id="syndicom_new_buttons_yellow" name="Button Gelb">
-        <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_yellow">
-            <a href="#" class="btn btn-primary btn-lg btn-block"
-            style="background-color: #F2E500; border-color: #F2E500; color:black !important; border-radius: 1px; padding: 6px 8px; display: inline-block; font-weight: 700; letter-spacing: 0.0625rem; text-transform: uppercase;">syndicom Gelb</a>
-        </div>
-    </template>
-    <template id="syndicom_new_buttons_purple" name="Button Violett">
-        <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_blue">
-            <a href="#" class="btn btn-primary btn-lg btn-block"
-            style="background-color: #6b5b95 ; border-color: #6b5b95 ; color: white !important; border-radius: 1px; padding: 6px 8px; display: inline-block; font-weight: 700; letter-spacing: 0.0625rem; text-transform: uppercase;">syndicom Violett</a>
-        </div>
-    </template>
-    <template id="syndicom_placeholder">
-        <div class="o_inline_text" t-attf-class="{{ classes }}">
-          <!--- <t t-out="object.name or ''" data-oe-t-inline="true" style="box-sizing:border-box;" contenteditable="false">Hallo</t> --> Hallo
-        </div>
-    </template>
+   <template id="syndicom_new_buttons_blue" name="Button Blau">
+      <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_blue">
+   <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color:#5fbeec;border-collapse:collapse;line-height: 16px;">
+      <tbody>
+         <tr style="height:12pt">
+            <td width="350" valign="top" style="vertical-align:middle;width:262.65pt;padding:5.65pt 5.4pt 5.65pt 5.4pt;height:12.5pt; text-transform: uppercase; background-color: #5fbeec; font-family: SourceSansPro, verdana,sans-serif; color:black !important;letter-spacing: 0.0625rem;font-weight: 700;" align="center">
+               <p class="MsoNormal" align="center" style="text-align:center;margin:0;font-size:14px;padding:10px;">
+                  <a href="https://syndicom.ch" style="color:black;text-decoration:none;" class="o_default_snippet_text">Button Blue</a>
+               </p>
+            </td>
+         </tr>
+         <tr><td style="font-size:0;line-height:0;">&amp;nbsp;</td></tr>
+      </tbody>
+   </table>
+</div>
 
-    <!--  Assets  -->
-    <record id="mass_mailing.s_alert_001_scss" model="ir.asset">
-        <field name="name">syndicom Button SCSS</field>
-        <field name="bundle">web.assets_frontend</field>
-        <field name="path">syndicom_mass_mailing_themes/static/src/snippets/syndicom_buttons/000.scss</field>
-    </record>
+   </template>
+   <template id="syndicom_new_buttons_black" name="Button Schwarz">
+      <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_black">
+   <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color:#000000;border-collapse:collapse;line-height: 16px;">
+      <tbody>
+         <tr style="height:12pt">
+            <td width="350" valign="top" style="vertical-align:middle;width:262.65pt;padding:5.65pt 5.4pt 5.65pt 5.4pt;height:12.5pt; text-transform: uppercase; background-color: #000000; font-family: SourceSansPro, verdana,sans-serif; color:white !important;letter-spacing: 0.0625rem;font-weight: 700;" align="center">
+               <p class="MsoNormal" align="center" style="text-align:center;margin:0;font-size:14px;padding:10px;">
+                  <a href="https://syndicom.ch" style="color:white;text-decoration:none;" class="o_default_snippet_text">syndicom Schwarz</a>
+               </p>
+            </td>
+         </tr>
+         <tr><td style="font-size:0;line-height:0;">&amp;nbsp;</td></tr>
+      </tbody>
+   </table>
+</div>
+
+   </template>
+   <template id="syndicom_new_buttons_yellow" name="Button Gelb">
+      <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_yellow">
+   <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color:#F2E500;border-collapse:collapse;line-height: 16px;">
+      <tbody>
+         <tr style="height:12pt">
+            <td width="350" valign="top" style="vertical-align:middle;width:262.65pt;padding:5.65pt 5.4pt 5.65pt 5.4pt;height:12.5pt; text-transform: uppercase; background-color: #F2E500; font-family: SourceSansPro, verdana,sans-serif; color:black !important;letter-spacing: 0.0625rem;font-weight: 700;" align="center">
+               <p class="MsoNormal" align="center" style="text-align:center;margin:0;font-size:14px;padding:10px;">
+                  <a href="https://syndicom.ch" style="color:black;text-decoration:none;" class="o_default_snippet_text">syndicom Gelb</a>
+               </p>
+            </td>
+         </tr>
+         <tr><td style="font-size:0;line-height:0;">&amp;nbsp;</td></tr>
+      </tbody>
+   </table>
+</div>
+
+   </template>
+   <template id="syndicom_new_buttons_purple" name="Button Violett">
+      <div class="s_syndicom_button s_syndicom_button_md w-50 clearfix o_mail_snippet_general pt12 pb12 px-2" data-snippet="syndicom_new_buttons_purple">
+   <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color:#6b5b95;border-collapse:collapse;line-height: 16px;">
+      <tbody>
+         <tr style="height:12pt">
+            <td width="350" valign="top" style="vertical-align:middle;width:262.65pt;padding:5.65pt 5.4pt 5.65pt 5.4pt;height:12.5pt; text-transform: uppercase; background-color: #6b5b95; font-family: SourceSansPro, verdana,sans-serif; color:white !important;letter-spacing: 0.0625rem;font-weight: 700;" align="center">
+               <p class="MsoNormal" align="center" style="text-align:center;margin:0;font-size:14px;padding:10px;">
+                  <a href="https://syndicom.ch" style="color:white;text-decoration:none;" class="o_default_snippet_text">syndicom Violett</a>
+               </p>
+            </td>
+         </tr>
+         <tr><td style="font-size:0;line-height:0;">&amp;nbsp;</td></tr>
+      </tbody>
+   </table>
+</div>
+
+   </template>
+   <template id="syndicom_placeholder">
+      <div class="o_inline_text" t-attf-class="{{ classes }}">
+         <!--- <t t-out="object.name or ''" data-oe-t-inline="true" style="box-sizing:border-box;" contenteditable="false">Hallo</t> --> Hallo
+      </div>
+   </template>
+   <!--  Assets  -->
+   <record id="mass_mailing.s_alert_001_scss" model="ir.asset">
+      <field name="name">syndicom Button SCSS</field>
+      <field name="bundle">web.assets_frontend</field>
+      <field name="path">syndicom_mass_mailing_themes/static/src/snippets/syndicom_buttons/000.scss</field>
+   </record>
 </odoo>

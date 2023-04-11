@@ -1,269 +1,257 @@
 <odoo>
-
-    <template id="syndicom_header_de" name="Header Deutsch">
-        <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
-            <div class="o_mail_table_styles container">
-                <div class="row">
-                    <div class="col-lg-8 pt16 pb16">
-                        <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                        <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 text-right o_mail_no_resize">
-                        <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
-                         Onlineversion
-                        </font></a>
-                    </div>
-                </div>
+   <template id="syndicom_header_de" name="Header Deutsch">
+      <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+         <div class="o_mail_table_styles container">
+            <div class="row">
+               <div class="col-lg-8 pt16 pb16">
+                  <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                  <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                  </a>
+               </div>
+               <div class="col-lg-4 text-right o_mail_no_resize">
+                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  Onlineversion
+                  </font></a>
+               </div>
             </div>
-        </div>
-    </template>
-        <template id="syndicom_header_fr" name="Header Français">
-        <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
-            <div class="o_mail_table_styles container">
-                <div class="row">
-                    <div class="col-lg-8 pt16 pb16">
-                        <a style="text-decoration:none;float:none;" href="https://syndicom.ch/fr">
-                        <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 text-right o_mail_no_resize">
-                        <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
-                            Version en ligne
-                        </font></a>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_header_fr" name="Header Français">
+      <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+         <div class="o_mail_table_styles container">
+            <div class="row">
+               <div class="col-lg-8 pt16 pb16">
+                  <a style="text-decoration:none;float:none;" href="https://syndicom.ch/fr">
+                  <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                  </a>
+               </div>
+               <div class="col-lg-4 text-right o_mail_no_resize">
+                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  Version en ligne
+                  </font></a>
+               </div>
             </div>
-        </div>
-    </template> 
-    <template id="syndicom_header_it" name="Header Italien">
-        <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
-            <div class="o_mail_table_styles container">
-                <div class="row">
-                    <div class="col-lg-8 pt16 pb16">
-                        <a style="text-decoration:none;float:none;" href="https://syndicom.ch/it">
-                        <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 text-right o_mail_no_resize">
-                        <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
-                         Versione online
-                        </font></a>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_header_it" name="Header Italien">
+      <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+         <div class="o_mail_table_styles container">
+            <div class="row">
+               <div class="col-lg-8 pt16 pb16">
+                  <a style="text-decoration:none;float:none;" href="https://syndicom.ch/it">
+                  <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                  </a>
+               </div>
+               <div class="col-lg-4 text-right o_mail_no_resize">
+                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  Versione online
+                  </font></a>
+               </div>
             </div>
-        </div>
-    </template> 
-    <template id="syndicom_header_en" name="Header English">
-        <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
-            <div class="o_mail_table_styles container">
-                <div class="row">
-                    <div class="col-lg-8 pt16 pb16">
-                        <a style="text-decoration:none;float:none;" href="https://en.syndicom.ch/">
-                        <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 text-right o_mail_no_resize">
-                        <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
-                        online version
-                        </font></a>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_header_en" name="Header English">
+      <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+         <div class="o_mail_table_styles container">
+            <div class="row">
+               <div class="col-lg-8 pt16 pb16">
+                  <a style="text-decoration:none;float:none;" href="https://en.syndicom.ch/">
+                  <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                  </a>
+               </div>
+               <div class="col-lg-4 text-right o_mail_no_resize">
+                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  online version
+                  </font></a>
+               </div>
             </div>
-        </div>
-    </template>                 
-
-    <template id="syndicom_footer_de" name="Footer Deutsch">
-            <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
-                <div class="container o_mail_table_styles">
-                    <div class="row">
-                        <div align="right" class="col-lg">
-                            <div class="o_mail_footer_social pb16" style="text-align: left;">
-                            <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-<p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p></div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_footer_de" name="Footer Deutsch">
+      <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+         <div class="container o_mail_table_styles">
+            <div class="row">
+               <div align="right" class="col-lg">
+                  <div class="o_mail_footer_social pb16" style="text-align: left;">
+                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                  </div>
+               </div>
             </div>
-    </template>
-    <template id="syndicom_footer_fr" name="Footer Français">
-            <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important;padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
-                <div class="container o_mail_table_styles">
-                    <div class="row">
-                        <div align="right" class="col-lg">
-                            <div class="o_mail_footer_social pb16" style="text-align: left;">
-                            <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://twitter.com/syndicom_fr"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berne</font></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
-<p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/fr/protectiondesdonnees/" class="btn btn-link"><font class="text-white o_default_snippet_text">Politique de confidentialité</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Se désinscrire</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p></div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_footer_fr" name="Footer Français">
+      <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important;padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+         <div class="container o_mail_table_styles">
+            <div class="row">
+               <div align="right" class="col-lg">
+                  <div class="o_mail_footer_social pb16" style="text-align: left;">
+                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://twitter.com/syndicom_fr"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berne</font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/fr/protectiondesdonnees/" class="btn btn-link"><font class="text-white o_default_snippet_text">Politique de confidentialité</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Se désinscrire</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                  </div>
+               </div>
             </div>
-    </template>
-    <template id="syndicom_footer_it" name="Footer Italien">
-            <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
-                <div class="container o_mail_table_styles">
-                    <div class="row">
-                        <div align="right" class="col-lg">
-                            <div class="o_mail_footer_social pb16" style="text-align: left;">
-                            <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berna</font></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
-<p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/it/protezionedeidati/" class="btn btn-link"><font class="text-white o_default_snippet_text">Protezione dei dati</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Annullamento dell'iscrizione </font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p></div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_footer_it" name="Footer Italien">
+      <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+         <div class="container o_mail_table_styles">
+            <div class="row">
+               <div align="right" class="col-lg">
+                  <div class="o_mail_footer_social pb16" style="text-align: left;">
+                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berna</font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/it/protezionedeidati/" class="btn btn-link"><font class="text-white o_default_snippet_text">Protezione dei dati</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Annullamento dell'iscrizione </font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                  </div>
+               </div>
             </div>
-    </template>
-        <template id="syndicom_footer_en" name="Footer English">
-            <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
-                <div class="container o_mail_table_styles">
-                    <div class="row">
-                        <div align="right" class="col-lg">
-                            <div class="o_mail_footer_social pb16" style="text-align: left;">
-                            <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                            <font class="text-white">&amp;nbsp;&amp;nbsp;
-                            </font>
-                            <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                            <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-<p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Privacy</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Unsubscribe</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p></div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_footer_en" name="Footer English">
+      <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+         <div class="container o_mail_table_styles">
+            <div class="row">
+               <div align="right" class="col-lg">
+                  <div class="o_mail_footer_social pb16" style="text-align: left;">
+                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;
+                     </font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Privacy</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Unsubscribe</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                  </div>
+               </div>
             </div>
-    </template>
-
-
-
-
-    <template id="syndicom_text_block" name="Text">
-        <div class="s_text_block pt40 pb40 px-3 o_mail_snippet_general" data-snippet="syndicom_text_block" >
-            <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text" >Hallo {{ object.firstname }}<br/>Das ist ein Standart Text Block. Dieser ist auch in verschiedenen Spalten zu haben</p>
-                <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text"> Den Text kann man einfach anklicken und überschreiben. Weitere Inhaltselemente findest du rechts in der Bearbeitungsliste</p>
-                
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_text_block" name="Text">
+      <div class="s_text_block pt40 pb40 px-3 o_mail_snippet_general" data-snippet="syndicom_text_block" >
+         <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+            <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text" >Hallo {{ object.firstname }}<br/>Das ist ein Standart Text Block. Dieser ist auch in verschiedenen Spalten zu haben</p>
+            <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text"> Den Text kann man einfach anklicken und überschreiben. Weitere Inhaltselemente findest du rechts in der Bearbeitungsliste</p>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_text_image" name="Text - Image">
+      <div class="s_text_image o_mail_snippet_general" data-snippet="syndicom_text_image">
+         <div class="container" >
+            <div class="row align-items-center" style="padding-left:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+               <div class="col-lg-6 pt16 pb16">
+                  <h3>syndicom</h3>
+                  <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;" >Die Gewerkschaft der Branchen Medien und Kommunikation.</p>
+                  <div class="text-left">
+                     <a href="#" class="btn btn-link">Read More</a>
+                  </div>
+               </div>
+               <div class="col-lg-6 px-0" style="padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+                  <img src="/mass_mailing/static/src/img/theme_default/s_default_image_block_text_image.jpg" class="img w-100"/>
+               </div>
             </div>
-        </div>
-    </template>
- 
-
-    <template id="syndicom_text_image" name="Text - Image">
-        <div class="s_text_image o_mail_snippet_general" data-snippet="syndicom_text_image">
-            <div class="container" >
-                <div class="row align-items-center" style="padding-left:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                    <div class="col-lg-6 pt16 pb16">
-                        <h3>syndicom</h3>
-                        <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;" >Die Gewerkschaft der Branchen Medien und Kommunikation.</p>
-                        <div class="text-left">
-                            <a href="#" class="btn btn-link">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 px-0" style="padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                        <img src="/mass_mailing/static/src/img/theme_default/s_default_image_block_text_image.jpg" class="img w-100"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </template>
-
-
-<template id="syndicom_title1" name="Titel 1">
-    <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="syndicom_title1" data-name="Text">
-        <div class="container s_allow_columns" style="padding-left:30px; font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-            <h2 style="font-family: SourceSansPro, verdana,sans-serif;"><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Titel 1</font></h2>
-        </div>
-    </div>
-</template>
-<template id="syndicom_title2" name="Titel 2">
-    <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="syndicom_title2" data-name="Text">
-        <div class="container s_allow_columns" style="padding-left:30px; font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-            <h3 class="o_default_snippet_text" style="font-family: SourceSansPro, verdana,sans-serif;">Titel 2</h3>
-        </div>
-    </div>
-</template>
-
-<template id="syndicom_image_text" name="Image - Text">
-    <div class="s_text_image pt32 pb32 o_mail_snippet_general" data-snippet="syndicom_image_text">
-        <div class="container">
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_title1" name="Titel 1">
+      <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="syndicom_title1" data-name="Text">
+         <div class="container s_allow_columns" style="padding-left:30px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+            <h2 style="font-family: SourceSansPro, verdana,sans-serif; color: rgb(81, 181, 224);">Titel 1</h2>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_title2" name="Titel 2">
+      <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="syndicom_title2" data-name="Text">
+         <div class="container s_allow_columns" style="padding-left:30px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+            <h3 style="font-family: SourceSansPro, verdana,sans-serif;">Titel 2</h3>
+         </div>
+      </div>
+   </template>
+   <template id="syndicom_image_text" name="Image - Text">
+      <div class="s_text_image pt32 pb32 o_mail_snippet_general" data-snippet="syndicom_image_text">
+         <div class="container">
             <div class="row align-items-center"  style="padding-left:30px; font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                <div class="col-lg-6 px-0">
-                    <img src="/mass_mailing/static/src/img/theme_default/s_default_image_block_image_text.jpg" class="img w-100" />
-                </div>
-                <div class="col-lg-6 pt16 pb16"  style=" padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                    <h3>Omnichannel sales</h3>
-                    <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="text-justify">Get your inside sales (CRM) fully integrated with online sales (eCommerce), in-store sales (Point of Sale) and marketplaces like eBay and Amazon.</p>
-                    
-                </div>
+               <div class="col-lg-6 px-0">
+                  <img src="/mass_mailing/static/src/img/theme_default/s_default_image_block_image_text.jpg" class="img w-100" />
+               </div>
+               <div class="col-lg-6 pt16 pb16"  style=" padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+                  <h3>Omnichannel sales</h3>
+                  <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="text-justify">Get your inside sales (CRM) fully integrated with online sales (eCommerce), in-store sales (Point of Sale) and marketplaces like eBay and Amazon.</p>
+               </div>
             </div>
-        </div>
-    </div>
-</template>
-
-    <template id="s_text_highlight" name="Text Highlight">
-        <div class="s_mail_text_highlight o_cc o_cc3 pt32 pb32 w-100 o_mail_snippet_general" data-snippet="s_text_highlight" style="padding-left:30px; padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-            <h3 class=" text-center">Text Highlight</h3>
-            <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_mail_no_margin text-center">Put the focus on what you have to say!</p>
-        </div>
-    </template>
-
-
-    <!--  Assets  -->
-    <record id="mass_mailing.s_alert_001_scss" model="ir.asset">
-        <field name="name">syndicom Button SCSS</field>
-        <field name="bundle">web.assets_frontend</field>
-        <field name="path">syndicom_mass_mailing_themes/static/src/snippets/syndicom_buttons/000.scss</field>
-    </record>
+         </div>
+      </div>
+   </template>
+   <template id="s_text_highlight" name="Text Highlight">
+      <div class="s_mail_text_highlight o_cc o_cc3 pt32 pb32 w-100 o_mail_snippet_general" data-snippet="s_text_highlight" style="padding-left:30px; padding-right:30px;font-size:16px; padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+         <h3 class=" text-center">Text Highlight</h3>
+         <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_mail_no_margin text-center">Put the focus on what you have to say!</p>
+      </div>
+   </template>
+   <!--  Assets  -->
+   <record id="mass_mailing.s_alert_001_scss" model="ir.asset">
+      <field name="name">syndicom Button SCSS</field>
+      <field name="bundle">web.assets_frontend</field>
+      <field name="path">syndicom_mass_mailing_themes/static/src/snippets/syndicom_buttons/000.scss</field>
+   </record>
 </odoo>
