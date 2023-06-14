@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syndicom_course,syndicom_course.course,model_syndicom_course,syndicom_course.syndicom_course_officer_group,1,1,1,1
+access_syndicom_course_participant,syndicom_course.course_participant,model_syndicom_course_participant,syndicom_course.syndicom_course_officer_group,1,1,1,1
+access_syndicom_course_institute,syndicom_course.course_institute,model_syndicom_course_institute,syndicom_course.syndicom_course_manager_group,1,1,1,1
+
