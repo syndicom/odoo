@@ -6,6 +6,7 @@
          <div data-name="theme_syndicom_blank" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_blank" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_blank"/>
          </div>
+                  <!--
          <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>
          </div>
@@ -15,7 +16,7 @@
          <div data-name="theme_syndicom_italien" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_italien" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_italien"/>
          </div>
-         <!--
+
             <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
             </div>
@@ -137,14 +138,15 @@
       </div>
    </template>
    <template id="theme_syndicom_blank">
+
       <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+         <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
             <div class="row">
                <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
                   <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
                      <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
                         <div class="row">
-                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
                               <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
                                  <div class="o_mail_table_styles container">
                                     <div class="row">

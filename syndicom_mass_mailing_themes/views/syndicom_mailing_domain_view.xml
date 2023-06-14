@@ -10,6 +10,7 @@
                     </div>
                     <group name="group_content">
                         <group name="group_content_left">
+                            <field name="category" />
                             <field name="mailing_model_id"/>
                             <field name="mailing_model_real" invisible="1"/>
                             <field name="domain" widget="domain" options="{'model': 'mailing_model_real'}"/>
@@ -18,6 +19,19 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="mailing_domain_search" model="ir.ui.view">
+        <field name="name">syndicom.mailing.domain.search</field>
+        <field name="model">syndicom.mailing.domain</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="category" />
+             
+            </search>
         </field>
     </record>
 

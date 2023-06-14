@@ -30,6 +30,7 @@ Design gorgeous mails
         'views/sender.xml',
         'views/filter.xml',
         'views/menu.xml',
+        'views/assets.xml',
     ],
     
     'installable': True,
