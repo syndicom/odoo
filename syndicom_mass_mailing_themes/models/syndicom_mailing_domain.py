@@ -5,7 +5,7 @@ class MailingDomain(models.Model):
     _name = 'syndicom.mailing.domain'
     _description = "Domains for Mailing"
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True,translate=True)
     category = fields.Selection(
         string='Kategorie',
         selection=[           
