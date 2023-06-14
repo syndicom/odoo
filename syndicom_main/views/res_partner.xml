@@ -1,0 +1,42 @@
+<odoo>
+ <data>
+
+        <!--
+        Partners Extension
+        -->
+
+        <record id="view_partner_property_form" model="ir.ui.view">
+            <field name="name">res.partner.property.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                <page name="internal_notes" position="after">
+                    <page string="Konto Report" name="syndicom_account_report" groups="">
+                       
+                        <field name="syndicom_account_report_ids" nolabel="1">
+                            <tree editable="bottom">
+                                
+                                <field name="name"/>
+                                <field name="date"/>
+                                <field name="amount"/>
+                                <field name="move_type"/>
+                                <field name="move_id"/>
+                                <field name="product_id"/>
+                                
+                                
+                            </tree>
+                        </field>
+                    </page>
+
+
+                   
+                </page>
+                
+            </field>
+        </record>
+
+
+ </data>
+</odoo>
