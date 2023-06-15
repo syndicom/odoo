@@ -20,7 +20,7 @@
     'license': 'OPL-1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','syndicom_member_data_history','product','account'],
+    'depends': ['base','syndicom_member_data_history','syndicom_member_administration','product','account'],
 
     # always loaded
     'data': [
