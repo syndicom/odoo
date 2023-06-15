@@ -5,17 +5,20 @@ class MailingDomain(models.Model):
     _name = 'syndicom.mailing.domain'
     _description = "Domains for Mailing"
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True,translate=True)
     category = fields.Selection(
         string='Kategorie',
-        selection=[
-            ('intern', 'syndicom Intern'),
+        selection=[           
             ('s1', 'Sektor 1'),
             ('s2', 'Sektor 2'),
             ('s3', 'Sektor 3'),
             ('ig', 'IG'),
+            ('mm', 'Medienmitteilungen'),
             ('gremien', 'Gremien'),
-            ('andere', 'Andere')
+            ('andere', 'Andere'),
+            ('syndicom', 'syndicom Organisation'),
+            ('intern', 'syndicom Abteilungen'),
+            ('personen', 'syndicom Mitarbeiter:innen')
         ])
     
     mailing_model_id = fields.Many2one(
