@@ -1,0 +1,113 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_suisse_streets">
+        <field name="name">Strassenverzeichnis</field>
+        <field name="res_model">suisse.streets</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="suisse_streets_tree_view">
+        <field name="name">Strassenverzeichnis</field>
+        <field name="model">suisse.streets</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="active" optional="hide"/>
+                <field name="name" optional="hide"/>
+
+
+                <field name="street" optional="show"/>
+                <field name="zip" />
+                <field name="city" />
+                <field name="city_id" optional="hide" />
+                <field name="state_id" optional="hide" />
+                <field name="country_id" optional="hide" />
+
+              
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="suisse_streets_form_view">
+        <field name="name">Strassenverzeichnis</field>
+        <field name="model">suisse.streets</field>
+        <field name="arch" type="xml">
+        
+            <form string="binding_operators">
+                <sheet>
+                    
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group name="content_main_left">
+
+                            <field name="active"  />
+                            <field name="street" />
+                           
+                                    
+
+                        </group>
+                        <group name="content_main_right">
+                    
+                            <field name="zip" />
+                            <field name="city" />
+                            <field name="city_id" />
+                            <field name="state_id" />          
+                            <field name="country_id" />
+
+                        </group>
+                    </group>
+
+                    
+
+                </sheet>
+               
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="suisse_streets_search" model="ir.ui.view">
+        <field name="name">suisse.streets.search</field>
+        <field name="model">suisse.streets</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="zip"/>
+                <field name="city"/>
+                <field name="street"/>
+                <field name="state_id"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_suisse_streets_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="suisse_streets_tree_view"/>
+        <field name="act_window_id" ref="action_window_suisse_streets"/>
+    </record>
+
+    <record id="action_window_suisse_streets_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="suisse_streets_form_view"/>
+        <field name="act_window_id" ref="action_window_suisse_streets"/>
+    </record>
+</odoo>

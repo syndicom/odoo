@@ -1,0 +1,85 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_binding_operators">
+        <field name="name">Liste der Bindungsagenten</field>
+        <field name="res_model">syndicom.binding.operators</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="binding_operators_tree_view">
+        <field name="name">Alle Bindungsagenten</field>
+        <field name="model">syndicom.binding.operators</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="active" />
+                <field name="partner_id"/>
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="binding_operators_form_view">
+        <field name="name">Agenten</field>
+        <field name="model">syndicom.binding.operators</field>
+        <field name="arch" type="xml">
+        
+            <form string="binding_operators">
+                <sheet>
+                    
+                    <group>
+                        <group name="content_main_left">
+
+                          <field name="partner_id"  />
+                          <field name="active"  />
+
+
+                        </group>
+                        <group name="content_main_right">
+                    
+                          
+                        </group>
+                    </group>
+
+                </sheet>
+               
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="binding_operators_search" model="ir.ui.view">
+        <field name="name">syndicom.binding.operators.search</field>
+        <field name="model">syndicom.binding.operators</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="partner_id"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_binding_operators_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="binding_operators_tree_view"/>
+        <field name="act_window_id" ref="action_window_binding_operators"/>
+    </record>
+
+    <record id="action_window_binding_operators_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="binding_operators_form_view"/>
+        <field name="act_window_id" ref="action_window_binding_operators"/>
+    </record>
+</odoo>
