@@ -59,6 +59,7 @@
                     <field name="member_is_confidant" readonly="1" />
                     <field name="member_retired" readonly="1"/>
                     <field name="member_young" readonly="1"/>
+                    <field name="member_main_category" readonly="1" />
 
                     
 
