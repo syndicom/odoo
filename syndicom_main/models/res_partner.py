@@ -27,6 +27,7 @@ class ResPartner(models.Model):
     member_retired = fields.Boolean(string='Rentner')
     member_age = fields.Integer(string='Alter')
     member_data_refreshed = fields.Datetime(string='Mitgliederdaten aktualisiert')
+    member_main_category = fields.Many2one(comodel_name='product.product', string='Mitgliederkategorie')
     
     @api.onchange('address_search_id')
     def _onchange_partner_adress(self):
