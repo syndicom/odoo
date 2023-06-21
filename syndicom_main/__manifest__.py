@@ -1,51 +1,39 @@
-##############################################################################
-# Copyright (c) 2022 brain-tec AG (https://bt-group.com)
-# All Right Reserved
-#
-# See LICENSE file for full licensing details.
-##############################################################################
+# -*- coding: utf-8 -*-
 {
-    'name': 'Syndicom member administration',
-    'author': 'brain-tec AG',
-    'website': 'https://bt-group.com',
-    'category': 'Sales/CRM',
-    'version': '15.0.1.0.7',
-    'license': 'AGPL-3',
-    'summary': 'Extensions for the contacts requested by Syndicom',
-    'depends': [
-        'base',
-        'contacts',
-        'membership',
-        'helpdesk_timesheet',
-        'partner_firstname',
-        'sale_subscription',
-        'syndicom_contacts',
-        'syndicom_gender',
-        'bt_advanced_sale_subscription',
-        'bt_advanced_sale_subscription_termination',
-        'syndicom_partner_multi_relation',
-        'helpdesk_plausibility_check',
-        'bt_invoice_tier_payer',
-        'bt_subscription_payment_method'
-    ],
+    'name': "syndicom_main",
+
+    'summary': """
+        odoo Module for syndicom - Covers different modifications on other Apps""",
+
+    'description': """
+        
+    """,
+
+    'author': "syndicom, Pascal Arnold",
+    'website': "https://syndicom.ch",
+
+    # Categories can be used to filter modules in modules listing
+    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
+    # for the full list
+    'category': 'Uncategorized',
+    'version': '15.0.1.0.2',
+    'license': 'OPL-1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base','syndicom_member_data_history','product','account','membership','helpdesk'],
+
+    # always loaded
     'data': [
-        'security/membership_administration_security.xml',
+        'security/binding_officer.xml',
         'security/ir.model.access.csv',
-        'data/helpdesk_team.xml',
-        'views/helpdesk_stage.xml',
-        'views/helpdesk_team.xml',
         'views/helpdesk_ticket.xml',
-        'views/syndicom_member_search.xml',
-        'views/product_product.xml',
-        'views/product_template.xml',
         'views/res_partner.xml',
-        'views/res_partner_bank.xml',
-        'views/menu_items.xml',
-        'wizards/start_process_views.xml',
+        'views/suisse_streets.xml',
+        'views/binding_operators.xml',
+        'views/binding_conversations.xml',
+        'views/work_employee.xml',
+        'views/work_locations.xml',
+        'views/menu.xml',
     ],
-    'auto_install': False,
-    'installable': True,
-    'application': True,
-    'post_load': 'post_load',
-    'uninstall_hook': 'uninstall_hook',
+    
 }
