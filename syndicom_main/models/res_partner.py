@@ -55,7 +55,7 @@ class ResPartner(models.Model):
     zip = fields.Char(tracking=True)
     city = fields.Char(tracking=True)
     country_id = fields.Many2one(tracking=True)
-    mediator_id = fields.Char(tracking=True)
+    mediator_id = fields.Many2one(tracking=True)
     operating_unit_id = fields.Many2one(tracking=True)
     first_union_entry = fields.Date(tracking=True)
     anniversary_date = fields.Date(tracking=True)
