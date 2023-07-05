@@ -1,0 +1,107 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_work_employee">
+        <field name="name">Liste der Mitarbeiter:innen im Betrieb</field>
+        <field name="res_model">syndicom.work.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="work_employee_tree_view">
+        <field name="name">Liste der Betriebe</field>
+        <field name="model">syndicom.work.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="partner_id"/>
+                
+
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="work_employee_form_view">
+        <field name="name">Liste der Betriebe</field>
+        <field name="model">syndicom.work.employee</field>
+        <field name="arch" type="xml">
+            <form string="Mitarbeiter im Betrieb">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="partner_id"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group name="content_main_left">
+
+                          
+                            <field name="partner_id"/>
+                            <field name="confidant_partner_id" />
+                            <field name="rating" />
+                            <field name="section_id" />
+
+                            <hr/>
+
+                            <field name="is_syndicom_member"/>
+                            <field name="email"/>
+                            <field name="mobile"/>
+
+                            
+
+
+                        </group>
+                        <group name="content_main_right">
+
+                            <field name="work_location_id"  />
+                          
+                        </group>
+                    </group>
+                    
+                    
+           
+
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="work_employee_search" model="ir.ui.view">
+        <field name="name">syndicom.work.employee.search</field>
+        <field name="model">syndicom.work.employee</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_work_employee_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="work_employee_tree_view"/>
+        <field name="act_window_id" ref="action_window_work_employee"/>
+    </record>
+
+    <record id="action_window_work_employee_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="work_employee_form_view"/>
+        <field name="act_window_id" ref="action_window_work_employee"/>
+    </record>
+</odoo>

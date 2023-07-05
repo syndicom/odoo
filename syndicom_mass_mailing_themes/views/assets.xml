@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mass_mailing_mail_style_syndicom" inherit_id="mass_mailing.mass_mailing_mail_style">
+        <xpath expr="//style" position="replace">
+        <style>
+          #syndicom_newsletter_main * {
+          font-family:  SourceSansPro, verdana,sans-serif;
+          font-size: 14px; 
+          }
+       
+          #syndicom_newsletter_main h1 { color: black !important;     font-size:28px !important;    font-weight:500 !important; line-height:1.2 !important; box-sizing:border-box !important; margin:0px 0 7px 0 !important;}
+          #syndicom_newsletter_main h2 { color: #51b5e0 !important;   font-size:28px !important;    font-weight:500 !important; line-height:1.2 !important; box-sizing:border-box !important; margin:0px 0 7px 0 !important;}
+          #syndicom_newsletter_main h3 { color: black !important;     font-size:24.5px !important;  font-weight:500 !important; line-height:1.2 !important; box-sizing:border-box !important; margin:0px 0 7px 0 !important;}
+          #syndicom_newsletter_main h4 { color: black !important;     font-size:14px !important;    font-weight:bold !important;  }
+          #syndicom_newsletter_main .btn-primary  {    padding:0px !important; border-radius: 0px !important; font-size: 14px !important;  background-color: #F2E500 !important; color: black !important; border: 10px solid #F2E500 !important; font-weight: 700 !important; text-transform: uppercase !important;  letter-spacing: 0.0625rem !important;  }
+          #syndicom_newsletter_main .btn-secondary  {  padding:0px !important; border-radius: 0px !important; font-size: 14px !important;  background-color: #5fbeec !important; color: black !important; border: 10px solid #5fbeec !important; font-weight: 700 !important; text-transform: uppercase !important;  letter-spacing: 0.0625rem !important;  } 
+          #syndicom_newsletter_main .btn-success  {  padding:0px !important; border-radius: 0px !important; font-size: 14px !important;  background-color: #6b5b95 !important; color: white !important; border: 10px solid #6b5b95 !important; font-weight: 700 !important; text-transform: uppercase !important;  letter-spacing: 0.0625rem !important;  } 
+          #syndicom_newsletter_main .btn-danger  {  padding:0px !important; border-radius: 0px !important; font-size: 14px !important;  background-color: black !important; color: white !important; border: 10px solid black !important; font-weight: 700 !important; text-transform: uppercase !important;  letter-spacing: 0.0625rem !important;  } 
+
+
+          /* Remove Outlook Rahmen Trick */
+          #syndicom_div_button_gelb span { border:1px solid #F2E500; }
+          
+            .o_layout * {
+                box-sizing: border-box !important;
+            }
+            .o_layout :not(.fa) {
+                font-family: Arial, sans-serif !important;
+            }
+            /* Remove space around the email design. */
+                html,
+                body {
+                    margin: 0 auto !important;
+                    padding: 0 !important;
+                    height: 100% !important;
+                    width: 100% !important;
+                }
+
+                /* Stop Outlook resizing small text. */
+                * {
+                    -ms-text-size-adjust: 100%;
+                }
+
+                /* Stop Outlook from adding extra spacing to tables. */
+                table,
+                td {
+                    mso-table-lspace: 0pt !important;
+                    mso-table-rspace: 0pt !important;
+                }
+
+                /* Use a better rendering method when resizing images in Outlook IE. */
+                img {
+                    -ms-interpolation-mode:bicubic;
+                }
+
+                /* Prevent Windows 10 Mail from underlining links. Styles for underlined links should be inline. */
+                a {
+                    text-decoration: none;
+                }
+            @media screen and (max-width: 768px) {
+                .o_mail_table_styles {
+                    width: 100% !important;
+                }
+            }
+        </style>
+        </xpath>
+    </template>
+</odoo>

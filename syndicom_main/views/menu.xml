@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+        <!-- Betriebe / Standorte -->
+
+        <menuitem id="syndicom_work_locations_root"
+                  name="Betriebe"
+                  sequence="21"
+                  web_icon="syndicom_main,static/description/odoo_icon_betrieb.png"
+                  groups="base.group_user"/>
+
+        <menuitem id="syndicom_work_locations_menu"
+                  name="Betriebe"
+                  parent="syndicom_work_locations_root"
+                  sequence="10"/>
+
+        <menuitem id="syndicom_work_locations_liste"
+                  name="Liste aller Betriebe"
+                  parent="syndicom_work_locations_menu"
+                  action="action_window_work_locations"
+                  sequence="15"/>
+
+        <!-- Organisation Plus -->
+        <menuitem id="syndicom_binding"
+                  name="Org+"
+                  parent="membership.menu_association"
+                  sequence="10"/>
+        <menuitem id="syndicom_binding_conversations"
+                  name="Anrufe durch Org+"
+                  parent="syndicom_binding"
+                  action="action_window_binding_conversations"
+                  sequence="15"/>
+
+        <menuitem id="syndicom_binding_operators"
+                  name="Agenten"
+                  parent="syndicom_binding"
+                  action="action_window_binding_operators"
+                  sequence="90"/>
+
+
+        <!-- Strassenverzeichnis -->
+        <menuitem id="suisse_streets"
+                  name="CH-Strasassenverzeichnis"
+                  parent="contacts.menu_localisation"
+                  action="action_window_suisse_streets"
+                  sequence="90"/>
+        
+                  
+
+
+  </data>
+</odoo>

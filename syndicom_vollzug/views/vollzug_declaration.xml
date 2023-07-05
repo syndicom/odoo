@@ -13,7 +13,7 @@
         <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Here you can create your vollzug.
+               Hier werden die Deklarationen verwaltet
             </p>
         </field>
     </record>
@@ -153,6 +153,7 @@
                             <field name="id" string="declaration/declaration_id"  />
 
                             <button name="%(action_import_declaration_data)d" string="Excel Importieren" type="action" class="oe_highlight" />
+                          
 
                         </group>
                     </group>
@@ -182,8 +183,12 @@
                                     <field name="duration" />
                                     <field name="duration_correction" />
                                     <field name="duration_consolidated" optional="hide" />
+                                    <field name="duration_association"/>
+                                    <field name="duration_ev"/>
+                                    <field name="duration_none"/>
                                     <field name="total_an" />
                                     <field name="total_ag" />
+                                    <field name="discount_ag" />
                                 </tree>
                             </field>
                            
@@ -201,7 +206,6 @@
                                 </group>
                                 <group name="content_right">
                                    
-                                    <button name="create_declaration_bill"  string="Rechnung erstellen"  type="object" attrs="{'invisible':[('move_id','>',0)]}" />
                                     <field name="move_id" type="object" attrs="{'invisible':[('move_id','=',False)]}" />
 
                                 </group>
@@ -214,6 +218,8 @@
                                 <group name="content_left">
                                     
                                     <field name="total_ma" />
+                                    <field name="total_records" />
+
                                     <field name="total_m" />
                                     <field name="total_w" />
                                     <field name="total_n" />

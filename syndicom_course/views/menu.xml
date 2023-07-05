@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <menuitem id="syndicom_course_root"
+                  name="Kurse"
+                  sequence="21"
+                  web_icon="syndicom_course,static/description/odoo_icon.png"
+                  groups="base.group_user"/>
+
+        <menuitem id="syndicom_course_menu"
+                  name="Kurse"
+                  parent="syndicom_course_root"
+                  sequence="10"/>
+
+        <menuitem id="syndicom_course_liste"
+                  name="Kursliste"
+                  parent="syndicom_course_menu"
+                  action="action_window_kursliste"
+                  sequence="15"/>
+
+        <menuitem id="syndicom_course_settings"
+                  name="Einstellungen"
+                  parent="syndicom_course_root"
+                  sequence="90"/>
+
+        <menuitem id="syndicom_course_settings_institut"
+                  name="Institut"
+                  parent="syndicom_course_settings"
+                  action="action_window_institut"
+                  sequence="15"/>
+       
+    </data>
+</odoo>

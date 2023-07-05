@@ -35,16 +35,15 @@ class SyndicomvollzugDeclaration(models.Model):
     overdue = fields.Boolean(string='Fällig', compute='_compute_overdue')
     total_m = fields.Integer(string='Anz M.',readonly=True,compute='_compute_ma')
     total_w = fields.Integer(string='Anz W.',readonly=True,compute='_compute_ma')
-    total_n = fields.Integer(string='Anz N.',readonly=True,compute='_compute_ma')
-    total_ma = fields.Integer(string='Anz Ma.',readonly=True, compute='_compute_ma')
+    total_n = fields.Integer(string='Anz N.',readonly=True,compute='_compute_ma')    
     total_a = fields.Integer(string='Anz Lehrlinge',readonly=True,compute='_compute_ma')
+    total_ma = fields.Integer(string='Anzahl Mitarbeiter',readonly=True, compute='_compute_ma')
+    total_records = fields.Integer(string='Anz. Zeilen',readonly=True, compute='_compute_ma')
     move_id = fields.Many2one(comodel_name='account.move', string='Rechnung')
     duration_tz = fields.Integer(string='Anz. TZ',readonly=True,compute='_compute_duration')
     duration_vz = fields.Integer(string='Anz. VZ',readonly=True,compute='_compute_duration')
     duration = fields.Integer(string='Anz. Monate',readonly=True,compute='_compute_duration')
     duration_declaration = fields.Integer(string='Anz. Deklarationsmonate',readonly=True,compute='_compute_declaration_months')
-    
-    
     
 
     @api.model
@@ -77,62 +76,74 @@ class SyndicomvollzugDeclaration(models.Model):
     def _compute_ma(self):
         for record in self:
             person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
+
+            record.total_records = len(person)
+
             total_m = 0
             total_w = 0
             total_n = 0
-            total_ma = 0
             total_a = 0
+            ahv = []
+
             for p in person:
-                if p.gender == 'w':
-                    total_w+=1
-                elif p.gender == 'n':
-                    total_n+=1
-                else:
-                    total_m+=1
-                total_ma+=1
-                if p.is_apprentice == True:
-                    total_a+=1
+                if p.ssn not in ahv:
+                    ahv.append(p.ssn)
+                    if p.gender == 'w':
+                        total_w+=1
+                    elif p.gender == 'n':
+                        total_n+=1
+                    else:
+                        total_m+=1
+                    if p.is_apprentice == True:
+                        total_a+=1
+
             record.total_m = total_m
             record.total_w = total_w
             record.total_n = total_n
-            record.total_ma = total_ma
+            record.total_ma = len(ahv)
             record.total_a = total_a
-
+            
 
     def _compute_total_ag(self):
         for record in self:
             total = 0
+            total_discount = 0
+
+            # getting settings records
+            association_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed')
+            association_imputed = str(association_imputed) if association_imputed else '0'
+            ev_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.ev_imputed')
+            ev_imputed = str(ev_imputed) if ev_imputed else '0'
+            
             person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
             for p in person:
                 total = total + p.total_ag
-            
-            association_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed')
-            association_imputed = str(association_imputed) if association_imputed else '0'
-            cla_partner_cc = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_cc')
-            cla_partner_cc = str(cla_partner_cc) if cla_partner_cc else '0'
-            cla_partner_nz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_logic_nz')
-            cla_partner_nz = str(cla_partner_nz) if cla_partner_nz else '0'
-            # Calculation Logic Call Center
-            if cla_partner_cc == str(record.cla_partner.id):
-                record.total_ag = total
+                total_discount = total_discount + p.discount_ag
 
-            # Calculation Logic Netzinfrastruktur
-            elif cla_partner_nz == str(record.cla_partner.id):    
-                if total > 4800:
-                    record.total_ag = 4800
+            # check the relation table to see if the enterprise is in a association, a ev or none of them
+            is_association_this_month = self.env['res.partner.relation.all'].search(
+            ["&","&","&",("is_inverse","=",False),("this_partner_id","=",record.enterprise_id.id),("type_id","=",int(association_imputed)),"|",("date_start","<=",record.date_to),"&",("date_end","=",False),("date_end",">=",record.date_from)])
+            logic = 'nicht'
+            for mon in is_association_this_month:
+                if(mon.other_partner_id.id == int(ev_imputed) and logic != 'verband'):
+                    logic = 'ev'
                 else:
-                    record.total_ag = total
-                check_association = self.env['res.partner.relation.all'].search([('active','=',True),('is_inverse','=',False),('this_partner_id','=',record.enterprise_id.id),('type_id','=',int(association_imputed))],limit=1)
-                if check_association:
-                    record.total_discount = record.total_ag
-                else:
-                    record.total_discount = 0
+                    logic = 'verband'
 
-            # Logic not found
+
+            discount_max = self.env['syndicom.vollzug.pricelist'].search(
+                        ["&","&","&","&",("gav_id","=",record.cla_partner.id),("date_from","<=",record.date_to),("category","=",logic),"|",("date_to","=",False),("date_to",">=",record.date_to),"|",("active","=",True),("active","=",False)]
+                        , limit = 1)
+
+            max_discount = record.duration_declaration * discount_max.discount_max
+
+            record.total_ag = total
+
+            if total_discount <= max_discount:
+                record.total_discount = total_discount
             else:
-                record.total_ag = 0
-            
-            
+                record.total_discount = max_discount
+         
 
     def _compute_total_an_tz(self):
         for record in self:
@@ -223,110 +234,3 @@ class SyndicomvollzugDeclaration(models.Model):
                 record.is_closed = 1
             else:
                 record.is_closed = 0
-
-   
-    def create_declaration_bill(self):
-        for record in self:
-
-            company = record.enterprise_id.company_id
-            company_cc = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_company_cc')
-            company_cc = str(company_cc) if company_cc else '0'
-            company_nz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_company_nz')
-            company_nz = str(company_nz) if company_nz else '0'
-
-            product_ag = 0
-            product_tz = 0
-            product_vz = 0
-            product_discount = 0
-
-            if company == int(company_cc):
-                product_ag = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_ag')
-                product_tz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_tz')
-                product_vz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_vz')
-                product_discount = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_cc_discount')
-                ertrag_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_ver')
-                ertrag_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_ave')
-                ertrag_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_org')
-                ertrag_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_ertrag_n_org')
-                deb_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_ver')
-                deb_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_ave')
-                deb_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_org')
-                deb_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_cc_deb_n_org')
-            else:
-                product_ag = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_ag')
-                product_tz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_tz')
-                product_vz = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_vz')
-                product_discount = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_prod_nz_discount')
-                ertrag_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_ver')
-                ertrag_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_ave')
-                ertrag_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_org')
-                ertrag_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_ertrag_n_org')
-                deb_ver = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_ver')
-                deb_ave = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_ave')
-                deb_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_org')
-                deb_n_org = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.syn_account_nz_deb_n_org')
-
-            lines = []
-
-            if record.total_ag > 0:
-                lines.append((0, None, {
-                    'product_id': int(product_ag),
-                    'quantity': 1,
-                    'price_unit': record.total_ag,
-                    'account_id' : int(ertrag_ave),
-                    }))
-                lines.append((0, None, {
-                    'debit': record.total_ag,
-                    'account_id' : int(deb_ave),
-                    'exclude_from_invoice_tab' : True,
-                    }))
-
-            if record.total_an_tz > 0:
-                lines.append((0, None, {
-                    'product_id': int(product_tz),
-                    'quantity': record.duration_tz,
-                    'price_unit': record.total_an_tz / record.duration_tz,
-                    'account_id' : int(ertrag_org),
-                    }))
-                lines.append((0, None, {
-                    'debit': record.total_an_tz,
-                    'account_id' : int(deb_org),
-                    'exclude_from_invoice_tab' : True,
-                    }))
-
-            if record.total_an_vz > 0:
-                lines.append((0, None, {
-                    'product_id': int(product_vz),
-                    'quantity': record.duration_vz,
-                    'price_unit': record.total_an_vz / record.duration_vz,
-                    'account_id' : int(ertrag_org),
-                    }))
-                lines.append((0, None, {
-                    'debit': record.total_an_vz,
-                    'account_id' : int(deb_org),
-                    'exclude_from_invoice_tab' : True,
-                    }))
-
-            if record.total_discount > 0:
-                lines.append((0, None, {
-                    'product_id': int(product_discount),
-                    'quantity': 1,
-                    'price_unit': record.total_discount,
-                    'account_id' : int(ertrag_ave),
-                    }))
-                lines.append((0, None, {
-                    'debit': record.total_discount,
-                    'account_id' : int(deb_ave),
-                    'exclude_from_invoice_tab' : True,
-                    }))
-
-
-            move = self.env['account.move'].create({
-            'move_type': 'out_invoice',
-            'partner_id': record.enterprise_id.id,
-            'company_id' : company,
-            'currency_id': 5,
-            'invoice_line_ids': lines,
-            })
-
-            record.move_id = move

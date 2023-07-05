@@ -1,0 +1,76 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_institut">
+        <field name="name">Institute verwalten</field>
+        <field name="res_model">syndicom.course.institute</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hier können Institute verwaltet werden
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="institute_tree_view">
+        <field name="name">Institute</field>
+        <field name="model">syndicom.course.institute</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="product_id" />
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="institute_form_view">
+        <field name="name">Institute</field>
+        <field name="model">syndicom.course.institute</field>
+        <field name="arch" type="xml">
+            <form string="Greminum">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <field name="product_id" />
+                    </group>
+                      
+                </sheet>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="institute_search" model="ir.ui.view">
+        <field name="name">syndicom.course.institute.search</field>
+        <field name="model">syndicom.course.institute</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_institut_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="institute_tree_view"/>
+        <field name="act_window_id" ref="action_window_institut"/>
+    </record>
+
+    <record id="action_window_institut_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="institute_form_view"/>
+        <field name="act_window_id" ref="action_window_institut"/>
+    </record>
+</odoo>

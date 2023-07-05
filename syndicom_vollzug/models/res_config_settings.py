@@ -15,7 +15,11 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='syndicom_vollzug.association_imputed',
         default="", 
         )
-    
+    syn_declaration_ev_imputed = fields.Many2one(comodel_name='res.partner',string='Partner der als Einzelvertragsfirma gilt',
+        config_parameter='syndicom_vollzug.ev_imputed',
+        default="", 
+        )
+
     syn_partner_cc = fields.Many2one(comodel_name='res.partner',string='Partner CC Berechnung',
         config_parameter='syndicom_vollzug.cla_logic_cc',
         default=55247)

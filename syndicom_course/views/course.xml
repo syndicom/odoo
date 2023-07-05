@@ -1,0 +1,161 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_kursliste">
+        <field name="name">Kursliste</field>
+        <field name="res_model">syndicom.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hier können Kurse verwaltet werden
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="kursliste_tree_view">
+        <field name="name">Kursliste</field>
+        <field name="model">syndicom.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="lang_id"/>
+                <field name="course_number"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="seats_free"/>
+                <field name="topic"/>
+                <field name="om_id" optional="hide"/>
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kursliste_form_view">
+        <field name="name">Kursliste</field>
+        <field name="model">syndicom.course</field>
+        <field name="arch" type="xml">
+            <form string="Greminum">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="content_main_left">
+
+                            <field name="course_number"/>
+                            <field name="institute_id"/>
+                            <field name="date_dateline"/>
+
+                        </group>
+                        <group name="content_main_right">
+                           
+                           <field name="date_from"/>
+                           <field name="date_to"/>
+                           <field name="active" />
+
+                        </group>
+                    </group>
+
+                    <notebook name="course">
+                        <page string="Teilnehmer" name="course_participate">
+
+
+                            <field name="participant_ids">
+                                <tree editable="bottom">
+
+                                    <field name="partner_id" />
+                                    <field name="date_registration" />
+                                    <field name="status" />
+                                
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Kursdaten" name="course_data">
+                            <group>
+                                <group name="content_left">
+                                
+                                <field name="active" />
+                                <field name="lang_id"/>
+                                
+                                
+                                
+                                <field name="seats"/>
+                                <field name="seats_free"/>
+                                <field name="topic"/>
+                                <field name="location"/>
+                                <field name="price_member"/>
+                                <field name="price_others"/>
+                                <field name="price_catering"/>
+                                <field name="price_catering_others"/>
+                                <field name="price_overnight"/>
+                                <field name="price_overnight_others"/>
+                                <field name="for_members"/>
+                                <field name="for_confidants"/>
+                                <field name="for_employees"/>
+                                <field name="link_member"/>
+                                <field name="link_confidants"/>
+                                <field name="link_employees"/>
+                                
+                                <field name="duration"/>
+                                <field name="has_hotel"/>
+                                <field name="om_id"/>
+
+                                </group>
+                                <group name="content_right">
+                                    
+                                <field name="description_content" widget="html"/>
+                                <field name="description_benefit" widget="html"/>
+                                <field name="description_target"  widget="html"/>
+                                <field name="description_references" widget="html"/>
+                                <field name="description" widget="html" />
+                                <field name="description_note" widget="html"/>
+                                <field name="description_price" widget="html"/>
+                                <field name="description_requirements" widget="html"/>
+
+                                </group>
+                            </group>
+                        </page>
+                        
+                    </notebook>
+                      
+                </sheet>
+                <!--
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                    </div>
+                -->
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="Kursliste_search" model="ir.ui.view">
+        <field name="name">syndicom.course.seacrh</field>
+        <field name="model">syndicom.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_kursliste_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="kursliste_tree_view"/>
+        <field name="act_window_id" ref="action_window_kursliste"/>
+    </record>
+
+    <record id="action_window_kursliste_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="kursliste_form_view"/>
+        <field name="act_window_id" ref="action_window_kursliste"/>
+    </record>
+</odoo>

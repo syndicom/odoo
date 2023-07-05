@@ -39,6 +39,14 @@
                   action="syndicom_vollzug_declaration_wizard_reminder_action"
                   sequence="25" />
 
+    <!-- Rückerstattungen -->
+        <menuitem id="syndicom_vollzug_cashback"
+                  name="Rückerstattungen"
+                  parent="syndicom_vollzug_menu_root"
+                  action="action_window_cashback"
+                  sequence="30"/>
+
+
     <!-- Declaration / Configuration -->
                
         <menuitem id="syndicom_vollzug_configuration" name="Konfiguration"
@@ -51,6 +59,11 @@
                   parent="syndicom_vollzug_configuration"
                   action="action_window_declaration_stage"
                   sequence="1"/>
+        <menuitem id="syndicom_vollzug_pricelist"
+                  name="Preisliste"
+                  parent="syndicom_vollzug_configuration"
+                  action="action_window_pricelist"
+                  sequence="2"/>
 
     <!-- Controls / Notice -->
 

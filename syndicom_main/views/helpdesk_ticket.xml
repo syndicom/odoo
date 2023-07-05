@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <record id="helpdesk_ticket_view_form_sydicom_member_2" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.address_search</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="syndicom_member_administration.helpdesk_ticket_view_form_sydicom_member_2"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='zip_id']" position="replace">
+                    <field name="address_search_id" placeholder="Adressverzeichnis durchsuchen..." options="{'no_quick_create':True, 'no_create_edit': True}" />
+            </xpath>
+            
+        </field>
+    </record>
+  </data>
+</odoo>
