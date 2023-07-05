@@ -11,13 +11,37 @@
                  <page name="event_notes" position="after">
                      <page string="Informationen" name="event_www_infos" >
                         
-                      <group name="event_www_description">
 
+                <group name="event_www_into">
                         <field name="subtitle" />
                         <field name="description" />
                         <field name="syn_is_public"/>
+
+                </group>
+
+
+<span>Wenn der Event auf Öffentlich gestellt wird, kann untenstehend entsprechend der Verteiler eingeschränkt werden, welchen Leuten der Event auf my.syndicom angezeigt werden soll<br/>
+Alle direkt via Newsletter eingeladene Mitglieder:innen sehen den Event in jedem Fall, auch wenn er überhaupt nicht öffentlich ist.</span>
+<hr/>                   
+
+
+                      <group name="event_www_description">
+
+
+
+                        <field name="syn_domain" widget="domain" options="{'model':'res.partner'}"
+                         attrs="{'invisible':[('syn_is_public','=',False)]}"  />      
+
+                    
+
+                        <field name="syn_publish_website_de" />  
+                        <field name="syn_publish_website_fr" />  
+                        <field name="syn_publish_website_it" />  
+                        <field name="syn_publish_website_en" />  
+                        <field name="syn_annoucement" />
                         <field name="syn_teamslink" />
-                        <field name="syn_interactio" />  
+                        <field name="syn_interactio" />
+                        
                         
                       </group>
 
@@ -36,7 +60,7 @@
 
                         <hr/>
 
-                        <field name="syn_domain" widget="domain" options="{'model':'res.partner'}"/>  
+                        
 
 
                       
