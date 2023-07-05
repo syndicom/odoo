@@ -2,6 +2,7 @@
 
 from . import res_partner
 from . import helpdesk_ticket
+from . import hr_leave_type
 from . import suisse_streets
 from . import account_report
 from . import work_locations
