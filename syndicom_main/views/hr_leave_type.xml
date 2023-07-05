@@ -1,0 +1,112 @@
+<odoo>
+ <data>
+
+        <!--
+        HR Leave Type Setting Form
+        -->
+
+        <record id="view_hr_leave_type_syndicom_modification_form" model="ir.ui.view">
+            <field name="name">hr.leave.type.syndicom.modification</field>
+            <field name="model">hr.leave.type</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='color']" position="before">
+                
+                    <field name="require_comment" />                    
+                    <field name="allowed_users_ids" />                    
+
+                </xpath>                  
+                
+            </field>
+        </record>
+
+
+        <!--
+        Time Off Request via Dashboard
+        -->
+
+        <record id="view_hr_leave_request_syndicom_modification_form" model="ir.ui.view">
+            <field name="name">hr.leave.request.syndicom.modification</field>
+            <field name="model">hr.leave</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                
+
+
+                <xpath expr="//field[@name='holiday_status_id']" position="after">
+                    <field name="require_comment" invisible="True" />
+                </xpath>
+
+                <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                    <attribute name="domain">
+                    
+                    ["|",
+                        "&amp;",("requires_allocation","=","no"),
+                            "|",("allowed_users_ids","=",False),("allowed_users_ids","in",uid),
+                        "&amp;","&amp;","&amp;",
+                            ("has_valid_allocation","=",True),
+                            ("virtual_remaining_leaves","&gt;",0),
+                            ("max_leaves","&gt;","0"),
+                            "|",
+                                ("allowed_users_ids","=",False),
+                                ("allowed_users_ids","in",uid)]
+                    </attribute>               
+                </xpath>  
+
+                <xpath expr="//field[@name='name']" position="attributes">         
+                    <attribute name="attrs">
+                        {'required': [('require_comment','=', True)]}
+                    </attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--
+        Time Off Request via Approval Page / From Manager
+        -->
+
+        <record id="view_hr_leave_manager_request_syndicom_modification_form" model="ir.ui.view">
+            <field name="name">hr.leave.request.manager.syndicom.modification</field>
+            <field name="model">hr.leave</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='holiday_status_id']" position="after">
+                    <field name="require_comment" invisible="True" />
+                </xpath>
+
+
+                <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                    <attribute name="domain">
+                    ["|",
+                        "&amp;",("requires_allocation","=","no"),
+                            "|",("allowed_users_ids","=",False),("allowed_users_ids","in",uid),
+                        "&amp;",("has_valid_allocation","=",True),
+                            "|",("allowed_users_ids","=",False),("allowed_users_ids","in",uid)]
+                    </attribute>               
+                </xpath>    
+
+                <xpath expr="//field[@name='name']" position="attributes">         
+                    <attribute name="attrs">
+                        {'required': [('require_comment','=', True)]}
+                    </attribute>
+                </xpath>              
+                
+            </field>
+        </record>
+
+ </data>
+</odoo>
+
+
+ 
+
+<!-- hr_holidays.hr_leave_view_form_manager genehmigungs seite MA -->

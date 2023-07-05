@@ -65,6 +65,11 @@
 
                 </xpath>
 
+                <xpath expr="//field[@name='membership_state']" position="after">
+                    <field name="partnership_discount" />
+                    <field name="partnership_partner_id" />
+                </xpath>
+
                 <xpath expr="//field[@name='street']" position="before">
                     <field name="address_search_id" placeholder="Adressverzeichnis durchsuchen..." options="{'no_quick_create':True, 'no_create_edit': True}" />
                 </xpath>
