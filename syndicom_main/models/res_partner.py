@@ -29,24 +29,29 @@ class ResPartner(models.Model):
     member_data_refreshed = fields.Datetime(string='Mitgliederdaten aktualisiert')
     member_main_category = fields.Many2one(comodel_name='product.product', string='Mitgliederkategorie')
     
+
+    partnership_discount = fields.Boolean(string='Partner Rabatt',help='Nur auf dem Mitglied aktivieren, welches vom Partnerrabatt profitiert')
+    partnership_partner_id = fields.Many2one(comodel_name='res.partner', string='Partner des Mitglied',help='Partner des Mitglieds aufgrund der Verbindung der obige Rabatt zustande kommt')
+    
+    
+
     @api.onchange('address_search_id')
     def _onchange_partner_adress(self):
-        for rec in self:
-
-            if rec.address_search_id.city_id:
-                rec.city_id = rec.address_search_id.city_id
+        if self.address_search_id:
+            if self.address_search_id.city_id:
+                self.city_id = self.address_search_id.city_id
             
-            if rec.address_search_id.country_id:
-                rec.country_id = rec.address_search_id.country_id
+            if self.address_search_id.country_id:
+                self.country_id = self.address_search_id.country_id
 
-            if rec.address_search_id.state_id:
-                rec.state_id = rec.address_search_id.state_id
+            if self.address_search_id.state_id:
+                self.state_id = self.address_search_id.state_id
             
-            rec.street = rec.address_search_id.street
-            rec.zip = rec.address_search_id.zip
-            rec.city = rec.address_search_id.city
-
-            rec.address_search_id = False
+            self.street = self.address_search_id.street
+            self.zip = self.address_search_id.zip
+            self.city = self.address_search_id.city
+            
+            self.address_search_id = False
 
     mobile = fields.Char(tracking=True)   
     phone = fields.Char(tracking=True)
@@ -61,5 +66,14 @@ class ResPartner(models.Model):
     anniversary_date = fields.Date(tracking=True)
 
 
+    """
+    # TODO : felder aktivieren für Tracking
 
+    customer_payment_method_subscription_id
+    subscription_payment_interval
+    payer_id
+
+    # TODO : studio feld in richtiges Feld übernehmen => Achtung Datenmigration
+    x_no_bill_till
+    """
     

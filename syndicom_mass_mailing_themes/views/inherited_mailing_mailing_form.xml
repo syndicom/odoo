@@ -17,12 +17,15 @@
                 <field name="syndicom_count" />
                 <field name="syndicom_mail_sender" />
                 <field name="syndicom_mailing_domain_ids" widget="many2many_tags"  />
-                <!--<field name="syndicom_mailing_domain_ids" widget="many2many_tags"
-                       domain="[
-                           ('mailing_model_id','=', mailing_model_id),
-                           ('domain_usage','=', 'mailing'),
-                       ]"/>-->
+                
+                
+                <field name="syndicom_partner_ids" widget="many2many_tags"/>                       
+                <button name="clear_partner_ids" string="Alle Kontakte entfernen" type="object"  
+                                                 attrs="{'invisible':[('syndicom_partner_ids','=',False)]}"  />       
+
                 <field name="syndicom_filter_ids" widget="many2many_tags"/>
+
+                <field name="reminder_event_id" />
                 <field name="syndicom_role_ids" widget="many2many_tags" domain="[('for_newsletter','=',True)]"/>
             </xpath>
         </field>

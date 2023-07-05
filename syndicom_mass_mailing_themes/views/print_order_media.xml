@@ -1,0 +1,16 @@
+<odoo>
+    <record id="syndicom_print_media_domains" model="ir.ui.view">
+        <field name="name">syndicom_mass_mailing_template.print.media.domains</field>
+        <field name="model">print.order.media</field>
+        <field name="priority">2</field>
+        <field name="inherit_id" ref="bt_zip_invoice_attachments.print_order_media_form_view"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='filter_domain']" position="before">
+                    <field name="domain_id"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

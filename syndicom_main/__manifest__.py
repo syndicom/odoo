@@ -28,6 +28,7 @@
         'security/ir.model.access.csv',
         'views/helpdesk_ticket.xml',
         'views/res_partner.xml',
+        'views/hr_leave_type.xml',
         'views/suisse_streets.xml',
         'views/binding_operators.xml',
         'views/binding_conversations.xml',
