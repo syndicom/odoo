@@ -17,15 +17,22 @@ class ResPartner(models.Model):
     work_main_employeer = fields.Many2one(comodel_name='res.partner', string='Hauptarbeitgeber')
     work_main_location = fields.Many2one(comodel_name='res.city', string='Arbeitsort')    
     work_main_building = fields.Char(string='Gebäude')
+    work_main_region = fields.Char(string='Arbeitsregion gemäss AG')
+    work_main_business_unit = fields.Char(string='Geschäftsbereich')
+    work_main_function_id = fields.Many2one('member.hr.job', string='Funktion beim AG')
+
     work_is_freelance = fields.Boolean(string='Ist Freischaffend')
     work_is_self_employed = fields.Boolean(string='Ist selbstständig')
     work_is_temporary = fields.Boolean(string='Ist temporär')
     work_data_refreshed = fields.Datetime(string='Arbeitgeberdaten aktualisiert')
 
+
+
     member_is_confidant = fields.Boolean(string="Ist Vertrauensperson")
     member_young = fields.Boolean(string='Jugend')
     member_retired = fields.Boolean(string='Rentner')
     member_age = fields.Integer(string='Alter')
+    member_entry_date = fields.Date(string='Exaktes Beitrittsdatum')
     member_data_refreshed = fields.Datetime(string='Mitgliederdaten aktualisiert')
     member_main_category = fields.Many2one(comodel_name='product.product', string='Mitgliederkategorie')
     
