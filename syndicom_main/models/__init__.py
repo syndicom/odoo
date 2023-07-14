@@ -10,3 +10,5 @@ from . import work_employee
 from . import work_section
 from . import binding_operators
 from . import binding_conversations
+from . import retirement_consulting
+from . import mysyndicom_users

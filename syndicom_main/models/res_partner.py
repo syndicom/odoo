@@ -15,6 +15,7 @@ class ResPartner(models.Model):
     work_location_ids = fields.Many2many(comodel_name='syndicom.work.locations', string='Betrieb / Standort')    
     work_sector = fields.Selection(string='Sektor', selection=[('1','Logistik'), ('2', 'ICT'),('3', 'Medien')])
     work_main_employeer = fields.Many2one(comodel_name='res.partner', string='Hauptarbeitgeber')
+    work_main_personalnumber = fields.Char(string='Personalnummer')
     work_main_location = fields.Many2one(comodel_name='res.city', string='Arbeitsort')    
     work_main_building = fields.Char(string='Gebäude')
     work_main_region = fields.Char(string='Arbeitsregion gemäss AG')
@@ -25,7 +26,7 @@ class ResPartner(models.Model):
     work_is_self_employed = fields.Boolean(string='Ist selbstständig')
     work_is_temporary = fields.Boolean(string='Ist temporär')
     work_data_refreshed = fields.Datetime(string='Arbeitgeberdaten aktualisiert')
-
+    
 
 
     member_is_confidant = fields.Boolean(string="Ist Vertrauensperson")

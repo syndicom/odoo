@@ -1,0 +1,104 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_mysyndicom_users">
+        <field name="name">Liste aller Benutzeraccounts</field>
+        <field name="res_model">mysyndicom.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="mysyndicom_users_tree_view">
+        <field name="name">Liste aller Benutzeraccounts</field>
+        <field name="model">mysyndicom.users</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="partner_id"/>
+                <field name="username" />
+                <field name="wrong_password_count" />
+                <field name="login_count" />
+                <field name="date_last_login" />
+                
+
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mysyndicom_users_form_view">
+        <field name="name">Liste aller Benutzeraccounts</field>
+        <field name="model">mysyndicom.users</field>
+        <field name="arch" type="xml">
+            <form string="Accounts">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="partner_id"/>
+                        </h1>
+                    </div>
+                    
+                   
+                    <group>
+                        <group name="content_main_left">
+                        
+                            <field name="username" />
+                            <field name="active" />
+                            <field name="password" />
+                            <field name="password_hash" invisible="True"/>
+
+                        </group>
+                        <group name="content_main_right">
+
+                            <field name="wrong_password_count" />
+                            <field name="login_count" />
+                            <field name="is_initial" readonly="True" />
+                            <field name="date_last_login" />
+                            <field name="date_change" />
+
+                        </group>
+                    </group>
+           
+
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="mysyndicom_users_search" model="ir.ui.view">
+        <field name="name">mysyndicom.users.search</field>
+        <field name="model">mysyndicom.users</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_mysyndicom_users_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="mysyndicom_users_tree_view"/>
+        <field name="act_window_id" ref="action_window_mysyndicom_users"/>
+    </record>
+
+    <record id="action_window_mysyndicom_users_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="mysyndicom_users_form_view"/>
+        <field name="act_window_id" ref="action_window_mysyndicom_users"/>
+    </record>
+</odoo>
