@@ -42,6 +42,16 @@
                         <field name="name"/>
                         <field name="mail_from"/>
                         <field name="reply_to"/>
+
+                        <field name="text_line1"/>
+                        <field name="text_line2"/>
+                        <field name="text_line3"/>
+                        <field name="text_line4"/>
+
+                        <field name="user_id"/>
+                        <field name="user_ids"/>
+                        <field name="role_ids"/>
+                        
                     </group>
                 </sheet>
             </form>
