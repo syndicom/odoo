@@ -2,6 +2,9 @@ from odoo import fields,models
 
 class Event(models.Model):
    _inherit = "event.event"
+   
+   date_registration_end = fields.Date(string='Anmeldeschluss')
+   
    syn_teamslink = fields.Char( string="MS Teams Link"  )
    syn_interactio = fields.Char( string="Interactio Code"  )
    syn_domain = fields.Char (string="Zielgruppe")

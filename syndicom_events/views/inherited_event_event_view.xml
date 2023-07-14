@@ -16,6 +16,7 @@
                         <field name="subtitle" />
                         <field name="description" />
                         <field name="syn_is_public"/>
+                        <field name="date_registration_end" />
 
                 </group>
 
