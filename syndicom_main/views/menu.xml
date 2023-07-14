@@ -29,6 +29,11 @@
                   parent="syndicom_binding"
                   action="action_window_binding_conversations"
                   sequence="15"/>
+         <menuitem id="syndicom_retirement_consulting"
+                  name="Pensionierungsberatungen"
+                  parent="syndicom_binding"
+                  action="action_window_retirement_consulting"
+                  sequence="20"/>
 
         <menuitem id="syndicom_binding_operators"
                   name="Agenten"
@@ -45,6 +50,17 @@
                   sequence="90"/>
         
                   
+        <!-- my.syndicom Benutzeraccounts -->
+        <menuitem id="mysyndicom_users"
+                  name="my.syndicom"
+                  parent="syndicom_member_administration.syndicom_member_admin_root"
+                  sequence="50"/>
+
+        <menuitem id="mysyndicom_users_accounts"
+                  name="Accounts"
+                  parent="syndicom_main.mysyndicom_users"
+                  action="action_window_mysyndicom_users"
+                  sequence="10"/>
 
 
   </data>
