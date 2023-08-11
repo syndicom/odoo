@@ -16,4 +16,24 @@ class Event(models.Model):
    syn_publish_website_fr = fields.Boolean(string='Auf französische Website')
    syn_publish_website_it = fields.Boolean(string='Auf italienische Website')
    syn_publish_website_en = fields.Boolean(string='Auf englische Website')
+
+   
+
+   def action_mass_mailing_attendees(self):
+      return {
+         'name': 'syndicom Event Teilnehmer anschreiben',
+         'type': 'ir.actions.act_window',
+         'res_model': 'mailing.mailing',
+         'view_mode': 'form',
+         'target': 'current',
+         'context': {
+               'default_mailing_model_id': self.env.ref('base.model_res_partner').id,
+            #   'default_mailing_domain': repr([('registration_ids.event_id', 'in', self.ids)]),
+            #   'default_event_announcement': repr([('registration_ids.event_id', 'in', self.ids)]),
+               'default_announcement_event_id': self.id,
+               'default_syndicom_mailing_topic_id': 8,
+               
+         },
+      }
+   #description = fields.Html(render_engine='qweb', translate=True, sanitize=True)
    
