@@ -39,7 +39,8 @@ class MailingMailing(models.Model):
         string="Weitere Kontakte")
 
     reminder_event_id = fields.Many2one(comodel_name='event.event', string='Reminder für', help='Wenn in diesem Feld ein Event ausgewählt wird, so wird sichergestellt, dass keine Kontakte, die sich bereits an besagtem Event An- oder Abgemeldet haben, den neuen Newsletter erhalten')
-    
+    announcement_event_id = fields.Many2one(comodel_name='event.event', string='Info für', help='Wenn in diesem Feld ein Event ausgewählt wird, so werden standartmässig alle Teilnehmer des entsprechenden Event als Empfänger ausgewählt.',readonly=True)
+    event_announcement = fields.Char(string='Event Info Domain')
 
     @api.model
     def default_get(self, fields_list):
@@ -57,9 +58,15 @@ class MailingMailing(models.Model):
         """
         # todo: add docstring
         """
-        domain = ast.literal_eval(self.mailing_domain)
-        contacts = self.env['res.partner'].search(domain)
-        self.syndicom_count = len(contacts)
+        if self.mailing_model_id.model == 'res.partner':
+            domain = ast.literal_eval(self.mailing_domain)
+            #domain = repr(expression.AND(
+            #        [[['email','!=',False]], domain]
+            #    ))
+            contacts = self.env['res.partner'].search(domain)
+            self.syndicom_count = len(contacts)
+        else:
+            self.syndicom_count = 99999
 
     @api.onchange('syndicom_mail_sender')
     def _onchange_syndicom_mail_sender(self):
@@ -73,7 +80,8 @@ class MailingMailing(models.Model):
     @api.depends('mailing_model_id', 'contact_list_ids',
                  'mailing_type', 'syndicom_mailing_domain_ids',
                  'syndicom_filter_ids', 'syndicom_mailing_topic_id',
-                 'syndicom_partner_ids','reminder_event_id')
+                 'syndicom_partner_ids','reminder_event_id',
+                 'announcement_event_id')
     def _compute_mailing_domain(self):
         """
             We let mailing_domain be computed forst from the standard
@@ -96,12 +104,20 @@ class MailingMailing(models.Model):
                 mailing.mailing_domain = repr(expression.AND(
                     [compiled_domain, self.domain_eval(mailing.mailing_domain)]
                 ))
+            elif mailing.announcement_event_id.id:
+                compiled_domain = mailing._get_combined_mailing_domain()
+
+                mailing.mailing_domain = repr(expression.AND(
+                    [compiled_domain, self.domain_eval(mailing.mailing_domain)]
+                ))
+
 
     def _get_combined_mailing_domain(self):
         for mailing in self:
 
             compiled_domain = False
 
+            # "Verteiler"
             for mailing_domain in mailing.syndicom_mailing_domain_ids:
                 if compiled_domain:
                     compiled_domain = expression.OR(
@@ -110,6 +126,7 @@ class MailingMailing(models.Model):
                 else:
                     compiled_domain = self.domain_eval(mailing_domain.domain)
             
+            # "Kontakte"
             partner_ids = []
             for mailing_partner in mailing.syndicom_partner_ids:
                 partner_ids.append(mailing_partner._origin.id)
@@ -121,6 +138,18 @@ class MailingMailing(models.Model):
             #else:
             #    compiled_domain = self.domain_eval(mailing_domain.domain)  
 
+            # "Event-Info"
+            # Check if this Mail is supposed to be a Annoucement Mail for a Event
+            # Then Add the needed Logic
+            if mailing.announcement_event_id.id != False:
+                if compiled_domain:
+                    compiled_domain = expression.OR(
+                        [[['registration_ids.booked_event_id', 'in', [mailing.announcement_event_id.id] ]], compiled_domain]
+                    )
+                else:
+                    compiled_domain = [['registration_ids.booked_event_id', 'in', [mailing.announcement_event_id.id] ]]
+               
+            # "Filter"
             for mailing_domain in mailing.syndicom_filter_ids:
                 if compiled_domain:
                     compiled_domain = expression.AND(
@@ -128,11 +157,14 @@ class MailingMailing(models.Model):
                     )
                 else:
                     compiled_domain = self.domain_eval(mailing_domain.domain)
-
+            
+            # "Event-Reminder"
+            # If the Mass Mailing is supposed to be a reminder Message for a Event
+            # Add the needed Logic to the Domain Field
             if mailing.reminder_event_id.id != False:
                 if compiled_domain:
                     compiled_domain = expression.AND(
-                        [[['registration_ids','not in',mailing.reminder_event_id.id]], compiled_domain]
+                        [[    '|',  ['registration_ids', '=', False],['registration_ids.event_id.id','not in',[mailing.reminder_event_id.id]]        ], compiled_domain]
                     )
                 else:
                     compiled_domain = self.domain_eval(mailing_domain.domain)
