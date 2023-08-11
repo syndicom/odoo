@@ -47,6 +47,7 @@
                 <xpath expr="//field[@name='associate_member']" position="before">
                     <field name="work_sector" readonly="1"/>
                     <field name="work_main_employeer" readonly="1"/>
+                    <field name="work_main_cla_id" readonly="1" /> 
                     <field name="work_main_location" readonly="1"/>
                     <field name="work_main_business_unit" readonly="1" />
                     <field name="work_main_function_id" readonly="1" />

@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     address_search_id = fields.Many2one(comodel_name='suisse.streets', string='Adresssuche')
     
     
-
+    syndicom_statisical_entry = fields.Date(string='Statistisches Eintrittsdatum')
     syndicom_account_report_ids = fields.One2many('syndicom.account.report', 'partner_id', string='Kontoauszüge')
     syndicom_account_report_balance = fields.Float(string='Mitgliederkontostand')    
     syndicom_account_report_refreshed = fields.Datetime(string='Konto Report aktualisiert')
@@ -21,14 +21,13 @@ class ResPartner(models.Model):
     work_main_region = fields.Char(string='Arbeitsregion gemäss AG')
     work_main_business_unit = fields.Char(string='Geschäftsbereich')
     work_main_function_id = fields.Many2one('member.hr.job', string='Funktion beim AG')
+    work_main_cla_id = fields.Many2one('member.cla', string='GAV')
 
     work_is_freelance = fields.Boolean(string='Ist Freischaffend')
     work_is_self_employed = fields.Boolean(string='Ist selbstständig')
     work_is_temporary = fields.Boolean(string='Ist temporär')
     work_data_refreshed = fields.Datetime(string='Arbeitgeberdaten aktualisiert')
     
-
-
     member_is_confidant = fields.Boolean(string="Ist Vertrauensperson")
     member_young = fields.Boolean(string='Jugend')
     member_retired = fields.Boolean(string='Rentner')
@@ -37,12 +36,9 @@ class ResPartner(models.Model):
     member_data_refreshed = fields.Datetime(string='Mitgliederdaten aktualisiert')
     member_main_category = fields.Many2one(comodel_name='product.product', string='Mitgliederkategorie')
     
-
     partnership_discount = fields.Boolean(string='Partner Rabatt',help='Nur auf dem Mitglied aktivieren, welches vom Partnerrabatt profitiert')
     partnership_partner_id = fields.Many2one(comodel_name='res.partner', string='Partner des Mitglied',help='Partner des Mitglieds aufgrund der Verbindung der obige Rabatt zustande kommt')
     
-    
-
     @api.onchange('address_search_id')
     def _onchange_partner_adress(self):
         if self.address_search_id:
