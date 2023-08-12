@@ -74,7 +74,7 @@ Alle direkt via Newsletter eingeladene Mitglieder:innen sehen den Event in jedem
                         <field name="syn_attachment_ids" editable="top"                    >
                           <tree  editable="bottom">
                             
-                           
+                            <field name='sequence' widget='handle'/>
                             <field name="document_filename"  />
                             <field name="document" filename="document_filename" />
                             <field name="language"  />
