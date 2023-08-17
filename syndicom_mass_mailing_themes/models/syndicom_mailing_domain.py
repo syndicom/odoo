@@ -10,9 +10,9 @@ class MailingDomain(models.Model):
     category = fields.Selection(
         string='Kategorie',
         selection=[           
-            ('s1', 'Sektor 1'),
-            ('s2', 'Sektor 2'),
-            ('s3', 'Sektor 3'),
+            ('s1', 'Sektor Logistik'),
+            ('s2', 'Sektor ICT'),
+            ('s3', 'Sektor Medien'),
             ('ig', 'IG'),
             ('mm', 'Medienmitteilungen'),
             ('gremien', 'Gremien'),
