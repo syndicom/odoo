@@ -39,6 +39,20 @@ class ResPartner(models.Model):
     partnership_discount = fields.Boolean(string='Partner Rabatt',help='Nur auf dem Mitglied aktivieren, welches vom Partnerrabatt profitiert')
     partnership_partner_id = fields.Many2one(comodel_name='res.partner', string='Partner des Mitglied',help='Partner des Mitglieds aufgrund der Verbindung der obige Rabatt zustande kommt')
     
+    event_ids = fields.Many2many(comodel_name='event.event', string='Veranstaltungen',compute="_compute_partners_event_ids",store=True)
+    
+
+    # This adds all event_ids of all registrations from a partner
+    # to the custom field events_ids
+    # this was done for easy sending mass mailings as reminder or info mail
+    @api.depends('registration_ids')
+    def _compute_partners_event_ids(self):
+        for rec in self:
+            events = []
+            for e in rec.registration_ids:
+                events.append(e.event_id.id)
+            rec.event_ids = events
+
     @api.onchange('address_search_id')
     def _onchange_partner_adress(self):
         if self.address_search_id:

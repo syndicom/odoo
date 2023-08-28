@@ -12,3 +12,5 @@ from . import binding_operators
 from . import binding_conversations
 from . import retirement_consulting
 from . import mysyndicom_users
+from . import internal_category
+from . import internal_information
