@@ -6,8 +6,8 @@ from odoo import models, fields, api
 class SyndicomVollzugContactType(models.Model):
     _name = 'syndicom.vollzug.contact.type'
     _description = 'Vollzug Contact Type'
-    partner_id = fields.Many2one(comodel_name='res.partner', string='Partner')
-    enterprise_id = fields.Many2one(comodel_name='res.partner', string='Betrieb', compute='_compute_enterprise_id', store=True)
+    partner_id = fields.Many2one(comodel_name='res.partner', string='Partner', index=True)
+    enterprise_id = fields.Many2one(comodel_name='res.partner', string='Betrieb', compute='_compute_enterprise_id', store=True, index=True)
     
     
     name = fields.Selection(string='Typ', selection=[('declaration', 'Deklaration'), 
@@ -15,7 +15,7 @@ class SyndicomVollzugContactType(models.Model):
                                                      ('invoice', 'Rechnungen'),
                                                      ('controls', 'Kontrollen'),
                                                      ('privat', 'Privatadresse'),
-                                                     ])
+                                                     ], index=True)
 
     is_main = fields.Boolean(string='Hauptkontakt')
     is_copy = fields.Boolean(string='Kopiekontakt')
@@ -36,20 +36,22 @@ class SyndicomVollzugContactType(models.Model):
     def _compute_actual_main(self):
         for record in self:
 
+            return True
             # Set all Connections to the same Type for this Company to is_copy
             # if this record should be main
-            if record.is_main == True:
+            """
+            if record.is_main:
                 update = self.env['syndicom.vollzug.contact.type'].search([('enterprise_id','=',record.enterprise_id.id),
                                                                 ('name','=',record.name),
                                                                 ('is_main','=',True),
                                                                 ('partner_id','!=',record.partner_id.id)])
-                update.write({'is_main': False, 'is_copy': True})
+                for r in update:
+                    u.write({'is_main': False, 'is_copy': True})
 
-            # Only one Partner can be Main Contact for one Type within one Company
-            actual = self.env['syndicom.vollzug.contact.type'].search([('enterprise_id','=',record.enterprise_id.id),
-                                                                ('name','=',record.name),
-                                                                ('is_main','=',True)], limit = 1)
-            record.actual_main = actual.partner_id.id
+                record.actual_main = record.partner_id
+            
+            else:
+                return True
 
-
+            """
     
