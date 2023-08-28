@@ -15,7 +15,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     country_id = fields.Many2one('res.country', 'Land')
     firstname = fields.Char('Vorname')
     description = fields.Text(string='Beschreibung')
-    contact_id = fields.Many2one('res.partner', 'Verbundener Kontakt', stored=True, compute="_compute_search_partner")
+    contact_id = fields.Many2one('res.partner', 'Verbundener Kontakt') #, stored=True, compute="_compute_search_partner")
     contact_match = fields.Selection(string='Gefunden durch', selection=[('ahv', 'AHV Nummer'), ('birthday1', 'Geburtsd./Vor- Nachname'),('adresse', 'Vor-/Nachname / Adresse'),('birthday2', 'Geburtsd. / Vorname'),('birthday3', 'Geburtsd. / Teil-Vorname'),('birthday4', 'Geburtsd. / Str / PLZ'),])
     
     employeer_id = fields.Many2one('res.partner', 'Verbundener Betrieb')
@@ -23,7 +23,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     date_leave = fields.Date(string='Austrittsdatum')
     personal_nr = fields.Char(string='Personalnummer')
     employment_rate = fields.Float(string='Beschäftigungsgrad')
-    duration = fields.Integer(string='Anz. Monate', stored=True, compute="_compute_duration_in_month")
+    duration = fields.Integer(string='Anz. Monate', store=True, compute="_compute_duration_in_month")
 
     duration_association = fields.Integer(string='Verband (mt.)')
     duration_ev = fields.Integer(string='EV (mt.)')
@@ -37,7 +37,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     city = fields.Char(string='Ort')
     birthday = fields.Date(string='Geburtstag')
     apprentice = fields.Char(string='Lehrling')
-    is_apprentice = fields.Boolean(string='Ist Lehrling', stored=True, compute='_compute_apprentice')
+    is_apprentice = fields.Boolean(string='Ist Lehrling', store=True, compute='_compute_apprentice')
     ssn = fields.Char(string='AHV-Nummer')
     gender = fields.Selection([('m','Männlich'),('w','Weiblich'),('n','Neutral')], compute='_compute_gender')
     salary = fields.Float(string='Bruttolohn')
@@ -47,7 +47,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     job = fields.Char(string='Tätigkeit')
     cla_partner = fields.Many2one(string='GAV Partner',related='declaration_id.cla_partner')
     duration_correction = fields.Integer(string='Korrektur')
-    duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', stored=True, compute='_compute_duration_consolidated')
+    duration_consolidated = fields.Integer(string='Konsolidierte Anz. Monate', store=True, compute='_compute_duration_consolidated')
     
     discount_ag = fields.Float(string='Rabatt AG')
 
