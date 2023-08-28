@@ -16,5 +16,21 @@
             <field name="category_id" ref="syndicom_main.syndicom_binding_category"/>
         </record>
 
+        <record model="ir.module.category" id="syndicom_internal">
+                <field name="name">Info Intern</field>
+                <field name="description">Info Intern</field>
+                <field name="sequence">20</field>
+        </record>
+
+         <record id="syndicom_internal_info_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="comment">Can Publish Internal Informations</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="syndicom_main.syndicom_internal"/>
+        </record>
+
+
+
     </data>
 </odoo>
