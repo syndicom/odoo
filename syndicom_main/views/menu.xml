@@ -1,6 +1,32 @@
 <odoo>
   <data>
         <!-- Betriebe / Standorte -->
+        <menuitem id="syndicom_internal_information"
+                  name="Intern"
+                  web_icon="syndicom_main,static/description/odoo_icon_newspaper.png"
+                  sequence="6"
+                  groups="base.group_user"/>
+
+        <menuitem id="syndicom_internal_information_news"
+                  name="News"
+                  parent="syndicom_internal_information"
+                  action = "action_window_internal_information"
+                  sequence="10"/>
+
+        <menuitem id="syndicom_internal_information_config"
+                  name="Konfiguration"
+                  parent="syndicom_internal_information"
+                  sequence="90"/>
+
+          
+        <menuitem id="syndicom_internal_information_config_category"
+                  name="Kategorien"
+                  parent="syndicom_internal_information_config"
+                  action = "action_window_internal_category"
+                  sequence="10"/>
+                  
+
+        <!-- Betriebe / Standorte -->
 
         <menuitem id="syndicom_work_locations_root"
                   name="Betriebe"
