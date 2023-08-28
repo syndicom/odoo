@@ -3,6 +3,8 @@
 from odoo import fields, models, api
 from odoo.osv import expression
 import ast
+import werkzeug.urls
+from werkzeug.urls import url_join
 
 
 class MailingMailing(models.Model):
@@ -164,7 +166,7 @@ class MailingMailing(models.Model):
             if mailing.reminder_event_id.id != False:
                 if compiled_domain:
                     compiled_domain = expression.AND(
-                        [[    '|',  ['registration_ids', '=', False],['registration_ids.event_id.id','not in',[mailing.reminder_event_id.id]]        ], compiled_domain]
+                        [[    '|',  ['event_ids', '=', False],['event_ids','not in',[mailing.reminder_event_id.id]]        ], compiled_domain]
                     )
                 else:
                     compiled_domain = self.domain_eval(mailing_domain.domain)
@@ -179,5 +181,42 @@ class MailingMailing(models.Model):
 
     def clear_partner_ids(self):
         for mailing in self:
-            print("button geklickt")
             mailing.syndicom_partner_ids = False
+
+
+    """
+    @api.model
+    def _get_unsubscribe_url(self, email_to, res_id):
+        
+        url = super(MailingMailing, self)._get_unsubscribe_url(email_to, res_id)
+        url = werkzeug.urls.url_join(
+            'https://my.syndicom.ch/',
+                'mail/mailing/%(mailing_id)s/unsubscribe?%(params)s' % {
+                'mailing_id': self.id,
+                'params': werkzeug.urls.url_encode({
+                    'res_id': res_id,
+                    'email': email_to,
+                    'token': self._unsubscribe_token(res_id, email_to),
+                }),
+            }
+        )
+        return url
+
+    @api.model
+    def _get_view_url(self, email_to, res_id):
+
+        url = super(MailingMailing, self)._get_view_url(email_to, res_id)
+        url = werkzeug.urls.url_join(
+            'https://my.syndicom.ch/',
+            'mailing/%(mailing_id)s/view?%(params)s' % {
+                'mailing_id': self.id,
+                'params': werkzeug.urls.url_encode({
+                    'res_id': res_id,
+                    'email': email_to,
+                    'token': self._unsubscribe_token(res_id, email_to),
+                }),
+            }
+        )
+        return url
+
+    """

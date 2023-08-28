@@ -31,22 +31,7 @@
         <field name="fold">1</field>
         <field name="sequence">40</field>
       </record>
-      <!-- Vollzug Contact Types -->
-      <record id="ctype1" model="syndicom.vollzug.contact.type">
-        <field name="name">Deklaration</field>
-      </record>
-      <record id="ctype2" model="syndicom.vollzug.contact.type">
-        <field name="name">GAV-Info</field>
-      </record>
-      <record id="ctype3" model="syndicom.vollzug.contact.type">
-        <field name="name">Rechnungen</field>
-      </record>
-      <record id="ctype4" model="syndicom.vollzug.contact.type">
-        <field name="name">Kontrollen</field>
-      </record>
-      <record id="ctype5" model="syndicom.vollzug.contact.type">
-        <field name="name">Privatadresse</field>
-      </record>
+
 
     </data>
 </odoo>

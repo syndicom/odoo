@@ -10,14 +10,14 @@
             <field name="model">res.partner</field>
             <field name="priority">20</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="groups_id" eval="[(5,)]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
             <field name="arch" type="xml">
                 <page name="internal_notes" position="after">
-                    <page string="Konto Report" name="syndicom_account_report" groups="">
+                    <page string="Konto Report" name="syndicom_account_report" >
                        
-                        <group>
+                        <group name="content">
                             <group name="content_left">
-                                <button>Aktualisieren</button>
+                                
                             </group>
                             <group name="content_right">
                                 <field name="syndicom_account_report_balance" />

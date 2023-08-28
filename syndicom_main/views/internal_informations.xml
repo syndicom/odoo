@@ -1,0 +1,140 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_internal_information">
+        <field name="name">Liste aller Info Intern</field>
+        <field name="res_model">syndicom.internal.information</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="internal_information_tree_view">
+        <field name="name">Alle Info Interns</field>
+        <field name="model">syndicom.internal.information</field>
+        <field name="arch" type="xml">
+            <tree>
+
+
+                <field name="publish_date" />
+                <field name="category_id" />
+                <field name="name" />
+               
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="internal_information_form_view">
+        <field name="name">Info Intern</field>
+        <field name="model">syndicom.internal.information</field>
+        <field name="arch" type="xml">
+        
+            <form string="internal_information">
+
+            
+
+            <!-- 
+                
+                <field name="image" widget="image"   />
+                style="width:100% !important; height:100px !important; max-width:100% !important;"
+                options="{'size': [2000, 150]}"  
+
+                <div class="page" t-att-style="'background-image:url(\'/web/image/sale.order/' + str(doc.id) + '/project_image/\')'">
+
+            -->
+
+                <sheet>
+                    <div >  
+                     <field name="image" widget="image"   />
+                    </div>
+                    
+                    <div class="oe_title">
+                            <h1 class="o_row">
+                              <field name="name"  placeholder="Bitte Titel eingeben..." />
+                            </h1>
+                    </div>
+
+                    <group col="1">            
+
+                        <group>
+                            <field name="category_id" />
+                            <field name="teaser" widget="html"  placeholder="Kurzer Teaser zum Eintrag. Wird auch für die Ankündigung verwendet.." />
+                            <field name="body"  widget="html"   placeholder="Beitrag..." />
+                        </group>
+                        
+
+                        <notebook name="internal_information_settings">
+                            <page string="Einstellungen" name="page_internal_information_settings">
+
+                                <group name="settings_left">
+
+                                    <field name="publish_date" />
+                                    
+
+                                </group>
+
+                            </page>
+                            <page string="Ankündigung" name="page_internal_information_annoucment">
+
+                                <group name="settings_left">
+
+                                    <field name="notify" />
+                                    <field name="announcement_id" />
+                                    <field name="notify_from" />
+                                    <field name="notify_till" />
+                                    
+                                </group>
+
+                       	        <button type="object" name="create_announcement" string="Ankündigung erstellen"/>
+
+
+                            </page>
+                        </notebook>
+
+                        
+                    </group>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                   
+                    <field name="message_ids"/>
+                </div>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="internal_information_search" model="ir.ui.view">
+        <field name="name">syndicom.internal.information.search</field>
+        <field name="model">syndicom.internal.information</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="name"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_internal_information_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="internal_information_tree_view"/>
+        <field name="act_window_id" ref="action_window_internal_information"/>
+    </record>
+
+    <record id="action_window_internal_information_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="internal_information_form_view"/>
+        <field name="act_window_id" ref="action_window_internal_information"/>
+    </record>
+</odoo>

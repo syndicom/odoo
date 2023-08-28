@@ -20,7 +20,7 @@
     'license': 'OPL-1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','syndicom_member_data_history','product','account','membership','helpdesk','syndicom_member_administration','hr_expense'],
+    'depends': ['base','syndicom_member_data_history','product','account','membership','helpdesk','syndicom_member_administration','hr_expense','announcement'],
 
     # always loaded
     'data': [
@@ -36,6 +36,8 @@
         'views/work_employee.xml',
         'views/work_locations.xml',
         'views/mysyndicom_users.xml',
+        'views/internal_category.xml',
+        'views/internal_informations.xml',
         'views/menu.xml',
     ],
     
