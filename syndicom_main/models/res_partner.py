@@ -45,13 +45,10 @@ class ResPartner(models.Model):
     # This adds all event_ids of all registrations from a partner
     # to the custom field events_ids
     # this was done for easy sending mass mailings as reminder or info mail
-    @api.depends('registration_ids')
+    @api.depends('registration_ids.event_id')
     def _compute_partners_event_ids(self):
         for rec in self:
-            events = []
-            for e in rec.registration_ids:
-                events.append(e.event_id.id)
-            rec.event_ids = events
+            rec.event_ids = [(6, False, rec.registration_ids.event_id.ids)]
 
     @api.onchange('address_search_id')
     def _onchange_partner_adress(self):
@@ -94,4 +91,4 @@ class ResPartner(models.Model):
     # TODO : studio feld in richtiges Feld übernehmen => Achtung Datenmigration
     x_no_bill_till
     """
-    
+
