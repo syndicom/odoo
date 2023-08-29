@@ -10,7 +10,7 @@ class SyndicomvollzugDeclaration(models.Model):
     name = fields.Char('Name',compute='_compute_name_field')
     currency_id = fields.Many2one('res.currency', 'Währung')
     stage_id = fields.Many2one('syndicom.vollzug.declaration.stage',string='Stufe',group_expand='_read_group_stage_ids')
-    enterprise_id = fields.Many2one('res.partner', 'Betrieb')
+    enterprise_id = fields.Many2one('res.partner', 'Betrieb', index=True)
     partner_id = fields.Many2one('res.partner', 'Kontakt')
     responsible_id = fields.Many2one('res.users','Verantwortlich') 
     email = fields.Text(string="E-Mail")
