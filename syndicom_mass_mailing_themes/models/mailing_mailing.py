@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from odoo import fields, models, api
+import hashlib
+import hmac
+from odoo import fields, models, api, tools
 from odoo.osv import expression
+from odoo.tools import consteq
 import ast
 import werkzeug.urls
 from werkzeug.urls import url_join
@@ -183,12 +185,17 @@ class MailingMailing(models.Model):
         for mailing in self:
             mailing.syndicom_partner_ids = False
 
+    def custom_unsubscribe_token(self, res_id, email, mailing):
+        """
+        Custom Method to access from API
+        """
+        secret = self.env["ir.config_parameter"].sudo().get_param("database.secret")
+        token = (self.env.cr.dbname, int(mailing), int(res_id), tools.ustr(email))
+        return hmac.new(secret.encode('utf-8'), repr(token).encode('utf-8'), hashlib.sha512).hexdigest()
 
-    """
     @api.model
     def _get_unsubscribe_url(self, email_to, res_id):
-        
-        url = super(MailingMailing, self)._get_unsubscribe_url(email_to, res_id)
+
         url = werkzeug.urls.url_join(
             'https://my.syndicom.ch/',
                 'mail/mailing/%(mailing_id)s/unsubscribe?%(params)s' % {
@@ -200,12 +207,12 @@ class MailingMailing(models.Model):
                 }),
             }
         )
+        
         return url
 
     @api.model
     def _get_view_url(self, email_to, res_id):
-
-        url = super(MailingMailing, self)._get_view_url(email_to, res_id)
+        
         url = werkzeug.urls.url_join(
             'https://my.syndicom.ch/',
             'mailing/%(mailing_id)s/view?%(params)s' % {
@@ -217,6 +224,7 @@ class MailingMailing(models.Model):
                 }),
             }
         )
+
         return url
 
-    """
+ 
