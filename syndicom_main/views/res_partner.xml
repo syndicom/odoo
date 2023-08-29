@@ -10,14 +10,14 @@
             <field name="model">res.partner</field>
             <field name="priority">20</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="groups_id" eval="[(5,)]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
             <field name="arch" type="xml">
                 <page name="internal_notes" position="after">
-                    <page string="Konto Report" name="syndicom_account_report" groups="">
+                    <page string="Konto Report" name="syndicom_account_report" >
                        
-                        <group>
+                        <group name="content">
                             <group name="content_left">
-                                <button>Aktualisieren</button>
+                                
                             </group>
                             <group name="content_right">
                                 <field name="syndicom_account_report_balance" />
@@ -47,14 +47,20 @@
                 <xpath expr="//field[@name='associate_member']" position="before">
                     <field name="work_sector" readonly="1"/>
                     <field name="work_main_employeer" readonly="1"/>
+                    <field name="work_main_cla_id" readonly="1" /> 
                     <field name="work_main_location" readonly="1"/>
+                    <field name="work_main_business_unit" readonly="1" />
+                    <field name="work_main_function_id" readonly="1" />
+
                     <field name="work_location_ids" widget="many2many_tags" readonly="1" />
+                    
                     <!-- <field name="work_main_building" readonly="1"/> -->
                     <field name="work_is_freelance" readonly="1"/>
                     <field name="work_is_self_employed" readonly="1"/>
                     <field name="work_is_temporary" readonly="1" />
                     
                     <hr/>
+
 
                     <field name="member_is_confidant" readonly="1" />
                     <field name="member_retired" readonly="1"/>
@@ -63,6 +69,11 @@
 
                     
 
+                </xpath>
+
+                <xpath expr="//field[@name='membership_state']" position="after">
+                    <field name="partnership_discount" />
+                    <field name="partnership_partner_id" />
                 </xpath>
 
                 <xpath expr="//field[@name='street']" position="before">

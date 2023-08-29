@@ -6,12 +6,13 @@ class MailingDomain(models.Model):
     _description = "Domains for Mailing"
 
     name = fields.Char('Name', required=True,translate=True)
+    description = fields.Char(string='Beschreibung',translate=True)
     category = fields.Selection(
         string='Kategorie',
         selection=[           
-            ('s1', 'Sektor 1'),
-            ('s2', 'Sektor 2'),
-            ('s3', 'Sektor 3'),
+            ('s1', 'Sektor Logistik'),
+            ('s2', 'Sektor ICT'),
+            ('s3', 'Sektor Medien'),
             ('ig', 'IG'),
             ('mm', 'Medienmitteilungen'),
             ('gremien', 'Gremien'),
@@ -21,6 +22,9 @@ class MailingDomain(models.Model):
             ('personen', 'syndicom Mitarbeiter:innen')
         ])
     
+    source_id = fields.Integer(string='Herkunfts-ID')
+    
+
     mailing_model_id = fields.Many2one(
         'ir.model', string='Recipients Model', ondelete='cascade', required=True,
         domain=[('is_mailing_enabled', '=', True)],

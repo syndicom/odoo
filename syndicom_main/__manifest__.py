@@ -20,7 +20,7 @@
     'license': 'OPL-1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','syndicom_member_data_history','product','account','membership','helpdesk'],
+    'depends': ['base','syndicom_member_data_history','product','account','membership','helpdesk','syndicom_member_administration','hr_expense','announcement','event', 'website_event','website_event_social'],
 
     # always loaded
     'data': [
@@ -28,11 +28,16 @@
         'security/ir.model.access.csv',
         'views/helpdesk_ticket.xml',
         'views/res_partner.xml',
+        'views/hr_leave_type.xml',
         'views/suisse_streets.xml',
         'views/binding_operators.xml',
         'views/binding_conversations.xml',
+        'views/retirement_consulting.xml',
         'views/work_employee.xml',
         'views/work_locations.xml',
+        'views/mysyndicom_users.xml',
+        'views/internal_category.xml',
+        'views/internal_informations.xml',
         'views/menu.xml',
     ],
     

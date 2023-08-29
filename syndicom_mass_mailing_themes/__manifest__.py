@@ -16,6 +16,8 @@ Design gorgeous mails
         'mass_mailing',
         'syndicom_mailing_topic',
         'base_user_role',
+        'bt_zip_invoice_attachments',
+        'event', 'website_event', 'website_event_social','syndicom_event',
         # 'base'
     ],
     'data': [

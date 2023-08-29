@@ -20,10 +20,11 @@
             <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
             </div>
-            -->
+            
          <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>
          </div>
+         -->
          <!---
             <div data-name="syndicom2" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_standart" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_second"/>                
@@ -46,7 +47,7 @@
                               </a>
                            </div>
                            <div class="col-lg-4 text-right o_mail_no_resize">
-                              <a href="/view" target="_blank"><font class="text-black">
+                              <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
                               online Version
                               </font></a>
                            </div>
@@ -142,7 +143,7 @@
       <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
          <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
             <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
                   <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
                      <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
                         <div class="row">
@@ -156,7 +157,7 @@
                                           </a>
                                        </div>
                                        <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                                           online Version
                                           </font></a>
                                        </div>
@@ -188,19 +189,26 @@
                                     <div class="row">
                                        <div align="right" class="col-lg">
                                           <div class="o_mail_footer_social pb16" style="text-align: left;">
-                                             <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                                             <a href="https://www.facebook.com/syndicom/" target="_blank">
+                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                                             </a>
+                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                                             </a>
+                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                             <a href="https://twitter.com/syndicom_de">
+                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                                             </a>
+                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                             <a href="https://www.instagram.com/syndicom/">
+                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                                             </a>
+                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                                             </a>
+                                             <br/><br/>
                                              <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
                                              <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
                                              <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
@@ -237,7 +245,7 @@
                                           </a>
                                        </div>
                                        <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                                           online Version
                                           </font></a>
                                        </div>
@@ -351,7 +359,7 @@
                                           </a>
                                        </div>
                                        <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="/view" target="_blank"><font class="text-black">
+                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
                                           Version en ligne
                                           </font></a>
                                        </div>
@@ -463,7 +471,7 @@
                                           </a>
                                        </div>
                                        <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                                           versione online
                                           </font></a>
                                        </div>
@@ -718,7 +726,7 @@
                         </div>
                         <div class="row">
                            <div class="col-lg o_mail_footer_links o_default_snippet_text">
-                              <a role="button" href="/unsubscribe_from_list" class="btn btn-link o_default_snippet_text">Abmelden</a>
+                              <a role="button" href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link o_default_snippet_text">Abmelden</a>
                               | <a role="button" href="/contactus" class="btn btn-link o_default_snippet_text">Kontakt</a>
                            </div>
                         </div>

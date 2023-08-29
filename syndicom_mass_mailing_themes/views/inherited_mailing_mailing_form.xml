@@ -2,7 +2,7 @@
     <record id="mailing_mailing_syndicom_settings" model="ir.ui.view">
         <field name="name">mailing.mailing.syndicom.settings</field>
         <field name="model">mailing.mailing</field>
-        <field name="priority">2</field>
+        <field name="priority">20</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
         <field name="groups_id" eval="[(5,)]"/>
         <field name="arch" type="xml">
@@ -16,14 +16,27 @@
 
                 <field name="syndicom_count" />
                 <field name="syndicom_mail_sender" />
-                <field name="syndicom_mailing_domain_ids" widget="many2many_tags"  />
-                <!--<field name="syndicom_mailing_domain_ids" widget="many2many_tags"
-                       domain="[
-                           ('mailing_model_id','=', mailing_model_id),
-                           ('domain_usage','=', 'mailing'),
-                       ]"/>-->
+                <field name="syndicom_mailing_domain_ids" widget="many2many_tags" attrs="{'invisible': [('announcement_event_id','!=',False)]}"   />
+                
+                
+                <field name="syndicom_partner_ids" widget="many2many_tags"/>                 
+
+                <!-- Button wieder aktivieren wenn Alert Box ja  /  nein warnung implementiert 
+                <button name="clear_partner_ids" string="Alle Kontakte entfernen" type="object"  
+                                                 attrs="{'invisible':[('syndicom_partner_ids','=',False)]}"  />       
+                                                 -->      
+
                 <field name="syndicom_filter_ids" widget="many2many_tags"/>
+
+
+                
+                <field name="announcement_event_id" attrs="{'invisible': [('announcement_event_id','=',False)]}"  />
+                <field name="reminder_event_id" attrs="{'invisible': [('announcement_event_id','!=',False)]}"  />
+
                 <field name="syndicom_role_ids" widget="many2many_tags" domain="[('for_newsletter','=',True)]"/>
+
+<!--                <field name="event_announcement" /> -->
+
             </xpath>
         </field>
     </record>

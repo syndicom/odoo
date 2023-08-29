@@ -20,7 +20,17 @@
                             <field name="syn_declaration_frees_till" string="Beitragsbefreit bis"/>
                             <field name="syn_declaration_no_mail" />
 
-                            <field name="syn_contact_type_ids" />
+                            <field name="syn_contact_type_ids" editable="top"   >
+                            <tree  editable="bottom">
+                                <field name="name"/>
+                                <field name="is_main" />
+                                <field name="is_copy" />
+
+                                <field name="actual_main" />
+                                <field name="partner_id" optional="hide" />
+                                <field name="enterprise_id" optional="hide" />
+                            </tree>
+                            </field>
                             
                         </group>
                        </page>
@@ -35,3 +45,5 @@
    
     </data>
    </odoo>
+
+

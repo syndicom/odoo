@@ -56,6 +56,7 @@
                 /* Prevent Windows 10 Mail from underlining links. Styles for underlined links should be inline. */
                 a {
                     text-decoration: none;
+                    color: #5fbeec;
                 }
             @media screen and (max-width: 768px) {
                 .o_mail_table_styles {

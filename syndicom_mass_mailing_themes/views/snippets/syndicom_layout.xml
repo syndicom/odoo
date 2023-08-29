@@ -9,7 +9,7 @@
                   </a>
                </div>
                <div class="col-lg-4 text-right o_mail_no_resize">
-                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                   Onlineversion
                   </font></a>
                </div>
@@ -27,7 +27,7 @@
                   </a>
                </div>
                <div class="col-lg-4 text-right o_mail_no_resize">
-                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                   Version en ligne
                   </font></a>
                </div>
@@ -45,7 +45,7 @@
                   </a>
                </div>
                <div class="col-lg-4 text-right o_mail_no_resize">
-                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                   Versione online
                   </font></a>
                </div>
@@ -63,7 +63,7 @@
                   </a>
                </div>
                <div class="col-lg-4 text-right o_mail_no_resize">
-                  <a href="/view" target="_blank"><font class="text-black o_default_snippet_text">
+                  <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
                   online version
                   </font></a>
                </div>
@@ -77,19 +77,26 @@
             <div class="row">
                <div align="right" class="col-lg">
                   <div class="o_mail_footer_social pb16" style="text-align: left;">
-                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <a href="https://www.facebook.com/syndicom/" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://twitter.com/syndicom_de">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.instagram.com/syndicom/">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                     </a>
+                     <br/><br/>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
@@ -106,19 +113,28 @@
             <div class="row">
                <div align="right" class="col-lg">
                   <div class="o_mail_footer_social pb16" style="text-align: left;">
-                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://twitter.com/syndicom_fr"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+
+                     <a href="https://www.facebook.com/syndicom/" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://twitter.com/syndicom_fr">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.instagram.com/syndicom/">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                     </a>
+
+                     <br/><br/>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berne</font></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
@@ -135,21 +151,27 @@
             <div class="row">
                <div align="right" class="col-lg">
                   <div class="o_mail_footer_social pb16" style="text-align: left;">
-                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <a href="https://www.facebook.com/syndicom/" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://twitter.com/syndicom_de">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.instagram.com/syndicom/">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                     </a><br/><br/>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Berna</font></p>
+                     <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Casella postale</font><br/><font class="text-white o_default_snippet_text">3001 Berna</font></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tél: 058 817 18 18</a></font></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><a href="https://syndicom.ch/it/protezionedeidati/" class="btn btn-link"><font class="text-white o_default_snippet_text">Protezione dei dati</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Annullamento dell'iscrizione </font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
                   </div>
@@ -164,19 +186,27 @@
             <div class="row">
                <div align="right" class="col-lg">
                   <div class="o_mail_footer_social pb16" style="text-align: left;">
-                     <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                     <font class="text-white">&amp;nbsp;&amp;nbsp;
-                     </font>
-                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                     <a href="https://www.facebook.com/syndicom/" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://twitter.com/syndicom_de">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.instagram.com/syndicom/">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                     </a>
+                     <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                     <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                     <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                     </a>
+
+                     <br/><br/>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
                      <p style=" font-family: SourceSansPro, verdana,sans-serif;" ><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>

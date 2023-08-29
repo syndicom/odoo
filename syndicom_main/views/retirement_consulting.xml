@@ -1,0 +1,126 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_retirement_consulting">
+        <field name="name">Liste aller Pensionierungsberatungen</field>
+        <field name="res_model">syndicom.retirement.consulting</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="retirement_consulting_tree_view">
+        <field name="name">Liste aller Pensionierungsberatungen</field>
+        <field name="model">syndicom.retirement.consulting</field>
+        <field name="arch" type="xml">
+            <tree>
+
+             
+                <field name="partner_id"/>
+                <field name="stage" />
+                <field name="consulter_id" />
+
+                <field name="date_takeover" optional="hide" />
+                <field name="date_meeting"  optional="hide" />
+                <field name="date_done"  optional="hide" />
+              
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="retirement_consulting_form_view">
+        <field name="name">Pensionierungsberatung</field>
+        <field name="model">syndicom.retirement.consulting</field>
+        <field name="arch" type="xml">
+        
+            <form string="retirement_consulting">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="partner_id" />
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group name="content_main_left">
+
+                            <field name="consulter_id" />
+                            <field name="stage" />
+                            <field name="contact_me_by" />
+                            
+                            
+
+                            <hr/>
+
+                            <field name="date_takeover" />
+                            <field name="date_meeting" />
+                            <field name="date_done" />
+
+                            <hr/>
+
+                            <field name="expenses_travel" />
+                            <field name="expenses_catering" />
+                            <field name="expenses_overnight" />
+                            <field name="expenses_others" />
+                            <field name="fee" />
+
+                            <hr/>
+
+                            <field name="done_by" />
+                            
+
+                        </group>
+                        <group name="content_main_right">
+                    
+                           <field name="description"  widget="text"/>
+                           <field name="meeting_remarks" widget="text" />
+                           <field name="final_remarks" widget="text"/>
+                          
+                        </group>
+                    </group>
+
+                  
+                    
+           
+
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="retirement_consulting_search" model="ir.ui.view">
+        <field name="name">syndicom.retirement.consulting.search</field>
+        <field name="model">syndicom.retirement.consulting</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="partner_id"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_retirement_consulting_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="retirement_consulting_tree_view"/>
+        <field name="act_window_id" ref="action_window_retirement_consulting"/>
+    </record>
+
+    <record id="action_window_retirement_consulting_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="retirement_consulting_form_view"/>
+        <field name="act_window_id" ref="action_window_retirement_consulting"/>
+    </record>
+</odoo>

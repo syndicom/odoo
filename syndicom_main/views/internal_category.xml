@@ -1,0 +1,102 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_internal_category">
+        <field name="name">Liste aller Info Intern</field>
+        <field name="res_model">syndicom.internal.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="internal_category_tree_view">
+        <field name="name">Alle Info Interns</field>
+        <field name="model">syndicom.internal.category</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name" />
+               
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="internal_category_form_view">
+        <field name="name">Info Intern</field>
+        <field name="model">syndicom.internal.category</field>
+        <field name="arch" type="xml">
+        
+            <form string="internal_category">
+
+            
+
+            <!-- 
+                
+                <field name="image" widget="image"   />
+                style="width:100% !important; height:100px !important; max-width:100% !important;"
+                options="{'size': [2000, 150]}"  
+
+                <div class="page" t-att-style="'background-image:url(\'/web/image/sale.order/' + str(doc.id) + '/project_image/\')'">
+
+            -->
+
+                <sheet>
+                    
+                    <group>
+
+
+                     
+                        <group name="content_main_left">
+
+                          
+                          <field name="name"  placeholder="Bitte Titel eingeben..." />
+                          <field name="image" widget="image" />
+
+
+                        </group>
+                        <group name="content_main_right">
+                    
+                          
+                        </group>
+                    </group>
+
+                </sheet>
+
+               
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="internal_category_search" model="ir.ui.view">
+        <field name="name">syndicom.internal.category.search</field>
+        <field name="model">syndicom.internal.category</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="name"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_internal_category_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="internal_category_tree_view"/>
+        <field name="act_window_id" ref="action_window_internal_category"/>
+    </record>
+
+    <record id="action_window_internal_category_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="internal_category_form_view"/>
+        <field name="act_window_id" ref="action_window_internal_category"/>
+    </record>
+</odoo>
