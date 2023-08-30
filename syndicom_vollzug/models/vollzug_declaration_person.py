@@ -2,12 +2,14 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta, date
 from dateutil import relativedelta, rrule
+from odoo import tools
+
 
 class SyndicomvollzugDeclarationPerson(models.Model):
     _name = 'syndicom.vollzug.declaration.person'
     _description = 'Vollzug deklarierte Personen'
     name = fields.Char('Name')
-    declaration_id = fields.Many2one('syndicom.vollzug.declaration', 'Deklaration')
+    declaration_id = fields.Many2one('syndicom.vollzug.declaration', 'Deklaration', index=True)
     notice_id = fields.Many2one('syndicom.vollzug.notice', 'Meldung')
     place_id = fields.Many2one('syndicom.vollzug.notice.place', 'Einsatzgebiete')
     task_id = fields.Many2one('project.task', 'Personen')
@@ -143,9 +145,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                     if(delta_days >= 14 ):
 
                         # check the relation table to see if the enterprise is in a association, a ev or none of them
-                        is_association_this_month = self.env['res.partner.relation.all'].search(
-                        ["&","&","&","|",("active","=",True),("active","=",False),("is_inverse","=",False),("this_partner_id","=",record.declaration_id.enterprise_id.id),("type_id","=",int(association_imputed)),"|",("date_start","<=",dt),"&",("date_end","=",False),("date_end",">=",dt)]
-                        ,limit=1)
+                        is_association_this_month = record._get_is_association_this_month(association_imputed, dt)
 
                         logic = 'nicht'
 
@@ -218,6 +218,31 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.total_ag = 0
                 record.discount_ag = 0
 
+    @api.model
+    @tools.ormcache('association_imputed', 'dt', 'enterprise_id')
+    def _get_is_association_this_month_cached(self, association_imputed, dt, enterprise_id):
+        """Cached search """
+        return self.env['res.partner.relation.all'].search([
+            "&", "&", "&", "|",
+             ("active", "=", True),
+             ("active", "=", False),
+             ("is_inverse", "=", False),
+             ("this_partner_id", "=", enterprise_id),
+             ("type_id", "=", int(association_imputed)),
+             "|",
+             ("date_start", "<=", dt),
+             "&",
+             ("date_end", "=", False),
+             ("date_end", ">=", dt),
+        ], limit=1).id
+
+    def _get_is_association_this_month(self, association_imputed, dt):
+        self.ensure_one()
+        return self.env['res.partner.relation.all'].browse(
+            self._get_is_association_this_month_cached(
+                association_imputed, dt, self.declaration_id.enterprise_id.id
+            )
+        )
 
     @api.depends('birthday','ssn','zip')
     def _compute_search_partner(self):
@@ -305,4 +330,3 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
                     record.gender = 'w'
 
-    
