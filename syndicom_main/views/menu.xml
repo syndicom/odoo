@@ -4,7 +4,7 @@
         <menuitem id="syndicom_internal_information"
                   name="Intern"
                   web_icon="syndicom_main,static/description/odoo_icon_newspaper.png"
-                  sequence="6"
+                  sequence="2"
                   groups="base.group_user"/>
 
         <menuitem id="syndicom_internal_information_news"
