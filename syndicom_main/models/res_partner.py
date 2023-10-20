@@ -91,4 +91,3 @@ class ResPartner(models.Model):
     # TODO : studio feld in richtiges Feld übernehmen => Achtung Datenmigration
     x_no_bill_till
     """
-

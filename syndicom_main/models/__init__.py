@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import res_partner
+from . import event_registration
 from . import helpdesk_ticket
 from . import hr_leave_type
 from . import suisse_streets
@@ -14,3 +15,5 @@ from . import retirement_consulting
 from . import mysyndicom_users
 from . import internal_category
 from . import internal_information
+from . import account_move_line
+from . import announcement
