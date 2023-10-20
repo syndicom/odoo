@@ -38,6 +38,7 @@
         'views/mysyndicom_users.xml',
         'views/internal_category.xml',
         'views/internal_informations.xml',
+        'views/account_move_line.xml',
         'views/menu.xml',
     ],
     
