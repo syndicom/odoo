@@ -18,6 +18,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="stage" />
                 <field name="lang_id"/>
                 <field name="course_number"/>
                 <field name="date_from"/>
@@ -31,11 +32,16 @@
     </record>
 
     <record model="ir.ui.view" id="kursliste_form_view">
-        <field name="name">Kursliste</field>
+        <field name="name">Kurs</field>
         <field name="model">syndicom.course</field>
         <field name="arch" type="xml">
-            <form string="Greminum">
+            
+            <form string="Kurs">
+            <header>
+              <field widget="statusbar" options="{'clickable': '1'}" name="stage"/>
+            </header>
                 <sheet>
+                
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
@@ -53,7 +59,8 @@
                            
                            <field name="date_from"/>
                            <field name="date_to"/>
-                           <field name="active" />
+                           <field name="date_string" />
+                           <field name="active" invisible="True" />
 
                         </group>
                     </group>
@@ -77,21 +84,19 @@
                             <group>
                                 <group name="content_left">
                                 
-                                <field name="active" />
+                                
                                 <field name="lang_id"/>
                                 
                                 
                                 
                                 <field name="seats"/>
+                                <field name="seats_min" />
                                 <field name="seats_free"/>
                                 <field name="topic"/>
+
+                                <field name="location_id"/>
                                 <field name="location"/>
-                                <field name="price_member"/>
-                                <field name="price_others"/>
-                                <field name="price_catering"/>
-                                <field name="price_catering_others"/>
-                                <field name="price_overnight"/>
-                                <field name="price_overnight_others"/>
+                                
                                 <field name="for_members"/>
                                 <field name="for_confidants"/>
                                 <field name="for_employees"/>
@@ -106,6 +111,19 @@
                                 </group>
                                 <group name="content_right">
                                     
+                                <field name="price_member"/>
+                                <field name="price_others"/>
+                                <field name="price_catering"/>
+                                <field name="price_catering_others"/>
+                                <field name="price_overnight"/>
+                                <field name="price_overnight_others"/>
+
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Beschreibung" name="course_description">
+                            <group>
+                                
                                 <field name="description_content" widget="html"/>
                                 <field name="description_benefit" widget="html"/>
                                 <field name="description_target"  widget="html"/>
@@ -114,7 +132,20 @@
                                 <field name="description_note" widget="html"/>
                                 <field name="description_price" widget="html"/>
                                 <field name="description_requirements" widget="html"/>
+                                <field name="description_devices" widget="html"/>
+                                   
 
+                                
+                            </group>
+                        </page>
+                        <page string="Erweitert" name="course_custom">
+                            <group>
+                                <group name="content_left">
+
+                                    <field name="speaker_ids" widget="many2many_tags" />
+                                    <field name="level_ids" widget="many2many_tags" />
+                                    <field name="document_ids" />
+                                    
                                 </group>
                             </group>
                         </page>

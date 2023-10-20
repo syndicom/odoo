@@ -1,0 +1,80 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_speaker">
+        <field name="name">Referenten verwalten</field>
+        <field name="res_model">syndicom.course.speaker</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hier können Referenten verwaltet werden
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="speaker_tree_view">
+        <field name="name">speaker</field>
+        <field name="model">syndicom.course.speaker</field>
+        <field name="arch" type="xml">
+            <tree>
+                
+                <field name="partner_id" />
+                <field name="employeer" />
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="speaker_form_view">
+        <field name="name">Referent</field>
+        <field name="model">syndicom.course.speaker</field>
+        <field name="arch" type="xml">
+            <form string="Greminum">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True" />
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <field name="active" invisible="True" />
+                        <field name="partner_id"/>
+                        <field name="employeer" />
+                        <field name="cv" widget="html" />
+                    </group>
+                      
+                </sheet>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="speaker_search" model="ir.ui.view">
+        <field name="name">syndicom.course.speaker.search</field>
+        <field name="model">syndicom.course.speaker</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="employeer" />
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_speaker_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="speaker_tree_view"/>
+        <field name="act_window_id" ref="action_window_speaker"/>
+    </record>
+
+    <record id="action_window_speaker_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="speaker_form_view"/>
+        <field name="act_window_id" ref="action_window_speaker"/>
+    </record>
+</odoo>

@@ -27,6 +27,17 @@
                   parent="syndicom_course_settings"
                   action="action_window_institut"
                   sequence="15"/>
+        <menuitem id="syndicom_course_settings_speaker"
+                  name="Referenten"
+                  parent="syndicom_course_settings"
+                  action="action_window_speaker"
+                  sequence="20"/>
+
+        <menuitem id="syndicom_course_settings_level"
+                  name="Kurslevel"
+                  parent="syndicom_course_settings"
+                  action="action_window_level"
+                  sequence="25"/>
        
     </data>
 </odoo>
