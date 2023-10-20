@@ -62,12 +62,33 @@
 
                         <group>
                             <field name="category_id" />
-                            <field name="teaser" widget="html"  placeholder="Kurzer Teaser zum Eintrag. Wird auch für die Ankündigung verwendet.." />
+                            <!-- <field name="teaser" widget="html"  placeholder="Kurzer Teaser zum Eintrag. Wird auch für die Ankündigung verwendet.." /> -->
                             <field name="body"  widget="html"   placeholder="Beitrag..." />
                         </group>
                         
 
-                        <notebook name="internal_information_settings">
+                        <notebook name="internal_information_settings" groups="syndicom_main.syndicom_internal_info_manager">
+                            <page string="Deutsch" name="page_internal_information_german">
+                                <group name="german">
+                                    <field name="name_de" />
+                                    <!-- <field name="teaser_de" widget="html" /> -->
+                                    <field name="body_de" widget="html" />
+                                </group>
+                            </page>
+                            <page string="Französisch" name="page_internal_information_french">
+                                <group name="french">
+                                    <field name="name_fr" />
+                                    <!-- field name="teaser_fr" widget="html" />-->
+                                    <field name="body_fr" widget="html" />
+                                </group>
+                            </page>
+                            <page string="Italienisch" name="page_internal_information_italien">
+                                <group name="italien">
+                                    <field name="name_it" />
+                                    <!-- <field name="teaser_it" widget="html" /> -->
+                                    <field name="body_it" widget="html" />
+                                </group>
+                            </page>
                             <page string="Einstellungen" name="page_internal_information_settings">
 
                                 <group name="settings_left">

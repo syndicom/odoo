@@ -53,8 +53,10 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     
     discount_ag = fields.Float(string='Rabatt AG')
 
+    @api.depends('date_entry','date_leave','employment_rate','is_apprentice')
     def _compute_duration_in_month(self):
         for record in self:
+
             if(record.declaration_id.id):
                 record._compute_apprentice()
 
@@ -113,7 +115,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
 
                 # Check every month
                 for dt in rrule.rrule(rrule.MONTHLY,dtstart=dt_start, until=dt_end):
-                    
+
                     m = m+1
                     actual_month = dt
                     delta_days = 31
@@ -143,7 +145,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
 
                     # Enough Days, check witch kind of calculation logic
                     if(delta_days >= 14 ):
-
+                        
                         # check the relation table to see if the enterprise is in a association, a ev or none of them
                         is_association_this_month = record._get_is_association_this_month(association_imputed, dt)
 
@@ -234,7 +236,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
              "&",
              ("date_end", "=", False),
              ("date_end", ">=", dt),
-        ], limit=1).id
+        ]).id
 
     def _get_is_association_this_month(self, association_imputed, dt):
         self.ensure_one()
@@ -329,4 +331,3 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                     record.gender = 'm'
                 elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
                     record.gender = 'w'
-

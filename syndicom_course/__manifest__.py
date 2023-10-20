@@ -29,6 +29,8 @@
         'views/course.xml',
         'views/member_service.xml',
         'views/settings_institute.xml',
+        'views/settings_speaker.xml',
+        'views/settings_level.xml',
         'views/menu.xml',
     ],
     

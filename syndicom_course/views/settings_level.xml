@@ -1,0 +1,76 @@
+<odoo>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_window_level">
+        <field name="name">Kurslevel verwalten</field>
+        <field name="res_model">syndicom.course.level</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hier können Kurslevel verwaltet werden
+            </p>
+        </field>
+    </record>
+
+    <!-- VIEWS-->
+    <record model="ir.ui.view" id="level_tree_view">
+        <field name="name">level</field>
+        <field name="model">syndicom.course.level</field>
+        <field name="arch" type="xml">
+            <tree>
+                
+                <field name="name" />
+                
+          
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="level_form_view">
+        <field name="name">Kurslevel</field>
+        <field name="model">syndicom.course.level</field>
+        <field name="arch" type="xml">
+            <form string="Greminum">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <field name="active" invisible="True" />
+                    </group>
+                      
+                </sheet>
+               
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="level_search" model="ir.ui.view">
+        <field name="name">syndicom.course.level.search</field>
+        <field name="model">syndicom.course.level</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+             
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_window_level_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="level_tree_view"/>
+        <field name="act_window_id" ref="action_window_level"/>
+    </record>
+
+    <record id="action_window_level_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="level_form_view"/>
+        <field name="act_window_id" ref="action_window_level"/>
+    </record>
+</odoo>

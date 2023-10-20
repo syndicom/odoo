@@ -33,7 +33,7 @@ class RetirementConsulting(models.Model):
     expenses_overnight = fields.Float(string='Übernachtungsspesen')
     expenses_others = fields.Float(string='Spesen')
     fee = fields.Float(string='Honorar')
-    expenses_ids = fields.Many2many(comodel_name='hr.expenses', string='Aufwände')
+    expenses_ids = fields.Many2many(comodel_name='hr.expense', string='Aufwände')
     
     done_by = fields.Many2one(comodel_name='res.partner', string='Abgeschlossen durch')
     inactive_by = fields.Many2one(comodel_name='res.partner', string='Gelöscht durch')

@@ -1,0 +1,57 @@
+<odoo>
+ <data>
+
+        <!--
+        Partners Extension
+        -->
+
+        <record id="view_move_line_form_correction" model="ir.ui.view">
+            <field name="name">view_move_line_form.inherit</field>
+            <field name="model">account.move.line</field>
+            <field name="priority">60</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+            <field name="arch" type="xml">
+                <page name="information" position="after">
+                    <page string="Korrekturen" name="syndicom_corrections" >
+                       
+                        <group name="content">
+                            <group name="content_left">
+                                <field name="correction_analytic_account_id" />
+                                <button type="object" name="create_correction" string="Korrektur erstellen" class="btn btn-primary" />
+                            </group>
+                            <group name="content_right">
+                               <field name="correction_account_id" />
+                            </group>
+                          
+                        </group>
+                        
+
+                            
+
+
+                            <field name="correction_ids" >
+                            <tree editable="false" create="false">
+                                
+                                
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                                <field name="old_account_id"/>
+                                <field name="old_analytic_account_id"/>
+                                <field name="new_account_id"/>
+                                <field name="new_analytic_account_id"/>
+                                
+                                
+                                
+                            </tree>
+                            </field>
+
+                    </page>
+                </page>                    
+                
+            </field>
+        </record>
+
+
+ </data>
+</odoo>
