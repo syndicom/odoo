@@ -8,6 +8,7 @@ class SyndicomvollzugDeclaration(models.Model):
     _description = 'Vollzug Deklarationen'
     _inherit = ['mail.thread','mail.activity.mixin']
     name = fields.Char('Name',compute='_compute_name_field')
+    active = fields.Boolean(string='Aktiv',default=True)  
     currency_id = fields.Many2one('res.currency', 'Währung')
     stage_id = fields.Many2one('syndicom.vollzug.declaration.stage',string='Stufe',group_expand='_read_group_stage_ids')
     enterprise_id = fields.Many2one('res.partner', 'Betrieb', index=True)

@@ -15,6 +15,12 @@ class SyndicomVollzugContactType(models.Model):
                                                      ('invoice', 'Rechnungen'),
                                                      ('controls', 'Kontrollen'),
                                                      ('privat', 'Privatadresse'),
+                                                     ('hr_chief', 'Personalverantwortlicher'),
+                                                     ('hr_admin', 'Sachbearbeiter HR'),
+                                                     ('gl', 'Geschäftsleitung'),
+                                                     ('cla_confirm', 'GAV-Bestätigung'),
+                                                     ('cla_controls', 'GAV-Kontrollen'),
+                                                     ('accounting_office', 'Rechnungsstelle'),
                                                      ], index=True)
 
     is_main = fields.Boolean(string='Hauptkontakt')
