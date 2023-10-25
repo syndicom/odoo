@@ -13,7 +13,7 @@
              <field name="groups_id" eval="[(5,)]"/>
              <field name="arch" type="xml">
                  <page name="internal_notes" position="after">
-                     <page string="Petitionen" name="petition"  groups="">
+                     <page string="Petitionen" name="petition"  >
                         
                          <field name="syn_petition_participation_ids" nolabel="1">
                              <tree editable="bottom">
