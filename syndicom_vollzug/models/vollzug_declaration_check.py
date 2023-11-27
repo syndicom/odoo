@@ -43,29 +43,62 @@ class SyndicomVollzugDeclarationCheck(models.Model):
                         p.zip,
                         p.city,
                         
-                        (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True) count_an,
-                        (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration_cc' and can.active = True) count_cc,
+
+
+                        
+
+                        (select count(*) from res_partner can 
+                        inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                        where can.parent_id = p.id and can.active = True) count_an,
+                        
+                        (select count(*) from res_partner can 
+                        inner join  syndicom_vollzug_contact_type typ_cc on typ_cc.partner_id = can.id and typ_cc.name = 'declaration' and typ_cc.is_copy = True
+                        where can.parent_id = p.id and can.active = True) count_cc,
                         
                         case 
-                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '') = 0 then p.email
-                            else (select email from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '' limit 1) end as email,
+                            when (select count(*) from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' ) = 0 then p.email
+                            else (select can.email from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' limit 1) end as email,
                             
                         case 
-                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '') = 0 then p.id
-                            else (select id from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True and can.email != '' limit 1) end as partner_id,
+                            when (select count(*) from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' ) = 0 then p.id
+                            else (select can.id from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' limit 1) end as partner_id,
                             
 
                         case 
-                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '') = 0 then ''
-                            else (select name from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '' limit 1) end as name_an,
+                            when (select count(*) from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '') = 0 then ''
+                            else (select can.name from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' limit 1) end as name_an,
 
                         case 
-                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '') = 0 then p.lang
-                            else (select lang from res_partner can where can.parent_id = p.id and can.type = 'declaration' and can.active = True  and can.email != '' limit 1) end as lang,
+                            when (select count(*) from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '') = 0 then p.lang
+                            else (select can.lang from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_an on typ_an.partner_id = can.id and typ_an.name = 'declaration' and typ_an.is_main = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '' limit 1) end as lang,
                             
                         case 
-                            when (select count(*) from res_partner can where can.parent_id = p.id and can.type = 'declaration_cc' and can.active =  True  and can.email != '') = 0 then ''
-                            else (select string_agg(email::text, ',') from res_partner can where can.parent_id = p.id and can.type = 'declaration_cc' and can.active = True  and can.email != '' limit 1) end as email_cc,
+                            when (select count(*) from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_cc on typ_cc.partner_id = can.id and typ_cc.name = 'declaration' and typ_cc.is_copy = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '') = 0 then ''
+                            else (select string_agg(email::text, ',') from res_partner can 
+                                    inner join  syndicom_vollzug_contact_type typ_cc on typ_cc.partner_id = can.id and typ_cc.name = 'declaration' and typ_cc.is_copy = True
+                                    where can.parent_id = p.id and can.active = True and can.email != '') end as email_cc,
+
+
+
+
 
                         con.date_start,
                         con.date_end
@@ -74,6 +107,7 @@ class SyndicomVollzugDeclarationCheck(models.Model):
                         res_partner p
                         inner join 	res_partner_relation_all con on con.type_id = """ + cla_imputed + """ and con.is_inverse = False and con.this_partner_id = p.id
                         inner join 	res_partner c on c.id = con.other_partner_id
+                        
            
             WHERE
                     p.active = True
