@@ -55,6 +55,8 @@
                           
                           <field name="name"  placeholder="Bitte Titel eingeben..." />
                           <field name="image" widget="image" />
+                          <field name="html_before" />
+                          <field name="html_after" />
 
 
                         </group>

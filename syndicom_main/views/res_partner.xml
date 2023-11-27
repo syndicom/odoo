@@ -8,10 +8,12 @@
         <record id="view_partner_property_form" model="ir.ui.view">
             <field name="name">res.partner.property.form.inherit</field>
             <field name="model">res.partner</field>
-            <field name="priority">20</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+            <field name="priority">20</field>
+            <field name="groups_id" eval="[(5,)]"/>
             <field name="arch" type="xml">
+                
+          <!--
                 <page name="internal_notes" position="after">
                     <page string="Konto Report" name="syndicom_account_report" >
                        
@@ -44,6 +46,8 @@
                     </page>
                 </page>
 
+                -->     
+<!--
                 <xpath expr="//field[@name='associate_member']" position="before">
                     <field name="work_sector" readonly="1"/>
                     <field name="work_main_employeer" readonly="1"/>
@@ -54,7 +58,6 @@
 
                     <field name="work_location_ids" widget="many2many_tags" readonly="1" />
                     
-                    <!-- <field name="work_main_building" readonly="1"/> -->
                     <field name="work_is_freelance" readonly="1"/>
                     <field name="work_is_self_employed" readonly="1"/>
                     <field name="work_is_temporary" readonly="1" />
@@ -75,14 +78,13 @@
                     <field name="partnership_discount" />
                     <field name="partnership_partner_id" />
                 </xpath>
-
+-->
                 <xpath expr="//field[@name='street']" position="before">
                     <field name="address_search_id" placeholder="Adressverzeichnis durchsuchen..." options="{'no_quick_create':True, 'no_create_edit': True}" />
                 </xpath>
-
+<!--
                 <xpath expr="//field[@name='zip_id']" position="replace" />
-                    
-                
+-->
             </field>
         </record>
 
