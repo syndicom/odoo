@@ -13,7 +13,7 @@
             <field name="groups_id" eval="[(5,)]"/>
             <field name="arch" type="xml">
                 
-          <!--
+          
                 <page name="internal_notes" position="after">
                     <page string="Konto Report" name="syndicom_account_report" >
                        
@@ -46,8 +46,6 @@
                     </page>
                 </page>
 
-                -->     
-<!--
                 <xpath expr="//field[@name='associate_member']" position="before">
                     <field name="work_sector" readonly="1"/>
                     <field name="work_main_employeer" readonly="1"/>
@@ -78,13 +76,13 @@
                     <field name="partnership_discount" />
                     <field name="partnership_partner_id" />
                 </xpath>
--->
+
                 <xpath expr="//field[@name='street']" position="before">
                     <field name="address_search_id" placeholder="Adressverzeichnis durchsuchen..." options="{'no_quick_create':True, 'no_create_edit': True}" />
                 </xpath>
-<!--
+
                 <xpath expr="//field[@name='zip_id']" position="replace" />
--->
+
             </field>
         </record>
 
