@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import res_partner
+from . import res_users
 from . import event_registration
 from . import helpdesk_ticket
 from . import hr_leave_type

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 from odoo.tools import html_escape
+from odoo.exceptions import UserError
 
 
 class SyndicomInternalInformation(models.Model):
@@ -13,16 +14,14 @@ class SyndicomInternalInformation(models.Model):
     body = fields.Html(string='Inhalt',  translate=True , sanitize=False,   sanitize_tags=False,   sanitize_attributes=False, readonly=True, compute='_compute_body')
 
     name_de = fields.Char(string='Titel Deutsch')
-    teaser_de = fields.Html(string='Teaser Deutsch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung',   )    
-    body_de = fields.Html(string='Inhalt Deutsch', )
+    teaser_de = fields.Html(string='Teaser Deutsch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung',  sanitize=False,   sanitize_tags=False,   sanitize_attributes=False )    
+    body_de = fields.Html(string='Inhalt Deutsch', sanitize=False,   sanitize_tags=False,   sanitize_attributes=False )
     name_fr = fields.Char(string='Titel Französisch')
-    teaser_fr = fields.Html(string='Teaser Französisch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung',  )    
-    body_fr = fields.Html(string='Inhalt Französisch',  )
+    teaser_fr = fields.Html(string='Teaser Französisch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung' , sanitize=False,   sanitize_tags=False,   sanitize_attributes=False  )    
+    body_fr = fields.Html(string='Inhalt Französisch', sanitize=False,   sanitize_tags=False,   sanitize_attributes=False  )
     name_it = fields.Char(string='Titel Italienisch')
-    teaser_it = fields.Html(string='Teaser Italienisch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung',   )    
-    body_it = fields.Html(string='Inhalt Italienisch',  )
-
-
+    teaser_it = fields.Html(string='Teaser Italienisch', help='Dieser Text erscheint ebenfalls in einer allfälligen Ankündigung', sanitize=False,   sanitize_tags=False,   sanitize_attributes=False  )    
+    body_it = fields.Html(string='Inhalt Italienisch', sanitize=False,   sanitize_tags=False,   sanitize_attributes=False  )
 
     announcement_id = fields.Many2one(comodel_name='announcement', string='Verbundene Ankündigung') 
     category_id = fields.Many2one(comodel_name='syndicom.internal.category', string='Kategorie')
@@ -38,35 +37,69 @@ class SyndicomInternalInformation(models.Model):
     notify_till = fields.Datetime(string='Ankündigung bis')
 
 
+
+
+
     def create_announcement(self):
         for record in self:
             
-            rec_fr = record.with_context(lang='fr_CH')
-            rec_it = record.with_context(lang='it_IT')
-            rec_de = record.with_context(lang='de_CH')
-            rec_en = record.with_context(lang='en_US')
+            if record.name_de == False:
+                raise UserError('Kein deutscher Titel eingetragen - dies muss zwingend erfüllt sein')
+            if record.body_de == False:
+                raise UserError('Kein deutscher Inhalt eingetragen - dies muss zwingend erfüllt sein')
+            if record.notify_from == False:
+                raise UserError('Die Ankündigung hat kein Start Datum - bitte eines eintragen und die Ankündigung erneut mit dem entsprechenden Button erstellen')
+            if record.notify_till == False:
+                raise UserError('Die Ankündigung hat kein Ende Datum - bitte eines eintragen und die Ankündigung erneut mit dem entsprechenden Button erstellen')
 
-            #button = "<a href='web#id=" + str(record.id) + "&model=syndicom.internal.information&view_type=form'>Info Intern öffnen</a><hr/>"
+            user_deutsch = self.env['res.users'].search([('lang','in',['de_CH','en_US']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
+            user_franz = self.env['res.users'].search([('lang','in',['fr_CH','it_IT']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
+            user_all = self.env['res.users'].search([('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])         
 
-            announcement = self.env['announcement'].create({
-                'active' : True,
-                'name' : record.name,
-                'is_general_announcement' : True,
-                'notification_date' : record.notify_from,
-                'notification_expiry_date' : record.notify_till,
-            })
+            html_before = record.category_id.html_before
+            html_after = record.category_id.html_after
+            
+            if html_before:
+                html_before = html_before.replace('{resid}',str(record.id))
+            else:
+                html_before = ''
+            if html_after:
+                html_after = html_after.replace('{resid}',str(record.id))
+            else: 
+                html_after = ''
 
-            fr = announcement.with_context(lang='fr_CH')
-            it = announcement.with_context(lang='it_IT')
-            de = announcement.with_context(lang='de_CH')
-            en = announcement.with_context(lang='en_US')
-
-            fr.write({'name':rec_fr.name, 'content': rec_fr.body})
-            it.write({'name':rec_it.name, 'content': rec_it.body})
-            en.write({'name':rec_en.name, 'content': rec_en.body})
-            de.write({'name':rec_de.name, 'content': rec_de.body})
-
-            record.announcement_id = announcement
+            if record.name_fr and len(record.name_fr) > 1:
+                deutsch = self.env['announcement'].create({
+                        'active' : True,
+                        'name' : record.name_de,
+                        'content' : html_before + record.body_de + html_after,
+                        'is_general_announcement' : False,
+                        'notification_date' : record.notify_from,
+                        'notification_expiry_date' : record.notify_till,
+                        'announcement_type' : 'specific_users',
+                        'specific_user_ids': user_deutsch.ids,
+                    })                
+                franz = self.env['announcement'].create({
+                        'active' : True,
+                        'name' : record.name_fr,
+                        'content' : html_before + record.body_fr + html_after,
+                        'is_general_announcement' : False,
+                        'notification_date' : record.notify_from,
+                        'notification_expiry_date' : record.notify_till,
+                        'announcement_type' : 'specific_users',
+                        'specific_user_ids': user_franz.ids,
+                    })
+            else:
+                alle = self.env['announcement'].create({
+                        'active' : True,
+                        'name' : record.name_de,
+                        'content' : html_before + record.body_de + html_after,
+                        'is_general_announcement' : False,
+                        'notification_date' : record.notify_from,
+                        'notification_expiry_date' : record.notify_till,
+                        'announcement_type' : 'specific_users',
+                        'specific_user_ids': user_all.ids,
+                    })        
 
     def _compute_name(self):
         for rec in self:
@@ -142,3 +175,6 @@ class SyndicomInternalInformation(models.Model):
                 fr.body = rec.body_de
 
 
+class ResAnnoucement(models.Model):
+    _inherit = 'announcement'
+    content = fields.Html(sanitize=False,   sanitize_tags=False,   sanitize_attributes=False )
