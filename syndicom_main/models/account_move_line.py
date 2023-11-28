@@ -38,7 +38,7 @@ class ResAccountMoveLine(models.Model):
 
             rec.write({
                 'account_id': correction_account,
-                'analytic_account_id': old_analytic_account,
+                'analytic_account_id': correction_analytic,
                 'correction_account_id' :False,
                 'correction_analytic_account_id' :False,
             })

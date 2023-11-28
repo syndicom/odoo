@@ -26,7 +26,10 @@ class SyndicomvollzugDeclaration(models.Model):
     total_ag = fields.Monetary(string='AG Beiträge', compute='_compute_total_ag')
     total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_total_an_tz')
     total_an_vz = fields.Monetary(string='AN Beiträge VZ', compute='_compute_total_an_vz')
+    total_an = fields.Monetary(string="AN Beiträge total", compute='_compute_total_an')
+    total_total = fields.Monetary(string="AN + AG Beiträge total", compute='_compute_total_total')
     total_discount = fields.Monetary(string='Rabatt',readonly=True)
+
     bill_count = fields.Integer(compute='_compute_bill_count')
     person_count = fields.Integer(compute="_compute_person_count")
     kanban_state = fields.Selection([   ('normal', 'Grey'),   ('done', 'Green'),   ('blocked', 'Red')], string='Kanban State',   copy=False, default='normal', required=True)
@@ -85,25 +88,68 @@ class SyndicomvollzugDeclaration(models.Model):
             total_n = 0
             total_a = 0
             ahv = []
-
+# Wenn es ein Datum Von hat, dann darf es nicht nach dem record.date_to sein
+# Wenn es ein Datum Bis hat, dann darf es nicht vor dem record.date_from sein
             for p in person:
-                if p.ssn not in ahv:
-                    ahv.append(p.ssn)
-                    if p.gender == 'w':
-                        total_w+=1
-                    elif p.gender == 'n':
-                        total_n+=1
-                    else:
-                        total_m+=1
-                    if p.is_apprentice == True:
-                        total_a+=1
+                is_valid = True
+                
+                #gueltig berechnen
+                if p.date_entry != False:
+                    if p.date_entry >= record.date_to:
+                        is_valid = False
+                        
+                if p.date_leave != False:
+                    if p.date_leave <= record.date_from:
+                        is_valid = False
+                        
+                if p.date_leave == False and p.date_entry == False:
+                    is_valid = False
+                    
+                #if (p.date_entry and (not p.date_entry > record.date_to)) and (p.date_leave and (not p.date_leave < record.date_from)):
+                if is_valid == True:
+                    if p.ssn not in ahv:
+                        ahv.append(p.ssn)
+                        if p.gender == 'w':
+                            total_w+=1
+                        elif p.gender == 'n':
+                            total_n+=1
+                        else:
+                            total_m+=1
+                        if p.is_apprentice == True:
+                            total_a+=1
 
             record.total_m = total_m
             record.total_w = total_w
             record.total_n = total_n
             record.total_ma = len(ahv)
             record.total_a = total_a
+
+    def _compute_total_an(self):
+        for record in self:
+
+            if record.total_an_tz == False:
+                tz = 0
+            else:
+                tz = record.total_an_tz
+            if record.total_an_vz == False:
+                vz = 0
+            else:
+                vz = record.total_an_vz
             
+            record.total_an = tz + vz
+
+    def _compute_total_total(self):
+        for record in self:
+            if record.total_an == False:
+                an = 0
+            else:
+                an = record.total_an
+            if record.total_ag == False:
+                ag = 0
+            else:
+                ag = record.total_ag
+            
+            record.total_total = an + ag
 
     def _compute_total_ag(self):
         for record in self:

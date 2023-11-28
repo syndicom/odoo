@@ -9,3 +9,7 @@ class SyndicomInternalCategory(models.Model):
     name = fields.Char(string='Name')
     image = fields.Binary(string='Bild')
     
+
+    html_before = fields.Html(sanitize=False)
+    html_after = fields.Html(sanitize=False)
+

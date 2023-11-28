@@ -103,14 +103,12 @@
 
                                 <group name="settings_left">
 
-                                    <field name="notify" />
-                                    <field name="announcement_id" />
                                     <field name="notify_from" />
                                     <field name="notify_till" />
                                     
                                 </group>
 
-                       	        <button type="object" name="create_announcement" string="Ankündigung erstellen"/>
+                       	        <button type="object" class="btn btn-primary" name="create_announcement" string="Ankündigung erstellen"/>
 
 
                             </page>
