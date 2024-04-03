@@ -52,9 +52,9 @@ class SyndicomInternalInformation(models.Model):
             if record.notify_till == False:
                 raise UserError('Die Ankündigung hat kein Ende Datum - bitte eines eintragen und die Ankündigung erneut mit dem entsprechenden Button erstellen')
 
-            user_deutsch = self.env['res.users'].search([('lang','in',['de_CH','en_US']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
-            user_franz = self.env['res.users'].search([('lang','in',['fr_CH','it_IT']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
-            user_all = self.env['res.users'].search([('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])         
+            user_deutsch = self.env['res.users'].sudo().search([('lang','in',['de_CH','en_US']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
+            user_franz = self.env['res.users'].sudo().search([('lang','in',['fr_CH','it_IT']),('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])
+            user_all = self.env['res.users'].sudo().search([('is_syndicom_section','=',False),('is_syndicom_guest','=',False)])         
 
             html_before = record.category_id.html_before
             html_after = record.category_id.html_after
@@ -69,7 +69,7 @@ class SyndicomInternalInformation(models.Model):
                 html_after = ''
 
             if record.name_fr and len(record.name_fr) > 1:
-                deutsch = self.env['announcement'].create({
+                deutsch = self.env['announcement'].sudo().create({
                         'active' : True,
                         'name' : record.name_de,
                         'content' : html_before + record.body_de + html_after,
@@ -79,7 +79,7 @@ class SyndicomInternalInformation(models.Model):
                         'announcement_type' : 'specific_users',
                         'specific_user_ids': user_deutsch.ids,
                     })                
-                franz = self.env['announcement'].create({
+                franz = self.env['announcement'].sudo().create({
                         'active' : True,
                         'name' : record.name_fr,
                         'content' : html_before + record.body_fr + html_after,
@@ -90,7 +90,7 @@ class SyndicomInternalInformation(models.Model):
                         'specific_user_ids': user_franz.ids,
                     })
             else:
-                alle = self.env['announcement'].create({
+                alle = self.env['announcement'].sudo().create({
                         'active' : True,
                         'name' : record.name_de,
                         'content' : html_before + record.body_de + html_after,
