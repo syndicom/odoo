@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2024 braintec AG (https://braintec.com)
+All Rights Reserved
+Licensed under the AGPL-3.0 (http://www.gnu.org/licenses/agpl.html).
+See LICENSE file for full licensing details.
+-->
+<odoo>
+
+    <record id="form_res_partner_relation_type" model="ir.ui.view">
+        <field name="name">res.partner.relation.type.inherit.syndicom_vollzug</field>
+        <field name="model">res.partner.relation.type</field>
+        <field name="inherit_id" ref="partner_multi_relation.form_res_partner_relation_type"/>
+        <field name="arch" type="xml">
+            <field name="handle_invalid_onchange" position="after">
+                <field name="cla_imputed_ok"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="tree_res_partner_relation_type" model="ir.ui.view">
+        <field name="name">res.partner.relation.type.inherit.syndicom_vollzug</field>
+        <field name="model">res.partner.relation.type</field>
+        <field name="inherit_id" ref="partner_multi_relation.tree_res_partner_relation_type"/>
+        <field name="arch" type="xml">
+            <field name="is_symmetric" position="after">
+                <field name="cla_imputed_ok"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

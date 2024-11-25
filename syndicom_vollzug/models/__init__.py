@@ -2,6 +2,7 @@
 
 from . import res_config_settings
 from . import res_partner
+from . import res_partner_relation_type
 from . import project_task
 from . import vollzug_declaration
 from . import vollzug_declaration_person

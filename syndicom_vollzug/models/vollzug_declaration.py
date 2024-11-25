@@ -221,21 +221,6 @@ class SyndicomvollzugDeclaration(models.Model):
             else:
                 record.overdue = 0
 
-    def _check_cla_start_date(self):
-        for record in self:
-            cla_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_imputed')
-            cla_imputed = str(cla_imputed) if cla_imputed else '0'
-
-            relation = self.env['res.partner.relation.all'].search([('active','=',True),('is_inverse','=',False),('this_partner_id','=',record.enterprise_id.id),('type_id','=',int(cla_imputed))],limit=1)
-            cla_start_date = relation.date_start
-            cla_end_date = relation.date_end
-            if isinstance(cla_start_date,date) and cla_start_date > record.date_from:
-                record.date_from = cla_start_date
-            else:
-                record.date_from = record.date_from
-            if isinstance(cla_end_date,date) and record.date_to < cla_end_date:
-                record.date_to = cla_end_date
-        
     def button_declaration_bill_backend(self):
         return {
             'name': 'Rechnungen', 
