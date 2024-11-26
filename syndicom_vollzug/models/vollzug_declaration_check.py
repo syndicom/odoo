@@ -29,9 +29,6 @@ class SyndicomVollzugDeclarationCheck(models.Model):
 
     def _query(self, with_clause="", fields={}, groupby="", from_clause=""):
 
-        cla_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.cla_imputed')
-        cla_imputed = str(cla_imputed) if cla_imputed else '0'
-
         return """
 
             SELECT 
@@ -105,7 +102,8 @@ class SyndicomVollzugDeclarationCheck(models.Model):
                             
             FROM 
                         res_partner p
-                        inner join 	res_partner_relation_all con on con.type_id = """ + cla_imputed + """ and con.is_inverse = False and con.this_partner_id = p.id
+                        inner join 	res_partner_relation_all con on con.is_inverse = False and con.this_partner_id = p.id
+                        inner join  res_partner_relation_type rel_type on rel_type.id = con.type_id and rel_type.cla_imputed_ok = True
                         inner join 	res_partner c on c.id = con.other_partner_id
                         
            

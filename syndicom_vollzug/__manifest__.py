@@ -5,7 +5,7 @@
     'website': "https://syndicom.ch",
     'category': 'Sales/CRM',
     'version': '15.0.1.0.3',
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'summary': "Vollzug",
     'description': "Modul zum verwalten der GAV-Unterstellungen und entsprechenden Deklarationsaufforderungen",
     'depends': [
@@ -26,6 +26,7 @@
         'views/vollzug_pricelist.xml',
         'views/vollzug_declaration_wizard.xml',
         'views/vollzug_notice.xml',
+        'views/res_partner_relation_type.xml',
         'views/vollzug_cashback.xml',
         'views/vollzug_declaration_wizard_reminder.xml',
         'views/inherited_res_partner_form_view.xml',
