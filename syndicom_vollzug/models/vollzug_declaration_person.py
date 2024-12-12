@@ -236,7 +236,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
              "&",
              ("date_end", "=", False),
              ("date_end", ">=", dt),
-        ]).id
+        ]).ids
 
     def _get_is_association_this_month(self, association_imputed, dt):
         self.ensure_one()
