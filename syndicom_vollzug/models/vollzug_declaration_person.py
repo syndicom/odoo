@@ -53,11 +53,11 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     
     discount_ag = fields.Float(string='Rabatt AG')
 
-    @api.depends('date_entry','date_leave','employment_rate','is_apprentice')
+    @api.depends('date_entry','date_leave','employment_rate','is_apprentice', 'duration_correction')
     def _compute_duration_in_month(self):
         for record in self:
 
-            if(record.declaration_id.id):
+            if record.declaration_id:
                 record._compute_apprentice()
 
                 # getting settings records
@@ -206,7 +206,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.duration_association = max(0, duration_asso)
                 record.duration_ev = max(0,duration_ev)
                 record.duration_none = max(0,duration_none)
-                record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none)
+                record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none + record.duration_correction)
                 record.total_an = max(0,total_an)
                 record.total_ag = max(0,total_ag)
                 record.discount_ag = max(0,discount_ag)
