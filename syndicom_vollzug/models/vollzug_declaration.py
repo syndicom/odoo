@@ -23,12 +23,12 @@ class SyndicomvollzugDeclaration(models.Model):
     date_to = fields.Date(string='Enddatum')#,default=lambda self: date(fields.datetime.now().year,12,31),required=True)
     date_deadline = fields.Date(string='Frist')
     count_mailings = fields.Integer(string='Anzahl Aufforderungen')
-    total_ag = fields.Monetary(string='AG Beiträge', compute='_compute_total_ag')
-    total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_total_an_tz')
-    total_an_vz = fields.Monetary(string='AN Beiträge VZ', compute='_compute_total_an_vz')
-    total_an = fields.Monetary(string="AN Beiträge total", compute='_compute_total_an')
-    total_total = fields.Monetary(string="AN + AG Beiträge total", compute='_compute_total_total')
-    total_discount = fields.Monetary(string='Rabatt',readonly=True)
+    total_ag = fields.Monetary(string='AG Beiträge', compute='_compute_billing_totals')
+    total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_billing_totals')
+    total_an_vz = fields.Monetary(string='AN Beiträge VZ', compute='_compute_billing_totals')
+    total_an = fields.Monetary(string="AN Beiträge total", compute='_compute_billing_totals')
+    total_total = fields.Monetary(string="AN + AG Beiträge total", compute='_compute_billing_totals')
+    total_discount = fields.Monetary(string='Rabatt', compute='_compute_billing_totals')
 
     bill_count = fields.Integer(compute='_compute_bill_count')
     person_count = fields.Integer(compute="_compute_person_count")
@@ -124,91 +124,71 @@ class SyndicomvollzugDeclaration(models.Model):
             record.total_ma = len(ahv)
             record.total_a = total_a
 
-    def _compute_total_an(self):
-        for record in self:
+    def _compute_billing_totals(self):
+        """Compute billing data totals for company and employees."""
+        # Getting settings records
+        association_imputed_id = int(
+            self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed'),
+        )
+        ev_imputed_id = int(self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.ev_imputed'))
+        for declaration in self:
+            # Compute the AG totals
+            persons = self.env['syndicom.vollzug.declaration.person'].search(
+                [
+                    ('declaration_id', '=', declaration.id),
+                ],
+            )
+            declaration.total_ag = sum(persons.mapped('total_ag'))
+            total_discount = sum(persons.mapped('discount_ag'))
 
-            if record.total_an_tz == False:
-                tz = 0
-            else:
-                tz = record.total_an_tz
-            if record.total_an_vz == False:
-                vz = 0
-            else:
-                vz = record.total_an_vz
-            
-            record.total_an = tz + vz
-
-    def _compute_total_total(self):
-        for record in self:
-            if record.total_an == False:
-                an = 0
-            else:
-                an = record.total_an
-            if record.total_ag == False:
-                ag = 0
-            else:
-                ag = record.total_ag
-            
-            record.total_total = an + ag
-
-    def _compute_total_ag(self):
-        for record in self:
-            total = 0
-            total_discount = 0
-
-            # getting settings records
-            association_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed')
-            association_imputed = str(association_imputed) if association_imputed else '0'
-            ev_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.ev_imputed')
-            ev_imputed = str(ev_imputed) if ev_imputed else '0'
-            
-            person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
-            for p in person:
-                total = total + p.total_ag
-                total_discount = total_discount + p.discount_ag
-
-            # check the relation table to see if the enterprise is in a association, a ev or none of them
+            # Check the relation table to see if the enterprise is in a association, a ev or none of them
             is_association_this_month = self.env['res.partner.relation.all'].search(
-            ["&","&","&",("is_inverse","=",False),("this_partner_id","=",record.enterprise_id.id),("type_id","=",int(association_imputed)),"|",("date_start","<=",record.date_to),"&",("date_end","=",False),("date_end",">=",record.date_from)])
+                [
+                    "&", "&", "&",
+                    ("is_inverse", "=", False),
+                    ("this_partner_id", "=", declaration.enterprise_id.id),
+                    ("type_id", "=", association_imputed_id),
+                    "|",
+                    ("date_start", "<=", declaration.date_to),
+                    "&",
+                    ("date_end", "=", False),
+                    ("date_end", ">=", declaration.date_from),
+                ],
+            )
             logic = 'nicht'
             for mon in is_association_this_month:
-                if(mon.other_partner_id.id == int(ev_imputed) and logic != 'verband'):
+                if mon.other_partner_id.id == ev_imputed_id and logic != 'verband':
                     logic = 'ev'
                 else:
                     logic = 'verband'
 
-
             discount_max = self.env['syndicom.vollzug.pricelist'].search(
-                        ["&","&","&","&",("gav_id","=",record.cla_partner.id),("date_from","<=",record.date_to),("category","=",logic),"|",("date_to","=",False),("date_to",">=",record.date_to),"|",("active","=",True),("active","=",False)]
-                        , limit = 1)
+                [
+                    "&", "&", "&", "&",
+                    ("gav_id", "=", declaration.cla_partner.id),
+                    ("date_from", "<=", declaration.date_to),
+                    ("category", "=", logic),
+                    "|",
+                    ("date_to", "=", False),
+                    ("date_to", ">=", declaration.date_to),
+                    "|",
+                    ("active", "=", True), ("active", "=", False),
+                ],
+                limit=1,
+            )
 
-            max_discount = record.duration_declaration * discount_max.discount_max
-
-            record.total_ag = total
+            max_discount = declaration.duration_declaration * discount_max.discount_max
 
             if total_discount <= max_discount:
-                record.total_discount = total_discount
+                declaration.total_discount = total_discount
             else:
-                record.total_discount = max_discount
-         
-
-    def _compute_total_an_tz(self):
-        for record in self:
-            total = 0
-            person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
-            for p in person:
-                if p.employment_rate < 50:
-                    total = total + p.total_an
-            record.total_an_tz = total
-
-    def _compute_total_an_vz(self):
-        for record in self:
-            total = 0
-            person = self.env['syndicom.vollzug.declaration.person'].search([('declaration_id','=',record.id)])
-            for p in person:
-                if p.employment_rate >= 50:
-                    total = total + p.total_an
-            record.total_an_vz = total
+                declaration.total_discount = max_discount
+            # Compute the AN totals
+            declaration.total_an_tz = sum(persons.mapped(lambda p: p.total_an if p.employment_rate < 50 else 0))
+            declaration.total_an_vz = sum(persons.mapped(lambda p: p.total_an if p.employment_rate >= 50 else 0))
+            declaration.total_an = declaration.total_an_tz + declaration.total_an_vz
+            # And finally the summed up total amount
+            declaration.total_total = declaration.total_discount + declaration.total_an
 
     def _read_group_stage_ids(self, stage_id, domain, order):
         stage_ids = self.env['syndicom.vollzug.declaration.stage'].search([])
