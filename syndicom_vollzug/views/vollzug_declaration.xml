@@ -58,7 +58,7 @@
             <field name="kanban_state"/>
             <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger", "normal": "muted"}'/>
                 <templates>
-          
+
 
 
                 <t t-name="kanban-box">
@@ -90,7 +90,9 @@
                                         <field name="date_deadline" widget="remaining_days"/>
                                     </div>
                                 </div>
-                                
+                                <div class="oe_kanban_bottom_right text-info" style="font-size: 0.7em;">
+                                    <field name="cla_partner"/>
+                                </div>
                             </div>
                         </div>
                         <div class="oe_clear"/>
@@ -192,25 +194,21 @@
                            
                         </page>
                         <page string="Rechnungsdaten" name="page_vollzug_declaration_bill">
-
                             <group>
                                 <group name="content_left">
-
                                     <field name="total_ag" string="AG-Beiträge (nicht plafoniert)" />
                                     <field name="total_discount" string="AG-Beiträge (plafoniert)" />
-
+                                    <field name="total_ag_nicht_verband"/>
+                                    <field name="total_ag_verband"/>
+                                    <field name="total_ag_verband_erlassen"/>
                                     <field name="total_an_tz" />
                                     <field name="total_an_vz" />
+                                    <field name="total_an_lernende"/>
                                     <field name="total_an" />
-
                                     <field name="total_total" />
-                                    
-                                   
                                 </group>
                                 <group name="content_right">
-                                   
-                                    <field name="move_id" type="object" attrs="{'invisible':[('move_id','=',False)]}" />
-
+                                    <field name="move_id" type="object" attrs="{'invisible':[('move_id','=',False)]}"/>
                                 </group>
                             </group>
 

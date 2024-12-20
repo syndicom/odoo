@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
-from datetime import datetime, timedelta, date
+from odoo import models, fields
+from datetime import date
+
 
 class SyndicomVollzugPricelist(models.Model):
     _name = 'syndicom.vollzug.pricelist'
@@ -41,10 +42,9 @@ class SyndicomVollzugPricelist(models.Model):
             else:
                 rec.active = False
 
-
-    
-
-
-    
-    
-    
+    def _get_by_date(self, filter_date):
+        """Return the first valid pricelist for a given date from a recordset."""
+        for pricelist in self:
+            if (pricelist.date_from or filter_date).replace(day=1) <= filter_date <= (pricelist.date_to or filter_date):
+                return pricelist
+        return self.env['syndicom.vollzug.pricelist']
