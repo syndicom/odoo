@@ -33,6 +33,8 @@ class SyndicomvollzugDeclarationPerson(models.Model):
 
     total_an = fields.Monetary(string='AN Beitrag') #,compute="_compute_total_an")
     total_ag = fields.Monetary(string='AG Beitrag') #,compute="_compute_total_ag")
+    total_ag_nicht_verband = fields.Monetary(compute='_compute_duration_in_month')
+    total_ag_verband = fields.Monetary(compute='_compute_duration_in_month')
     salutation = fields.Char(string='Anrede')
     street = fields.Char(string='Adresse')
     zip = fields.Char(string='PLZ')
@@ -53,11 +55,11 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     
     discount_ag = fields.Float(string='Rabatt AG')
 
-    @api.depends('date_entry','date_leave','employment_rate','is_apprentice')
+    @api.depends('date_entry','date_leave','employment_rate','is_apprentice', 'duration_correction')
     def _compute_duration_in_month(self):
         for record in self:
 
-            if(record.declaration_id.id):
+            if record.declaration_id:
                 record._compute_apprentice()
 
                 # getting settings records
@@ -91,6 +93,8 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 duration_ev = 0
                 duration_none = 0
                 total_ag = 0
+                total_ag_verband = 0
+                total_ag_nicht_verband = 0
                 total_an = 0
                 discount_ag = 0
 
@@ -196,19 +200,27 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                                     total_ag_this_month = (record.salary / 100 * pricelist.amount_ag_vz)
                                     total_an = total_an + (record.salary / 100 * pricelist.amount_vz)
                             discount_ag = discount_ag + (total_ag_this_month / 100 * pricelist.discount)
+                            if pricelist.category == 'verband':
+                                total_ag_verband += total_ag_this_month
+                            else:
+                                total_ag_nicht_verband += total_ag_this_month
 
                 if record.duration_correction != 0 and m > 0:
                     if (m == record.duration_association) or (m == duration_ev) or (m == duration_none):
                         total_an = total_an / m * (m + record.duration_correction)
                         total_ag = total_ag / m * (m + record.duration_correction)
+                        total_ag_nicht_verband = total_ag_nicht_verband / m * (m + record.duration_correction)
+                        total_ag_verband = total_ag_verband / m * (m + record.duration_correction)
                         discount_ag = discount_ag / m * (m + record.duration_correction)
 
                 record.duration_association = max(0, duration_asso)
                 record.duration_ev = max(0,duration_ev)
                 record.duration_none = max(0,duration_none)
-                record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none)
+                record.duration = max(0,record.duration_association + record.duration_ev + record.duration_none + record.duration_correction)
                 record.total_an = max(0,total_an)
                 record.total_ag = max(0,total_ag)
+                record.total_ag_nicht_verband = max(0,total_ag_nicht_verband)
+                record.total_ag_verband = max(0,total_ag_verband)
                 record.discount_ag = max(0,discount_ag)
 
             else:
@@ -218,6 +230,8 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                 record.duration = 0
                 record.total_an = 0
                 record.total_ag = 0
+                record.total_ag_nicht_verband = 0
+                record.total_ag_verband = 0
                 record.discount_ag = 0
 
     @api.model
