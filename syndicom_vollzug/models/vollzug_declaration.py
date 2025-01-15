@@ -38,7 +38,7 @@ class SyndicomvollzugDeclaration(models.Model):
         compute='_compute_billing_totals',
     )
     total_ag_verband_erlassen = fields.Monetary(
-        'AG Beiträge Verband (erlassen)',
+        'AG Beiträge (erlassen)',
         compute='_compute_billing_totals',
     )
     total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_billing_totals')
@@ -156,6 +156,7 @@ class SyndicomvollzugDeclaration(models.Model):
             declaration.total_ag = sum(persons.mapped('total_ag'))
             declaration.total_ag_nicht_verband = sum(persons.mapped('total_ag_nicht_verband'))
             declaration.total_ag_verband = sum(persons.mapped('total_ag_verband'))
+            declaration.total_ag_verband_erlassen = -sum(persons.mapped('discount_ag'))
             pricelists = SyndicomVollzugPricelist.search(
                 [
                     "&", "&", "&",
@@ -202,7 +203,6 @@ class SyndicomvollzugDeclaration(models.Model):
                     cursor_date = cursor_date + relativedelta(months=1)
             # If max_discount is zero, then we will take the total_ag as plafoniert because it doesn't apply
             declaration.total_discount = min(declaration.total_ag, int(max_discount)) or declaration.total_ag
-            declaration.total_ag_verband_erlassen = -(declaration.total_discount - declaration.total_ag_nicht_verband)
             # Compute the AN totals
             total_an_lernende, total_an_tz, total_an_vz = 0, 0, 0
             for person in persons:
