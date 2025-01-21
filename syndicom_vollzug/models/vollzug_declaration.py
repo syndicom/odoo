@@ -154,9 +154,10 @@ class SyndicomvollzugDeclaration(models.Model):
                 [('declaration_id', '=', declaration.id)],
             )
             declaration.total_ag = sum(persons.mapped('total_ag'))
-            declaration.total_ag_nicht_verband = sum(persons.mapped('total_ag_nicht_verband'))
-            declaration.total_ag_verband = sum(persons.mapped('total_ag_verband'))
-            declaration.total_ag_verband_erlassen = -sum(persons.mapped('discount_ag'))
+            declaration.total_ag_nicht_verband = 0.0
+            declaration.total_ag_verband = 0.0
+            declaration.total_ag_verband_erlassen = 0.0
+            total_ag_per_month = persons._get_sum_total_ag_per_month()
             pricelists = SyndicomVollzugPricelist.search(
                 [
                     "&", "&", "&",
@@ -164,7 +165,7 @@ class SyndicomvollzugDeclaration(models.Model):
                     ("date_from", "<=", declaration.date_to),
                     "|",
                     ("date_to", "=", False),
-                    ("date_to", ">=", declaration.date_to),
+                    ("date_to", ">=", declaration.date_from),
                     "|",
                     ("active", "=", True), ("active", "=", False),
                 ],
@@ -186,7 +187,6 @@ class SyndicomvollzugDeclaration(models.Model):
                     ("date_end", ">=", declaration.date_from),
                 ],
             )
-            max_discount = 0.0
             if declaration.date_from:
                 end_year = declaration.date_from.replace(month=12, day=31)
                 cursor_date = declaration.date_from.replace(day=1)
@@ -194,15 +194,22 @@ class SyndicomvollzugDeclaration(models.Model):
                 while cursor_date <= end_year:
                     memberships = year_memberships._get_by_date(cursor_date)
                     if memberships and all(m.other_partner_id.id == ev_imputed_id for m in memberships):
-                        max_discount += pricelists_per_cat.get('ev', SyndicomVollzugPricelist)._get_by_date(cursor_date).discount_max
+                        pricelist = pricelists_per_cat.get('ev', SyndicomVollzugPricelist)._get_by_date(cursor_date)
                     elif memberships:
-                        max_discount += pricelists_per_cat.get('verband', SyndicomVollzugPricelist)._get_by_date(cursor_date).discount_max
+                        pricelist = pricelists_per_cat.get('verband', SyndicomVollzugPricelist)._get_by_date(cursor_date)
                     else:
-                        # Just take the max_discount from the pricelist of type 'nicht'
-                        max_discount += pricelists_per_cat.get('nicht', SyndicomVollzugPricelist)._get_by_date(cursor_date).discount_max
+                        # Just take the pricelist of type 'nicht'
+                        pricelist = pricelists_per_cat.get('nicht', SyndicomVollzugPricelist)._get_by_date(cursor_date)
+                    # The plafoniert amount, without % discount
+                    amount = min(pricelist.discount_max, total_ag_per_month.get(f'{cursor_date.month}.{cursor_date.year}', 0.0))
+                    declaration.total_discount += amount
+                    if pricelist.category == 'verband':
+                        declaration.total_ag_verband += amount
+                    else:
+                        declaration.total_ag_nicht_verband += amount
+                    declaration.total_ag_verband_erlassen -= amount / 100 * pricelist.discount
                     cursor_date = cursor_date + relativedelta(months=1)
-            # If max_discount is zero, then we will take the total_ag as plafoniert because it doesn't apply
-            declaration.total_discount = min(declaration.total_ag, int(max_discount)) or declaration.total_ag
+
             # Compute the AN totals
             total_an_lernende, total_an_tz, total_an_vz = 0, 0, 0
             for person in persons:
@@ -218,7 +225,12 @@ class SyndicomvollzugDeclaration(models.Model):
             declaration.total_an_lernende = total_an_lernende
             declaration.total_an = declaration.total_an_tz + declaration.total_an_vz + declaration.total_an_lernende
             # And finally the summed up total amount
-            declaration.total_total = declaration.total_discount + declaration.total_an + declaration.total_ag_verband_erlassen
+            declaration.total_total = (
+                declaration.total_ag_nicht_verband
+                + declaration.total_ag_verband
+                + declaration.total_ag_verband_erlassen
+                + declaration.total_an
+            )
 
     def _read_group_stage_ids(self, stage_id, domain, order):
         stage_ids = self.env['syndicom.vollzug.declaration.stage'].search([])

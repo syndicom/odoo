@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
-from datetime import datetime, timedelta, date
-from dateutil import relativedelta, rrule
-from odoo import tools
+from collections import defaultdict
+from datetime import date, datetime, timedelta
+
+from dateutil import rrule
+
+from odoo import api, fields, models, tools
 
 
 class SyndicomvollzugDeclarationPerson(models.Model):
@@ -35,6 +37,7 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     total_ag = fields.Monetary(string='AG Beitrag') #,compute="_compute_total_ag")
     total_ag_nicht_verband = fields.Monetary(compute='_compute_duration_in_month')
     total_ag_verband = fields.Monetary(compute='_compute_duration_in_month')
+    total_ag_per_month = fields.Serialized(compute='_compute_duration_in_month')
     salutation = fields.Char(string='Anrede')
     street = fields.Char(string='Adresse')
     zip = fields.Char(string='PLZ')
@@ -58,34 +61,15 @@ class SyndicomvollzugDeclarationPerson(models.Model):
     @api.depends('date_entry','date_leave','employment_rate','is_apprentice', 'duration_correction')
     def _compute_duration_in_month(self):
         for record in self:
-
+            record.total_ag_per_month = {}
             if record.declaration_id:
                 record._compute_apprentice()
-
-                # getting settings records
-                association_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed')
-                association_imputed = str(association_imputed) if association_imputed else '0'
-                ev_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.ev_imputed')
-                ev_imputed = str(ev_imputed) if ev_imputed else '0'
-
-                date_entry = record.date_entry
-                date_leave = record.date_leave
-
-                if(date_entry == False):
-                    date_entry = record.declaration_id.date_from
-                if(date_leave == False):
-                    date_leave = record.declaration_id.date_to
-
-                # Sanitaze entry and leave date of the person according to the declaration data
-                if date_entry == False:
-                    date_entry = record.declaration_id.date_from
-                if date_leave == False:
-                    date_leave = record.declaration_id.date_to
-                if date_entry < record.declaration_id.date_from:
-                    date_entry = record.declaration_id.date_from
-                if date_leave > record.declaration_id.date_to:
-                    date_leave = record.declaration_id.date_to
-
+                # Getting settings records
+                association_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.association_imputed', '0')
+                ev_imputed = self.env['ir.config_parameter'].sudo().get_param('syndicom_vollzug.ev_imputed', '0')
+                # Sanitize entry and leave date of the person according to the declaration data
+                date_entry = max(record.date_entry or record.declaration_id.date_from, record.declaration_id.date_from)
+                date_leave = min(record.date_leave or record.declaration_id.date_to, record.declaration_id.date_to)
                 # Declaration
                 m = 0
                 m_total = 0
@@ -204,6 +188,9 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                                 total_ag_verband += total_ag_this_month
                             else:
                                 total_ag_nicht_verband += total_ag_this_month
+                        total_ag_per_month = record.total_ag_per_month
+                        total_ag_per_month[f'{dt.month}.{dt.year}'] = total_ag_this_month
+                        record.total_ag_per_month = total_ag_per_month
 
                 if record.duration_correction != 0 and m > 0:
                     if (m == record.duration_association) or (m == duration_ev) or (m == duration_none):
@@ -345,3 +332,12 @@ class SyndicomvollzugDeclarationPerson(models.Model):
                     record.gender = 'm'
                 elif record.salutation.lower() in ['frau','madame','md','weiblich','f','w','female','signora','miss','ms','ms.','mme','femme']:
                     record.gender = 'w'
+
+    def _get_sum_total_ag_per_month(self):
+        """Aggregate all declaration person total_agg per month and year."""
+        total_ag_per_month = defaultdict(int)
+        for person in self:
+            if person.total_ag_per_month:
+                for monthyear, value in person.total_ag_per_month.items():
+                    total_ag_per_month[monthyear] += value
+        return total_ag_per_month
