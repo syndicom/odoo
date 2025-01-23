@@ -43,6 +43,8 @@ class SyndicomvollzugDeclaration(models.Model):
     )
     total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_billing_totals')
     total_an_vz = fields.Monetary(string='AN Beiträge VZ', compute='_compute_billing_totals')
+    total_an_tz_inc_lernende = fields.Monetary('AN Beiträge TZ Lernende', compute='_compute_billing_totals')
+    total_an_vz_inc_lernende = fields.Monetary('AN Beiträge VZ Lernende', compute='_compute_billing_totals')
     total_an_lernende = fields.Monetary('AN Beiträge Lernende', compute='_compute_billing_totals')
     total_an = fields.Monetary(string="AN Beiträge total", compute='_compute_billing_totals')
     total_total = fields.Monetary(string="AN + AG Beiträge total", compute='_compute_billing_totals')
@@ -211,18 +213,28 @@ class SyndicomvollzugDeclaration(models.Model):
                     cursor_date = cursor_date + relativedelta(months=1)
 
             # Compute the AN totals
-            total_an_lernende, total_an_tz, total_an_vz = 0, 0, 0
+            total_an_tz = 0.0
+            total_an_vz = 0.0
+            total_an_lernende = 0.0
+            total_an_tz_inc_lernende = 0.0
+            total_an_vz_inc_lernende = 0.0
             for person in persons:
                 if person.is_apprentice:
                     total_an_lernende += person.total_an
-                elif person.employment_rate < 50:
-                    total_an_tz += person.total_an
+                if person.employment_rate < 50:
+                    total_an_tz_inc_lernende += person.total_an
+                    if not person.is_apprentice:
+                        total_an_tz += person.total_an
                 else:
-                    total_an_vz += person.total_an
+                    total_an_vz_inc_lernende += person.total_an
+                    if not person.is_apprentice:
+                        total_an_vz += person.total_an
             # Assign AN totals
             declaration.total_an_tz = total_an_tz
             declaration.total_an_vz = total_an_vz
             declaration.total_an_lernende = total_an_lernende
+            declaration.total_an_tz_inc_lernende = total_an_tz_inc_lernende
+            declaration.total_an_vz_inc_lernende = total_an_vz_inc_lernende
             declaration.total_an = declaration.total_an_tz + declaration.total_an_vz + declaration.total_an_lernende
             # And finally the summed up total amount
             declaration.total_total = (
