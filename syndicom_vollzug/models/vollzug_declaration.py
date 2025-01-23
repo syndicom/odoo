@@ -28,9 +28,9 @@ class SyndicomvollzugDeclaration(models.Model):
     date_to = fields.Date(string='Enddatum')#,default=lambda self: date(fields.datetime.now().year,12,31),required=True)
     date_deadline = fields.Date(string='Frist')
     count_mailings = fields.Integer(string='Anzahl Aufforderungen')
-    total_ag = fields.Monetary(string='AG Beiträge', compute='_compute_billing_totals')
+    total_ag = fields.Monetary(string='AG Beiträge (nicht plafoniert)', compute='_compute_billing_totals')
     total_ag_nicht_verband = fields.Monetary(
-        'AG Beiträge Nicht-Verband (fakturier)',
+        'AG Beiträge Nicht-Verband (fakturiert)',
         compute='_compute_billing_totals',
     )
     total_ag_verband = fields.Monetary(
@@ -38,7 +38,7 @@ class SyndicomvollzugDeclaration(models.Model):
         compute='_compute_billing_totals',
     )
     total_ag_verband_erlassen = fields.Monetary(
-        'AG Beiträge (erlassen)',
+        'AG Beiträge (rabatt)',
         compute='_compute_billing_totals',
     )
     total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_billing_totals')
@@ -47,8 +47,8 @@ class SyndicomvollzugDeclaration(models.Model):
     total_an_vz_inc_lernende = fields.Monetary('AN Beiträge VZ Lernende', compute='_compute_billing_totals')
     total_an_lernende = fields.Monetary('AN Beiträge Lernende', compute='_compute_billing_totals')
     total_an = fields.Monetary(string="AN Beiträge total", compute='_compute_billing_totals')
-    total_total = fields.Monetary(string="AN + AG Beiträge total", compute='_compute_billing_totals')
-    total_discount = fields.Monetary(string='Rabatt', compute='_compute_billing_totals')
+    total_total = fields.Monetary(string="AN + AG Beiträge Total (zu fakturieren)", compute='_compute_billing_totals')
+    total_discount = fields.Monetary(string='AG Beiträge (plafoniert)', compute='_compute_billing_totals')
 
     bill_count = fields.Integer(compute='_compute_bill_count')
     person_count = fields.Integer(compute="_compute_person_count")
