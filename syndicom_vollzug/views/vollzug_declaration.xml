@@ -196,15 +196,18 @@
                         <page string="Rechnungsdaten" name="page_vollzug_declaration_bill">
                             <group>
                                 <group name="content_left">
-                                    <field name="total_ag" string="AG-Beiträge (nicht plafoniert)" />
-                                    <field name="total_discount" string="AG-Beiträge (plafoniert)" />
+                                    <field name="total_ag"/>
+                                    <field name="total_discount"/>
+                                    <field name="total_ag_verband_erlassen"/>
+                                    <br/>
                                     <field name="total_ag_nicht_verband"/>
                                     <field name="total_ag_verband"/>
-                                    <field name="total_ag_verband_erlassen"/>
+                                    <br/>
                                     <field name="total_an_tz" />
                                     <field name="total_an_vz" />
                                     <field name="total_an_lernende"/>
                                     <field name="total_an" />
+                                    <br/>
                                     <field name="total_total" />
                                 </group>
                                 <group name="content_right">
