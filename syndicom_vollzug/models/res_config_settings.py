@@ -15,17 +15,9 @@ class ResConfigSettings(models.TransientModel):
         default="", 
         )
 
-    syn_partner_cc = fields.Many2one(comodel_name='res.partner',string='Partner CC Berechnung',
-        config_parameter='syndicom_vollzug.cla_logic_cc',
-        default=55247)
-
     syn_company_cc = fields.Many2one(comodel_name='res.company',string='Company CC',
         config_parameter='syndicom_vollzug.syn_company_cc',
         default=0)
-
-    syn_partner_nz = fields.Many2one(comodel_name='res.partner',string='Partner NZ Berechnung',
-        config_parameter='syndicom_vollzug.cla_logic_nz',
-        default=55250)
 
     syn_company_nz = fields.Many2one(comodel_name='res.company',string='Company nz',
         config_parameter='syndicom_vollzug.syn_company_nz',
