@@ -35,8 +35,6 @@
                                             Contact / Callcenter
                                         </div>
                                     <div class="row mt16">
-                                        <label class="col-lg-3 o_light_label" string="Partner GAV CC" for="syn_partner_cc"/>
-                                        <field name="syn_partner_cc" class="oe_inline" style="width: 70% !important;"/>
                                         <label class="col-lg-3 o_light_label" string="Company CC" for="syn_company_cc"/>
                                         <field name="syn_company_cc" class="oe_inline" style="width: 70% !important;"/>
                                         <label class="col-lg-3 o_light_label" string="Produkt Deklaration Teilzeit" for="syn_prod_cc_tz"/>
@@ -71,8 +69,6 @@
                                            Netzinfrastruktur
                                         </div>
                                     <div class="row mt16">
-                                        <label class="col-lg-3 o_light_label" string="Partner GAV NZ" for="syn_partner_nz"/>
-                                        <field name="syn_partner_nz" class="oe_inline" style="width: 70% !important;"/>
                                         <label class="col-lg-3 o_light_label" string="Company NZ" for="syn_company_nz"/>
                                         <field name="syn_company_nz" class="oe_inline" style="width: 70% !important;"/>
                                         <label class="col-lg-3 o_light_label" string="Produkt Deklaration Teilzeit" for="syn_prod_nz_tz"/>
