@@ -41,6 +41,7 @@ class SyndicomvollzugDeclaration(models.Model):
         'AG Beiträge (rabatt)',
         compute='_compute_billing_totals',
     )
+    totals_ag_per_month = fields.Serialized(compute='_compute_billing_totals')
     total_an_tz = fields.Monetary(string='AN Beiträge TZ', compute='_compute_billing_totals')
     total_an_vz = fields.Monetary(string='AN Beiträge VZ', compute='_compute_billing_totals')
     total_an_tz_inc_lernende = fields.Monetary('AN Beiträge TZ Lernende', compute='_compute_billing_totals')
@@ -160,6 +161,8 @@ class SyndicomvollzugDeclaration(models.Model):
             declaration.total_ag_verband = 0.0
             declaration.total_ag_verband_erlassen = 0.0
             total_ag_per_month = persons._get_sum_total_ag_per_month()
+            # JSON serializable variable storing the different ag amounts per every single month
+            totals_ag_per_month = {}
             pricelists = SyndicomVollzugPricelist.search(
                 [
                     "&", "&", "&",
@@ -206,14 +209,25 @@ class SyndicomvollzugDeclaration(models.Model):
                         pricelist = pricelists_per_cat.get('nicht', SyndicomVollzugPricelist)._get_by_date(cursor_date)
                     # The plafoniert amount, without % discount
                     amount = min(pricelist.discount_max, total_ag_per_month.get(f'{cursor_date.month}.{cursor_date.year}', 0.0))
+                    totals = {
+                        'total_discount': 0.0,
+                        'total_ag_verband': 0.0,
+                        'total_ag_nicht_verband': 0.0,
+                        'total_ag_verband_erlassen': 0.0,
+                    }
                     declaration.total_discount += amount
+                    totals['total_discount'] = amount
                     if pricelist.category == 'verband':
                         declaration.total_ag_verband += amount
+                        totals['total_ag_verband'] = amount
                     else:
                         declaration.total_ag_nicht_verband += amount
+                        totals['total_ag_nicht_verband'] = amount
                     declaration.total_ag_verband_erlassen -= amount / 100 * pricelist.discount
+                    totals['total_ag_verband_erlassen'] = amount / 100 * pricelist.discount
+                    totals_ag_per_month[fields.Date.to_string(cursor_date)] = totals
                     cursor_date = cursor_date + relativedelta(months=1)
-
+            declaration.totals_ag_per_month = totals_ag_per_month
             # Compute the AN totals
             total_an_tz = 0.0
             total_an_vz = 0.0
