@@ -178,7 +178,7 @@ class SyndicomvollzugDeclaration(models.Model):
             # Check the relation table to see if the enterprise is in an association, an ev or none of them
             year_memberships = self.env['res.partner.relation.all'].search(
                 [
-                    "&", "&", "&",
+                    "&", "&", "&", "&",
                     ("is_inverse", "=", False),
                     ("this_partner_id", "=", declaration.enterprise_id.id),
                     ("type_id", "=", association_imputed_id),
@@ -187,6 +187,8 @@ class SyndicomvollzugDeclaration(models.Model):
                     "&",
                     ("date_end", "=", False),
                     ("date_end", ">=", declaration.date_from),
+                    "|",
+                    ("active", "=", True), ("active", "=", False),
                 ],
             )
             if declaration.date_from:
