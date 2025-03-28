@@ -24,6 +24,7 @@
         'views/syndicom_petition.xml',
         'views/syndicom_petition_participation.xml',
         'views/menu.xml',
+        'views/filter_partners_wizard_views.xml',
     ],
 
 }
