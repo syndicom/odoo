@@ -266,10 +266,7 @@ class SyndicomvollzugDeclaration(models.Model):
 
     def _compute_overdue(self):
         for record in self:
-            if record.date_deadline < date.today():
-                record.overdue = 1
-            else:
-                record.overdue = 0
+            record.overdue = int(record.date_deadline and record.date_deadline < date.today())
 
     def button_declaration_bill_backend(self):
         return {
