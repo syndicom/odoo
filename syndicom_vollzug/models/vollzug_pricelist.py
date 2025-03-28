@@ -23,7 +23,7 @@ class SyndicomVollzugPricelist(models.Model):
     amount_ag_lernend = fields.Float(string='AG-Beitrag Lernende')
     
     
-    discount_max = fields.Float(string='Rabatt Max.')
+    discount_max = fields.Float(string='Rabatt Max.', digits=(4, 13))
     discount = fields.Float(string='Rabatt in %')
     
     date_from = fields.Date(string='Gültig ab')
