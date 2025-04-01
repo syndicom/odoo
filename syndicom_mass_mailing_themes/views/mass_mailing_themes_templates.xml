@@ -380,10 +380,9 @@
          </div>
       </div>
    </template>
+   <!--
    <!--FOOTER DEUTSCHE VERSION -->
-
    <template id= "footer_syndicom_deutsch">
-
    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
       <div class="container o_mail_table_styles">
          <div class="row">
@@ -463,6 +462,7 @@
       </div>
    </div>
    </template>
+   -->
    <!--
       <template id="theme_syndicom_blank">
          <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
