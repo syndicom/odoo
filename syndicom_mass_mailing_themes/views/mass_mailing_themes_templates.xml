@@ -6,25 +6,25 @@
          <div data-name="theme_syndicom_blank" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_blank" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_blank"/>
          </div>
-                  <!--
-         <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>
-         </div>
-         <div data-name="theme_syndicom_french" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_french" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_french"/>
-         </div>
-         <div data-name="theme_syndicom_italien" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_italien" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_italien"/>
-         </div>
-
-            <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-                <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
+         <!--
+            <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>
+            </div>
+            <div data-name="theme_syndicom_french" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_french" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_french"/>
+            </div>
+            <div data-name="theme_syndicom_italien" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_italien" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_italien"/>
             </div>
             
-         <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>
-         </div>
-         -->
+               <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+                   <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
+               </div>
+               
+            <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>
+            </div>
+            -->
          <!---
             <div data-name="syndicom2" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_standart" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_second"/>                
@@ -34,88 +34,86 @@
    </template>
    <!-- Theme "syndicom" default template -->
    <!--
-   <template id="theme_syndicom_template_default">
-      <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-            <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                  <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
-                     <div class="o_mail_table_styles container">
-                        <div class="row">
-                           <div class="col-lg-8 pt16 pb16">
-                              <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                              <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                              </a>
-                           </div>
-                           <div class="col-lg-4 text-right o_mail_no_resize">
-                              <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
-                              online Version
-                              </font></a>
+      <template id="theme_syndicom_template_default">
+         <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+            <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+               <div class="row">
+                  <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                     <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
+                        <div class="o_mail_table_styles container">
+                           <div class="row">
+                              <div class="col-lg-8 pt16 pb16">
+                                 <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                 <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                 </a>
+                              </div>
+                              <div class="col-lg-4 text-right o_mail_no_resize">
+                                 <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
+                                 online Version
+                                 </font></a>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
-                     <div class="container s_allow_columns">
-                        <p><strong>Ist jetzt alles verloren? NEIN, wir kämpfen weiter!</strong></p>
+                     <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
+                        <div class="container s_allow_columns">
+                           <p><strong>Ist jetzt alles verloren? NEIN, wir kämpfen weiter!</strong></p>
+                        </div>
                      </div>
-                  </div>
-                  <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
-                     <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
-                     <div class="container s_allow_columns">
-                        <h2><font style="color: rgb(0, 135, 179);">Wir kämpfen weiter!</font></h2>
-                        <h3>Gemeinsam stäken wir unsere Renten</h3>
+                     <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                        <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
                      </div>
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
-                     <div class="container s_allow_columns">
-                        <p>Hallo {{ object.firstname }}</p>
+                     <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
+                        <div class="container s_allow_columns">
+                           <h2><font style="color: rgb(0, 135, 179);">Wir kämpfen weiter!</font></h2>
+                           <h3>Gemeinsam stäken wir unsere Renten</h3>
+                        </div>
                      </div>
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pb4 o_we_force_no_transition pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                     <div class="container s_allow_columns">
-                        <h2><font style="color: rgb(0, 135, 179);">Soziale Absicherung: Das Engagement geht weiter!</font><br/></h2>
+                     <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
+                        <div class="container s_allow_columns">
+                           <p>Hallo {{ object.firstname }}</p>
+                        </div>
                      </div>
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                     <div class="container s_allow_columns">
-                        <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Wir werden auch nach diesen Abstimmungen für gute Renten, eine starke AHV und mehr Gleichstellung kämpfen. Das heisst:</strong>
-                           <br/>
-                        </p>
-                        <ul>
-                           <li>Die Rentenlücken in der 2. Säule müssen rasch und bezahlbar geschlossen werden. In der anstehenden parlamentarischen Lösung zur BVG-Reform werden wir uns stark einmischen und wenn nötig politische Möglichkeiten ergreifen, sollte die Gesetzesvorlage für die Absicherung aller Arbeitnehmenden im Alter schlecht sein.<br/>&amp;nbsp;</li>
-                           <li>Mit der SNB-Initiative möchten wir die langfristige Finanzierung der AHV sichern sowie die Renten stärken. Teile der angehäuften Milliardengewinne der Schweizerischen Nationalbank sollen in die AHV fliessen.&amp;nbsp;<strong>Unterstütze dies JETZT und unterschreibe die SNB-Initiative!</strong></li>
-                        </ul>
-                        <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong>UNTERSCHREIBE DIE SNB-INITIATIVE</strong></font></a></p>
-                        <ul>
-                           <li>Die Initiative für eine 13. AHV-Rente ist bereits eingereicht und wird uns weiterhin beschäftigen. Sie soll den Verfassungsauftrag endlich einlösen, indem die AHV die Existenzsicherung wirklich garantiert. Und sie soll die nun eingetretene Rentenlücke bei den Frauen korrigieren sowie den Zerfall der Pensionskassen-Renten ausgleichen.</li>
-                           <li>Unterschreibe auch die KITA-Initiative, um die Gleichstellung weiterhin zu fördern und ein ausreichendes Angebot an bezahlbarer Kinderbetreuung zu gewährleisten.</li>
-                        </ul>
-                        <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong>UNTERSCHREIBE DIE KITA-INITIATIVE</strong></font></a></p>
+                     <div class="s_text_block px-3 o_mail_snippet_general pb4 o_we_force_no_transition pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                        <div class="container s_allow_columns">
+                           <h2><font style="color: rgb(0, 135, 179);">Soziale Absicherung: Das Engagement geht weiter!</font><br/></h2>
+                        </div>
                      </div>
-                  </div>
-                  <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
-                     <div class="container s_allow_columns">
-                        <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);">Möchtest du mehr darüber erfahren? Hier geht es zur offiziellen Medienmitteilung des SGB.</font></a></p>
+                     <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                        <div class="container s_allow_columns">
+                           <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Wir werden auch nach diesen Abstimmungen für gute Renten, eine starke AHV und mehr Gleichstellung kämpfen. Das heisst:</strong>
+                              <br/>
+                           </p>
+                           <ul>
+                              <li>Die Rentenlücken in der 2. Säule müssen rasch und bezahlbar geschlossen werden. In der anstehenden parlamentarischen Lösung zur BVG-Reform werden wir uns stark einmischen und wenn nötig politische Möglichkeiten ergreifen, sollte die Gesetzesvorlage für die Absicherung aller Arbeitnehmenden im Alter schlecht sein.<br/>&amp;nbsp;</li>
+                              <li>Mit der SNB-Initiative möchten wir die langfristige Finanzierung der AHV sichern sowie die Renten stärken. Teile der angehäuften Milliardengewinne der Schweizerischen Nationalbank sollen in die AHV fliessen.&amp;nbsp;<strong>Unterstütze dies JETZT und unterschreibe die SNB-Initiative!</strong></li>
+                           </ul>
+                           <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong>UNTERSCHREIBE DIE SNB-INITIATIVE</strong></font></a></p>
+                           <ul>
+                              <li>Die Initiative für eine 13. AHV-Rente ist bereits eingereicht und wird uns weiterhin beschäftigen. Sie soll den Verfassungsauftrag endlich einlösen, indem die AHV die Existenzsicherung wirklich garantiert. Und sie soll die nun eingetretene Rentenlücke bei den Frauen korrigieren sowie den Zerfall der Pensionskassen-Renten ausgleichen.</li>
+                              <li>Unterschreibe auch die KITA-Initiative, um die Gleichstellung weiterhin zu fördern und ein ausreichendes Angebot an bezahlbarer Kinderbetreuung zu gewährleisten.</li>
+                           </ul>
+                           <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong>UNTERSCHREIBE DIE KITA-INITIATIVE</strong></font></a></p>
+                        </div>
                      </div>
-                  </div>
-                  <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
-                     <div class="container s_allow_columns">
-                        <p class="o_default_snippet_text">Kollegiale Grüsse,</p>
-                        <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                     <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
+                        <div class="container s_allow_columns">
+                           <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);">Möchtest du mehr darüber erfahren? Hier geht es zur offiziellen Medienmitteilung des SGB.</font></a></p>
+                        </div>
+                     </div>
+                     <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
+                        <div class="container s_allow_columns">
+                           <p class="o_default_snippet_text">Kollegiale Grüsse,</p>
+                           <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-   </template>
-   -->
-
-<!--DEUTSCHE VERSION VORLAGE NEWSLETTER-->
-
+      </template>
+      -->
+   <!--DEUTSCHE VERSION VORLAGE NEWSLETTER-->
    <template id="theme_syndicom_german">
       <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
          <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
@@ -204,9 +202,7 @@
          </div>
       </div>
    </template>
-
    <!--FRANZÖSISCHE VERSION VORLAGE NEWSLETTER-->
-
    <template id="theme_syndicom_french">
       <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
          <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
@@ -295,9 +291,7 @@
          </div>
       </div>
    </template>
-
    <!--ITALIENISCHE VERSION VORLAGE NEWSLETTER-->
-   
    <template id="theme_syndicom_italien">
       <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
          <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
@@ -386,9 +380,10 @@
          </div>
       </div>
    </template>
-
    <!--FOOTER DEUTSCHE VERSION -->
 
+   <template id= "footer_syndicom_deutsch">
+
    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
       <div class="container o_mail_table_styles">
          <div class="row">
@@ -413,9 +408,9 @@
          </div>
       </div>
    </div>
-
+   </template>
    <!--FOOTER FAANZÖSISCHE VERSION-->
-
+   <template id= "footer_syndicom_franz">
    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
       <div class="container o_mail_table_styles">
          <div class="row">
@@ -440,9 +435,9 @@
          </div>
       </div>
    </div>
-
+   </template>
    <!--FOOTER ITALIENISCHE VERSION-->
-
+   <template id= "footer_syndicom_italienisch">
    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
       <div class="container o_mail_table_styles">
          <div class="row">
@@ -467,82 +462,83 @@
          </div>
       </div>
    </div>
-
+   </template>
    <!--
-   <template id="theme_syndicom_blank">
-      <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
-            <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
-                  <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
-                     <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-                        <div class="row">
-                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
-                              <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
-                                 <div class="o_mail_table_styles container">
-                                    <div class="row">
-                                       <div class="col-lg-8 pt16 pb16">
-                                          <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                                          <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                                          </a>
-                                       </div>
-                                       <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
-                                          online Version
-                                          </font></a>
+      <template id="theme_syndicom_blank">
+         <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
+            <div class="container o_mail_wrapper oe_unremovable o_mail_regular" id="syndicom_newsletter_main">
+               <div class="row">
+                  <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
+                     <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+                        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+                           <div class="row">
+                              <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure ">
+                                 <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;">
+                                    <div class="o_mail_table_styles container">
+                                       <div class="row">
+                                          <div class="col-lg-8 pt16 pb16">
+                                             <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                             <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                             </a>
+                                          </div>
+                                          <div class="col-lg-4 text-right o_mail_no_resize">
+                                             <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                             online Version
+                                             </font></a>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" >
-                                 <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
-                                    <p><strong class="o_default_snippet_text">Slogan</strong></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" >
+                                    <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;">
+                                       <p><strong class="o_default_snippet_text">Slogan</strong></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
-                                 <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px;">
-                                    <h2 style="font-family: SourceSansPro, verdana,sans-serif; color: rgb(81, 181, 224);">Titel 1</h2>
-                                    <h3 style="font-family: SourceSansPro, verdana,sans-serif;">Titel 2</h3>
+                                 <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text" >
-                                 <div class="container s_allow_columns"  style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;" >
-                                    <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text" >Hallo {{ object.firstname }}<br/>Das ist ein Standart Text Block. Dieser ist auch in verschiedenen Spalten zu haben</p>
-                                    <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text"> Den Text kann man einfach anklicken und überschreiben. Weitere Inhaltselemente findest du rechts in der Bearbeitungsliste</p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns" style="padding-left:30px; padding-right:30px;">
+                                       <h2 style="font-family: SourceSansPro, verdana,sans-serif; color: rgb(81, 181, 224);">Titel 1</h2>
+                                       <h3 style="font-family: SourceSansPro, verdana,sans-serif;">Titel 2</h3>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
-                                 <div class="container o_mail_table_styles">
-                                    <div class="row">
-                                       <div align="right" class="col-lg">
-                                          <div class="o_mail_footer_social pb16" style="text-align: left;">
-                                             <a href="https://www.facebook.com/syndicom/" target="_blank">
-                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
-                                             </a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
-                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
-                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
-                                             </a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
-                                             <a href="https://twitter.com/syndicom_de">
-                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
-                                             </a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
-                                             <a href="https://www.instagram.com/syndicom/">
-                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
-                                             </a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
-                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
-                                             <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
-                                             </a>
-                                             <br/><br/>
-                                             <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                                             <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                                             <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-                                             <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text" >
+                                    <div class="container s_allow_columns"  style="padding-left:30px; padding-right:30px; font-family: SourceSansPro, verdana,sans-serif;" >
+                                       <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text" >Hallo {{ object.firstname }}<br/>Das ist ein Standart Text Block. Dieser ist auch in verschiedenen Spalten zu haben</p>
+                                       <p style=" font-family: SourceSansPro, verdana,sans-serif; font-size:14px;"  class="o_default_snippet_text"> Den Text kann man einfach anklicken und überschreiben. Weitere Inhaltselemente findest du rechts in der Bearbeitungsliste</p>
+                                    </div>
+                                 </div>
+                                 <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left" style="background-color:#5fbeec !important; padding-left:30px; padding-right:30px;  font-family: SourceSansPro, verdana,sans-serif; ">
+                                    <div class="container o_mail_table_styles">
+                                       <div class="row">
+                                          <div align="right" class="col-lg">
+                                             <div class="o_mail_footer_social pb16" style="text-align: left;">
+                                                <a href="https://www.facebook.com/syndicom/" target="_blank">
+                                                <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/facebook_od.png" style="width:14px;" />
+                                                </a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                                <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank">
+                                                <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/linkedin-in_od.png" style="width:20px;" />
+                                                </a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                                <a href="https://twitter.com/syndicom_de">
+                                                <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/x-twitter_od.png" style="width:20px;" />
+                                                </a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                                <a href="https://www.instagram.com/syndicom/">
+                                                <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/instagram_od.png" style="width:20px;" />
+                                                </a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;</font>
+                                                <a href="https://www.youtube.com/user/syndicomCH" target="_blank">
+                                                <img src="/syndicom_mass_mailing_themes/static/src/img/theme_syndicom_blank/youtube_od.png" style="width:20px;" />
+                                                </a>
+                                                <br/><br/>
+                                                <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                                                <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                                                <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                                                <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -555,109 +551,109 @@
                </div>
             </div>
          </div>
-      </div>
-   </template>
-
-   <template id="theme_syndicom_german">
-      <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-            <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                  <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
-                     <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-                        <div class="row">
-                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                              <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
-                                 <div class="o_mail_table_styles container">
-                                    <div class="row">
-                                       <div class="col-lg-8 pt16 pb16">
-                                          <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                                          <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                                          </a>
-                                       </div>
-                                       <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
-                                          online Version
-                                          </font></a>
+      </template>
+      
+      <template id="theme_syndicom_german">
+         <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
+            <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+               <div class="row">
+                  <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                     <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+                        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+                           <div class="row">
+                              <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                                 <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
+                                    <div class="o_mail_table_styles container">
+                                       <div class="row">
+                                          <div class="col-lg-8 pt16 pb16">
+                                             <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                             <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                             </a>
+                                          </div>
+                                          <div class="col-lg-4 text-right o_mail_no_resize">
+                                             <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                             online Version
+                                             </font></a>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><strong class="o_default_snippet_text">Ist jetzt alles verloren? NEIN, wir kämpfen weiter!</strong></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><strong class="o_default_snippet_text">Ist jetzt alles verloren? NEIN, wir kämpfen weiter!</strong></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
-                                 <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Wir kämpfen weiter!</font></h2>
-                                    <h3 class="o_default_snippet_text">Gemeinsam stäken wir unsere Renten</h3>
+                                 <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false" />
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p>Hallo  {{ object.firstname }}</p>
-                                    <p>Die Enttäuschung ist gross, dass die AHV 21 und die Verrechnungssteuer-Vorlage bei den heutigen Abstimmungen angenommen wurde. Die beschlossenen Leistungskürzungen verschlechtern die bereits problematische Einkommens- und Rentensituation der Frauen. <strong>Dennoch möchten wir ein grosses Dankeschön an unsere Mitglieder und Mitarbeitenden aussprechen und an alle, die die Kampagne gegen die AHV 21 mitgetragen haben!</strong><br/></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Wir kämpfen weiter!</font></h2>
+                                       <h3 class="o_default_snippet_text">Gemeinsam stäken wir unsere Renten</h3>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 o_we_force_no_transition pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Soziale Absicherung: Das Engagement geht weiter!</font><br/></h2>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p>Hallo  {{ object.firstname }}</p>
+                                       <p>Die Enttäuschung ist gross, dass die AHV 21 und die Verrechnungssteuer-Vorlage bei den heutigen Abstimmungen angenommen wurde. Die beschlossenen Leistungskürzungen verschlechtern die bereits problematische Einkommens- und Rentensituation der Frauen. <strong>Dennoch möchten wir ein grosses Dankeschön an unsere Mitglieder und Mitarbeitenden aussprechen und an alle, die die Kampagne gegen die AHV 21 mitgetragen haben!</strong><br/></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px" class="o_default_snippet_text">Wir werden auch nach diesen Abstimmungen für gute Renten, eine starke AHV und mehr Gleichstellung kämpfen. Das heisst:</strong>
-                                       <br/>
-                                    </p>
-                                    <ul>
-                                       <li class="o_default_snippet_text">Die Rentenlücken in der 2. Säule müssen rasch und bezahlbar geschlossen werden. In der anstehenden parlamentarischen Lösung zur BVG-Reform werden wir uns stark einmischen und wenn nötig politische Möglichkeiten ergreifen, sollte die Gesetzesvorlage für die Absicherung aller Arbeitnehmenden im Alter schlecht sein.<br/>&amp;nbsp;</li>
-                                       <li class="o_default_snippet_text">Mit der SNB-Initiative möchten wir die langfristige Finanzierung der AHV sichern sowie die Renten stärken. Teile der angehäuften Milliardengewinne der Schweizerischen Nationalbank sollen in die AHV fliessen.&amp;nbsp;<strong class="o_default_snippet_text">Unterstütze dies JETZT und unterschreibe die SNB-Initiative!</strong></li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">UNTERSCHREIBE DIE SNB-INITIATIVE</strong></font></a></p>
-                                    <ul>
-                                       <li>Die Initiative für eine 13. AHV-Rente ist bereits eingereicht und wird uns weiterhin beschäftigen. Sie soll den Verfassungsauftrag endlich einlösen, indem die AHV die Existenzsicherung wirklich garantiert. Und sie soll die nun eingetretene Rentenlücke bei den Frauen korrigieren sowie den Zerfall der Pensionskassen-Renten ausgleichen.</li>
-                                       <li class="o_default_snippet_text">Unterschreibe auch die KITA-Initiative, um die Gleichstellung weiterhin zu fördern und ein ausreichendes Angebot an bezahlbarer Kinderbetreuung zu gewährleisten.</li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">UNTERSCHREIBE DIE KITA-INITIATIVE</strong></font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 o_we_force_no_transition pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);" class="o_default_snippet_text">Soziale Absicherung: Das Engagement geht weiter!</font><br/></h2>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);" class="o_default_snippet_text">Möchtest du mehr darüber erfahren? Hier geht es zur offiziellen Medienmitteilung des SGB.</font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px" class="o_default_snippet_text">Wir werden auch nach diesen Abstimmungen für gute Renten, eine starke AHV und mehr Gleichstellung kämpfen. Das heisst:</strong>
+                                          <br/>
+                                       </p>
+                                       <ul>
+                                          <li class="o_default_snippet_text">Die Rentenlücken in der 2. Säule müssen rasch und bezahlbar geschlossen werden. In der anstehenden parlamentarischen Lösung zur BVG-Reform werden wir uns stark einmischen und wenn nötig politische Möglichkeiten ergreifen, sollte die Gesetzesvorlage für die Absicherung aller Arbeitnehmenden im Alter schlecht sein.<br/>&amp;nbsp;</li>
+                                          <li class="o_default_snippet_text">Mit der SNB-Initiative möchten wir die langfristige Finanzierung der AHV sichern sowie die Renten stärken. Teile der angehäuften Milliardengewinne der Schweizerischen Nationalbank sollen in die AHV fliessen.&amp;nbsp;<strong class="o_default_snippet_text">Unterstütze dies JETZT und unterschreibe die SNB-Initiative!</strong></li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">UNTERSCHREIBE DIE SNB-INITIATIVE</strong></font></a></p>
+                                       <ul>
+                                          <li>Die Initiative für eine 13. AHV-Rente ist bereits eingereicht und wird uns weiterhin beschäftigen. Sie soll den Verfassungsauftrag endlich einlösen, indem die AHV die Existenzsicherung wirklich garantiert. Und sie soll die nun eingetretene Rentenlücke bei den Frauen korrigieren sowie den Zerfall der Pensionskassen-Renten ausgleichen.</li>
+                                          <li class="o_default_snippet_text">Unterschreibe auch die KITA-Initiative, um die Gleichstellung weiterhin zu fördern und ein ausreichendes Angebot an bezahlbarer Kinderbetreuung zu gewährleisten.</li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">UNTERSCHREIBE DIE KITA-INITIATIVE</strong></font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p class="o_default_snippet_text">Kollegiale Grüsse,</p>
-                                    <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);" class="o_default_snippet_text">Möchtest du mehr darüber erfahren? Hier geht es zur offiziellen Medienmitteilung des SGB.</font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-                                 <div class="container o_mail_table_styles">
-                                    <div class="row">
-                                       <div align="right" class="col-lg">
-                                          <div class="o_mail_footer_social pb16" style="text-align: left;">
-                                             <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                                             <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                                             <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                                             <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-                                             <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden | Bearbeiten</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                 <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p class="o_default_snippet_text">Kollegiale Grüsse,</p>
+                                       <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                                    </div>
+                                 </div>
+                                 <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
+                                    <div class="container o_mail_table_styles">
+                                       <div class="row">
+                                          <div align="right" class="col-lg">
+                                             <div class="o_mail_footer_social pb16" style="text-align: left;">
+                                                <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                                                <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                                                <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33</font><br/><font class="text-white o_default_snippet_text">Postfach</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                                                <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                                                <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Datenschutz</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Abmelden | Bearbeiten</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -670,107 +666,107 @@
                </div>
             </div>
          </div>
-      </div>
-   </template>
-
-   <template id="theme_syndicom_french">
-      <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-            <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                  <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
-                     <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-                        <div class="row">
-                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                              <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
-                                 <div class="o_mail_table_styles container">
-                                    <div class="row">
-                                       <div class="col-lg-8 pt16 pb16">
-                                          <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                                          <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                                          </a>
-                                       </div>
-                                       <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
-                                          Version en ligne
-                                          </font></a>
+      </template>
+      
+      <template id="theme_syndicom_french">
+         <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
+            <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+               <div class="row">
+                  <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                     <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+                        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+                           <div class="row">
+                              <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                                 <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
+                                    <div class="o_mail_table_styles container">
+                                       <div class="row">
+                                          <div class="col-lg-8 pt16 pb16">
+                                             <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                             <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                             </a>
+                                          </div>
+                                          <div class="col-lg-4 text-right o_mail_no_resize">
+                                             <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black">
+                                             Version en ligne
+                                             </font></a>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><strong>Tout est perdu maintenant ? NON, nous continuons à nous défendre !</strong><br/></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><strong>Tout est perdu maintenant ? NON, nous continuons à nous défendre !</strong><br/></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
-                                 <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false"/>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0 o_we_force_no_transition" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);">Nous continuons à nous défendre !</font><br/></h2>
-                                    <h3>Ensemble, nous renforçons nos retraites<br/></h3>
+                                 <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false"/>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p>Bonjour {{ object.firstname }}<br/><br/>La déception est grande que l'AVS 21 et le projet d'impôt anticipé aient été acceptés lors des votations d'aujourd'hui. Les réductions de prestations décidées aggravent la situation déjà problématique des femmes en matière de revenu et de retraite. <strong>Nous souhaitons néanmoins adresser un grand merci à nos membres et collaborateurs ainsi qu'à tous ceux qui ont soutenu la campagne contre l'AVS 21 !</strong><br/></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0 o_we_force_no_transition" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);">Nous continuons à nous défendre !</font><br/></h2>
+                                       <h3>Ensemble, nous renforçons nos retraites<br/></h3>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);">Protection sociale : l'engagement continue !</font><br/></h2>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p>Bonjour {{ object.firstname }}<br/><br/>La déception est grande que l'AVS 21 et le projet d'impôt anticipé aient été acceptés lors des votations d'aujourd'hui. Les réductions de prestations décidées aggravent la situation déjà problématique des femmes en matière de revenu et de retraite. <strong>Nous souhaitons néanmoins adresser un grand merci à nos membres et collaborateurs ainsi qu'à tous ceux qui ont soutenu la campagne contre l'AVS 21 !</strong><br/></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Même après ces votations, nous continuerons à nous battre pour de bonnes rentes, une AVS forte et plus d'égalité. C'est-à-dire:</strong><br/>
-                                    </p>
-                                    <ul>
-                                       <li>Les lacunes des rentes du 2e pilier doivent être comblées rapidement et de manière abordable. Nous nous impliquerons fortement dans la solution parlementaire à venir sur la réforme de la LPP et saisirons si nécessaire les opportunités politiques si le projet de loi est mauvais pour la protection de tous les travailleurs à la retraite.<br/>&amp;nbsp;</li>
-                                       <li>Avec l'initiative de la BNS, nous voulons garantir le financement à long terme de l'AVS ainsi que renforcer les rentes. Une partie des milliards de bénéfices accumulés par la Banque nationale suisse doit être versée à l'AVS. <strong>Soulève cette cause MAINTENANT en signant l'initiative de la BNS !</strong><br/></li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">SIGNE L'INITIATIVE DE LA SNB</strong></font></a></p>
-                                    <ul>
-                                       <li>L'initiative pour une 13ème rente AVS a déjà été déposée et continuera à nous occuper. Elle doit enfin honorer le mandat constitutionnel en garantissant réellement la couverture des besoins vitaux par l'AVS. Et elle doit corriger la lacune de rente qui s'est maintenant produite chez les femmes ainsi que compenser la désintégration des rentes des caisses de pension.<br/></li>
-                                       <li>Signe également l'initiative KITA pour continuer à promouvoir l'égalité et garantir une offre suffisante de garde d'enfants à un prix abordable.<br/></li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">SIGNE L'INITIATIVE KITA</strong></font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);">Protection sociale : l'engagement continue !</font><br/></h2>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);">Tu veux en savoir plus ? Clique ici pour le communiqué de presse officiel de l'USS.</font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Même après ces votations, nous continuerons à nous battre pour de bonnes rentes, une AVS forte et plus d'égalité. C'est-à-dire:</strong><br/>
+                                       </p>
+                                       <ul>
+                                          <li>Les lacunes des rentes du 2e pilier doivent être comblées rapidement et de manière abordable. Nous nous impliquerons fortement dans la solution parlementaire à venir sur la réforme de la LPP et saisirons si nécessaire les opportunités politiques si le projet de loi est mauvais pour la protection de tous les travailleurs à la retraite.<br/>&amp;nbsp;</li>
+                                          <li>Avec l'initiative de la BNS, nous voulons garantir le financement à long terme de l'AVS ainsi que renforcer les rentes. Une partie des milliards de bénéfices accumulés par la Banque nationale suisse doit être versée à l'AVS. <strong>Soulève cette cause MAINTENANT en signant l'initiative de la BNS !</strong><br/></li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">SIGNE L'INITIATIVE DE LA SNB</strong></font></a></p>
+                                       <ul>
+                                          <li>L'initiative pour une 13ème rente AVS a déjà été déposée et continuera à nous occuper. Elle doit enfin honorer le mandat constitutionnel en garantissant réellement la couverture des besoins vitaux par l'AVS. Et elle doit corriger la lacune de rente qui s'est maintenant produite chez les femmes ainsi que compenser la désintégration des rentes des caisses de pension.<br/></li>
+                                          <li>Signe également l'initiative KITA pour continuer à promouvoir l'égalité et garantir une offre suffisante de garde d'enfants à un prix abordable.<br/></li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">SIGNE L'INITIATIVE KITA</strong></font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p>Salutations collégiales,<br/></p>
-                                    <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);">Tu veux en savoir plus ? Clique ici pour le communiqué de presse officiel de l'USS.</font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-                                 <div class="container o_mail_table_styles">
-                                    <div class="row">
-                                       <div align="right" class="col-lg">
-                                          <div class="o_mail_footer_social pb16" style="text-align: left;">
-                                             <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                                             <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                                             <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33<br/></font><font class="text-white">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                                             <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-                                             <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Politique de confidentialité</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Se désinscrire | Modifier</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                 <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p>Salutations collégiales,<br/></p>
+                                       <p class="o_default_snippet_text">Daniel Münger, Präsident</p>
+                                    </div>
+                                 </div>
+                                 <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
+                                    <div class="container o_mail_table_styles">
+                                       <div class="row">
+                                          <div align="right" class="col-lg">
+                                             <div class="o_mail_footer_social pb16" style="text-align: left;">
+                                                <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                                                <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                                                <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33<br/></font><font class="text-white">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                                                <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                                                <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Politique de confidentialité</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Se désinscrire | Modifier</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -783,107 +779,107 @@
                </div>
             </div>
          </div>
-      </div>
-   </template>
-   <template id="theme_syndicom_italien">
-      <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
-         <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-            <div class="row">
-               <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                  <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
-                     <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
-                        <div class="row">
-                           <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
-                              <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
-                                 <div class="o_mail_table_styles container">
-                                    <div class="row">
-                                       <div class="col-lg-8 pt16 pb16">
-                                          <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
-                                          <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
-                                          </a>
-                                       </div>
-                                       <div class="col-lg-4 text-right o_mail_no_resize">
-                                          <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
-                                          versione online
-                                          </font></a>
+      </template>
+      <template id="theme_syndicom_italien">
+         <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
+            <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+               <div class="row">
+                  <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                     <div style="font-family: SourceSansPro, verdana,sans-serif;" class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
+                        <div class="container o_mail_wrapper oe_unremovable o_mail_regular">
+                           <div class="row">
+                              <div class="col o_mail_no_options o_mail_wrapper_td bg-white oe_structure o_editable">
+                                 <div class="o_mail_snippet_general o_mail_block_header_social s_header_social bg-o-color-2" data-snippet="s_mail_block_header_social" data-name="Left Logo">
+                                    <div class="o_mail_table_styles container">
+                                       <div class="row">
+                                          <div class="col-lg-8 pt16 pb16">
+                                             <a style="text-decoration:none;float:none;" href="https://syndicom.ch/">
+                                             <img border="0" style="height:auto;max-width:200px;max-height:48px;" src="https://my.syndicom.ch/img/logo_newsletter_3.png" loading=""/>
+                                             </a>
+                                          </div>
+                                          <div class="col-lg-4 text-right o_mail_no_resize">
+                                             <a href="https://odoo.syndicom.ch/view" target="_blank"><font class="text-black o_default_snippet_text">
+                                             versione online
+                                             </font></a>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><strong>È tutto perduto ora? NO, continuiamo a lottare!</strong><br/></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><strong>È tutto perduto ora? NO, continuiamo a lottare!</strong><br/></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
-                                 <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false"/>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);">Combattiamo!</font><br/></h2>
-                                    <h3>Insieme rafforziamo le nostre pensioni<br/></h3>
+                                 <div class="s_hr o_mail_snippet_general pb16 pt0" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="s_hr_1px s_hr_solid w-100 mx-auto" contenteditable="false"/>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p>Ciao  {{ object.firstname }}<br/><br/>C'è grande delusione per il fatto che l'AVS 21 e il disegno di legge sull'imposta alla fonte siano stati accettati nelle votazioni di oggi. I tagli ai sussidi che sono stati decisi peggioreranno la già problematica situazione reddituale e pensionistica delle donne. <strong>Vogliamo comunque ringraziare i nostri membri e il nostro staff e tutti coloro che hanno sostenuto la campagna contro l'AVS 21!</strong><br/></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb16 pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);">Combattiamo!</font><br/></h2>
+                                       <h3>Insieme rafforziamo le nostre pensioni<br/></h3>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <h2><font style="color: rgb(0, 135, 179);">Protezione sociale: l'impegno continua!</font><br/></h2>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt0 pb4" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p>Ciao  {{ object.firstname }}<br/><br/>C'è grande delusione per il fatto che l'AVS 21 e il disegno di legge sull'imposta alla fonte siano stati accettati nelle votazioni di oggi. I tagli ai sussidi che sono stati decisi peggioreranno la già problematica situazione reddituale e pensionistica delle donne. <strong>Vogliamo comunque ringraziare i nostri membri e il nostro staff e tutti coloro che hanno sostenuto la campagna contro l'AVS 21!</strong><br/></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
-                                 <div class="container s_allow_columns">
-                                    <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Continueremo a lottare per buone pensioni, un'AVS forte e una maggiore uguaglianza dopo queste votazioni. Questo significa che:</strong>
-                                       <br/>
-                                    </p>
-                                    <ul>
-                                       <li>Le lacune pensionistiche del secondo pilastro devono essere colmate in modo rapido e conveniente. Interverremo con forza nell'imminente soluzione parlamentare della riforma della LPP e, se necessario, coglieremo le opportunità politiche nel caso in cui il disegno di legge sia negativo per la tutela di tutti i lavoratori in età avanzata.<br/>&amp;nbsp;</li>
-                                       <li>Con l'iniziativa della BNS vogliamo garantire il finanziamento a lungo termine dell'AVS e rafforzare le pensioni. Parte dei miliardi di profitti accumulati dalla Banca Nazionale Svizzera dovrebbero confluire nell'AVS. <strong>Sostieni questa iniziativa ORA e firma l'iniziativa della BNS!</strong><br/></li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">FIRMA L'INIZIATIVA SNB</strong></font></a></p>
-                                    <ul>
-                                       <li>L'iniziativa per una tredicesima pensione AVS è già stata presentata e continuerà a occuparci. Dovrebbe infine adempiere al mandato costituzionale assicurando che l'AVS garantisca davvero la sussistenza. Dovrebbe inoltre correggere il divario pensionistico che si è verificato per le donne e compensare il crollo delle pensioni dei fondi pensione.<br/></li>
-                                       <li>Firma anche l'iniziativa KITA per continuare a promuovere l'uguaglianza e garantire un'offerta sufficiente di servizi di assistenza all'infanzia a prezzi accessibili.<br/></li>
-                                    </ul>
-                                    <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">FIRMA L'INIZIATIVA KITA</strong></font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb4 pt16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <h2><font style="color: rgb(0, 135, 179);">Protezione sociale: l'impegno continua!</font><br/></h2>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);" class="o_default_snippet_text">Vuoi saperne di più? Clicca qui per il comunicato stampa ufficiale dell'SGB.</font></a></p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pt4 pb16" data-snippet="s_text_block" data-name="Text" style="background-color: rgb(251, 251, 250) !important;">
+                                    <div class="container s_allow_columns">
+                                       <p><strong style="font-weight: bolder;color: rgb(33, 37, 41);font-size: 14px">Continueremo a lottare per buone pensioni, un'AVS forte e una maggiore uguaglianza dopo queste votazioni. Questo significa che:</strong>
+                                          <br/>
+                                       </p>
+                                       <ul>
+                                          <li>Le lacune pensionistiche del secondo pilastro devono essere colmate in modo rapido e conveniente. Interverremo con forza nell'imminente soluzione parlamentare della riforma della LPP e, se necessario, coglieremo le opportunità politiche nel caso in cui il disegno di legge sia negativo per la tutela di tutti i lavoratori in età avanzata.<br/>&amp;nbsp;</li>
+                                          <li>Con l'iniziativa della BNS vogliamo garantire il finanziamento a lungo termine dell'AVS e rafforzare le pensioni. Parte dei miliardi di profitti accumulati dalla Banca Nazionale Svizzera dovrebbero confluire nell'AVS. <strong>Sostieni questa iniziativa ORA e firma l'iniziativa della BNS!</strong><br/></li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">FIRMA L'INIZIATIVA SNB</strong></font></a></p>
+                                       <ul>
+                                          <li>L'iniziativa per una tredicesima pensione AVS è già stata presentata e continuerà a occuparci. Dovrebbe infine adempiere al mandato costituzionale assicurando che l'AVS garantisca davvero la sussistenza. Dovrebbe inoltre correggere il divario pensionistico che si è verificato per le donne e compensare il crollo delle pensioni dei fondi pensione.<br/></li>
+                                          <li>Firma anche l'iniziativa KITA per continuare a promuovere l'uguaglianza e garantire un'offerta sufficiente di servizi di assistenza all'infanzia a prezzi accessibili.<br/></li>
+                                       </ul>
+                                       <p style="text-align: center;"><a role="button" href="#" class="btn btn-primary" target="_blank" style="border-image: initial !important; background-color: rgb(242, 229, 0) !important; border: none !important;"><font class="text-black"><strong class="o_default_snippet_text">FIRMA L'INIZIATIVA KITA</strong></font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
-                                 <div class="container s_allow_columns">
-                                    <p>Saluti collegiali,<br/></p>
-                                    <p>Daniel Münger,&amp;nbsp;Presidente</p>
+                                 <div class="s_text_block px-3 o_mail_snippet_general pb0 pt16" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p><a href="https://www.syndicom.ch" target="_blank"><font style="color: rgb(44, 136, 181);" class="o_default_snippet_text">Vuoi saperne di più? Clicca qui per il comunicato stampa ufficiale dell'SGB.</font></a></p>
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-                                 <div class="container o_mail_table_styles">
-                                    <div class="row">
-                                       <div class="col-lg" align="right">
-                                          <div class="o_mail_footer_social pb16" style="text-align: left;">
-                                             <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
-                                             <font class="text-white">&amp;nbsp;&amp;nbsp;
-                                             </font>
-                                             <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
-                                             <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
-                                             <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33<br/></font><font class="text-white">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
-                                             <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
-                                             <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Protezione dei dati</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Annullamento dell'iscrizione | Modifica</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                 <div class="s_text_block pb40 px-3 o_mail_snippet_general pt0" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container s_allow_columns">
+                                       <p>Saluti collegiali,<br/></p>
+                                       <p>Daniel Münger,&amp;nbsp;Presidente</p>
+                                    </div>
+                                 </div>
+                                 <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
+                                    <div class="container o_mail_table_styles">
+                                       <div class="row">
+                                          <div class="col-lg" align="right">
+                                             <div class="o_mail_footer_social pb16" style="text-align: left;">
+                                                <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://twitter.com/syndicom_de"><span class="fa fa-twitter text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x o_default_snippet_text" contenteditable="false">​</span></a>
+                                                <font class="text-white">&amp;nbsp;&amp;nbsp;
+                                                </font>
+                                                <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x o_default_snippet_text" contenteditable="false">​</span></a><br/><br/>
+                                                <p><strong style="font-weight: bolder"><font class="text-white o_default_snippet_text">syndicom</font></strong></p>
+                                                <p><font class="text-white o_default_snippet_text">Monbijoustrasse 33<br/></font><font class="text-white">Boîte postale</font><br/><font class="text-white o_default_snippet_text">3001 Bern</font></p>
+                                                <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818" class="o_default_snippet_text">Tel: 058 817 18 18</a></font></p>
+                                                <p><a href="https://syndicom.ch/datenschutz/" class="btn btn-link"><font class="text-white o_default_snippet_text">Protezione dei dati</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​<br/></font><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white o_default_snippet_text">Annullamento dell'iscrizione | Modifica</font></a>&amp;nbsp;<font class="text-white o_default_snippet_text" style="font-size: 1rem;">​</font></p>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -896,10 +892,8 @@
                </div>
             </div>
          </div>
-      </div>
-   </template>
-   -->
-
+      </template>
+      -->
    <!-- Theme "syndicom header" default template -->
    <template id="theme_syndicom_template">
       <div class="o_layout oe_unremovable oe_unmovable o_empty_theme bg-200" data-name="Mailing">
