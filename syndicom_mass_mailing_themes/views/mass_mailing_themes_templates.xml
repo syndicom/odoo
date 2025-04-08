@@ -3,28 +3,28 @@
    <!-- Add themes in editor -->
    <template id="email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
       <xpath expr="//div[@id='email_designer_themes']" position="inside">
+         <!--
          <div data-name="theme_syndicom_blank" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_blank" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
             <t t-call="syndicom_mass_mailing_themes.theme_syndicom_blank"/>
          </div>
-         <!--
-            <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>
-            </div>
-            <div data-name="theme_syndicom_french" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_french" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_french"/>
-            </div>
-            <div data-name="theme_syndicom_italien" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_italien" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_italien"/>
-            </div>
-            
-               <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-                   <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
-               </div>
-               
-            <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
-               <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>
-            </div>
-            -->
+         -->
+         <div data-name="theme_syndicom_german" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_german" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_german"/>
+         </div>
+         <div data-name="theme_syndicom_french" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_french" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_french"/>
+         </div>
+         <div data-name="theme_syndicom_italien" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_italien" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_italien"/>
+         </div>
+         <!--  
+         <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_default" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_default"/>                
+         </div>      
+         <div data-name="syndicom" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_header" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
+            <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template"/>
+         </div>
+         -->
          <!---
             <div data-name="syndicom2" data-img="/syndicom_mass_mailing_themes/static/src/img/theme_imgs/syndicom_standart" data-images-info='{"logo": {"format": "png"}, "all": {"module": "syndicom_mass_mailing_themes"}}'  sequence="1">
                 <t t-call="syndicom_mass_mailing_themes.theme_syndicom_template_second"/>                
@@ -380,6 +380,7 @@
          </div>
       </div>
    </template>
+   <!--
    <!--FOOTER DEUTSCHE VERSION -->
    <template id= "footer_syndicom_deutsch">
    <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
