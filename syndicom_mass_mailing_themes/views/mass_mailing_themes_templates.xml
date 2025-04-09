@@ -380,88 +380,87 @@
          </div>
       </div>
    </template>
-   <!--FOOTER DEUTSCHE VERSION -->
-   <template id= "footer_syndicom_deutsch">
-   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-      <div class="container o_mail_table_styles">
-         <div class="row">
-            <div class="col-lg" align="right">
-               <div class="o_mail_footer_social pb16" style="text-align: left;">
-                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>
-                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>
-                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>
-                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>
-                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </template>
-   <!--FOOTER FAANZÖSISCHE VERSION-->
-   <template id= "footer_syndicom_franz">
-   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-      <div class="container o_mail_table_styles">
-         <div class="row">
-            <div class="col-lg" align="right">
-               <div class="o_mail_footer_social pb16" style="text-align: left;">
-                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>
-                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>
-                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>
-                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>
-                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </template>
-   <!--FOOTER ITALIENISCHE VERSION-->
-   <template id= "footer_syndicom_italienisch">
-   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">
-      <div class="container o_mail_table_styles">
-         <div class="row">
-            <div class="col-lg" align="right">
-               <div class="o_mail_footer_social pb16" style="text-align: left;">
-                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>
-                  <font class="text-white">&amp;nbsp;&amp;nbsp;
-                  </font>
-                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>
-                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>
-                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>
-                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>
-                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </template>
-   -->
+<!--   &lt;!&ndash;FOOTER DEUTSCHE VERSION &ndash;&gt;-->
+<!--   <template id="footer_syndicom_deutsch">-->
+<!--   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">-->
+<!--      <div class="container o_mail_table_styles">-->
+<!--         <div class="row">-->
+<!--            <div class="col-lg" align="right">-->
+<!--               <div class="o_mail_footer_social pb16" style="text-align: left;">-->
+<!--                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>-->
+<!--                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>-->
+<!--                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>-->
+<!--                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>-->
+<!--                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>-->
+<!--               </div>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--      </div>-->
+<!--   </div>-->
+<!--   </template>-->
+<!--   &lt;!&ndash;FOOTER FAANZÖSISCHE VERSION&ndash;&gt;-->
+<!--   <template id="footer_syndicom_franz">-->
+<!--   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">-->
+<!--      <div class="container o_mail_table_styles">-->
+<!--         <div class="row">-->
+<!--            <div class="col-lg" align="right">-->
+<!--               <div class="o_mail_footer_social pb16" style="text-align: left;">-->
+<!--                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>-->
+<!--                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>-->
+<!--                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>-->
+<!--                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>-->
+<!--                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>-->
+<!--               </div>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--      </div>-->
+<!--   </div>-->
+<!--   </template>-->
+<!--   &lt;!&ndash;FOOTER ITALIENISCHE VERSION&ndash;&gt;-->
+<!--   <template id="footer_syndicom_italienisch">-->
+<!--   <div class="s_footer_social o_mail_block_footer_social o_mail_footer_social_left o_mail_snippet_general bg-o-color-2" data-name="Footer Left">-->
+<!--      <div class="container o_mail_table_styles">-->
+<!--         <div class="row">-->
+<!--            <div class="col-lg" align="right">-->
+<!--               <div class="o_mail_footer_social pb16" style="text-align: left;">-->
+<!--                  <a href="https://www.facebook.com/syndicom/" target="_blank"><span class="fa fa-facebook text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://ch.linkedin.com/company/syndicom-gewerkschaft-medien-und-kommunikation" target="_blank"><span class="fa fa-linkedin text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.instagram.com/syndicom/"><span class="fa fa-instagram text-o-color-4 fa-2x" contenteditable="false">​</span></a>-->
+<!--                  <font class="text-white">&amp;nbsp;&amp;nbsp;-->
+<!--                  </font>-->
+<!--                  <a href="https://www.youtube.com/user/syndicomCH" target="_blank"><span class="fa text-o-color-4 fa-youtube-play fa-2x" contenteditable="false">​</span></a><br/><br/>-->
+<!--                  <p><strong style="font-weight: bolder"><font class="text-white">syndicom</font></strong></p>-->
+<!--                  <p><font class="text-white">Monbijoustrasse 33</font><br/><font class="text-white">Postfach</font><br/><font class="text-white">3001 Bern</font></p>-->
+<!--                  <p><font class="text-white" style="color:white;"><a style="color:white; font-weight:normal;" href="tel:+41588171818">Tel: 058 817 18 18</a></font></p>-->
+<!--                  <p><a href="https://odoo.syndicom.ch/unsubscribe_from_list" class="btn btn-link"><font class="text-white">Abmelden</font></a>&amp;nbsp;<font class="text-white" style="font-size: 1rem;">​</font></p>-->
+<!--               </div>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--      </div>-->
+<!--   </div>-->
+<!--   </template>-->
    <!--
       <template id="theme_syndicom_blank">
          <div class="o_layout oe_unremovable oe_unmovable bg-200 o_syndicom_theme" data-name="Mailing">
