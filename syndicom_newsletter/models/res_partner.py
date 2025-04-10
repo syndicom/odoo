@@ -3,9 +3,14 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    x_studio_purer_swisscom_rentner = fields.Boolean(
-        string='Purer Swisscom Rentner',
-        compute='_compute_purer_swisscom_rentner',
+    pure_swisscom_rentner = fields.Boolean(
+        string='Pure Swisscom Rentner',
+        compute='_compute_pure_rentner',
+        store=True
+    )
+    pure_post_rentner = fields.Boolean(
+        string='Pure Post Rentner',
+        compute='_compute_pure_rentner',
         store=True
     )
 
@@ -13,36 +18,54 @@ class ResPartner(models.Model):
         'member_retired',
         'is_syndicom_member',
         'work_partner_relation_ids.other_partner_id.name',
+        'work_partner_relation_ids.other_partner_id.category_id.name',
         'work_partner_relation_ids.date_start',
         'work_partner_relation_ids.date_end'
     )
-    def _compute_purer_swisscom_rentner(self):
+    def _compute_pure_rentner(self):
         for partner in self:
-            partner.x_studio_purer_swisscom_rentner = False
+            partner.pure_swisscom_rentner = False
+            partner.pure_post_rentner = False
 
             if not (partner.member_retired and partner.is_syndicom_member):
                 continue
 
             relations = partner.work_partner_relation_ids
 
+            # Helper function to check if a partner is an employer
+            def is_employer(rel):
+                return any(
+                    'arbeitgeber' in (cat.name or '').lower()
+                    for cat in rel.other_partner_id.category_id
+                )
+
+            # Swisscom / Cablex employers
             swisscom_or_cablex = relations.filtered(
-                lambda r: r.other_partner_id and (
+                lambda r: r.other_partner_id and is_employer(r) and (
                     'swisscom' in (r.other_partner_id.name or '').lower() or
                     'cablex' in (r.other_partner_id.name or '').lower()
                 )
             )
-            unknown_employers = relations.filtered(
-                lambda r: r.other_partner_id and r.other_partner_id.name == 'kein Arbeitgeber / Arbeitgeber unbekannt'
-            )
-            other_employers = relations.filtered(
-                lambda r: r.other_partner_id and not any(
-                    kw in (r.other_partner_id.name or '').lower()
-                    for kw in ['swisscom', 'cablex', 'kein arbeitgeber / arbeitgeber unbekannt']
+
+            # Post employers
+            post = relations.filtered(
+                lambda r: r.other_partner_id and is_employer(r) and (
+                    'post' in (r.other_partner_id.name or '').lower()
                 )
             )
 
-            if not swisscom_or_cablex:
-                continue
+            # Unknown employers
+            unknown_employers = relations.filtered(
+                lambda r: r.other_partner_id and r.other_partner_id.name == 'kein Arbeitgeber / Arbeitgeber unbekannt'
+            )
+
+            # Other employers not allowed
+            other_employers = relations.filtered(
+                lambda r: r.other_partner_id and is_employer(r) and not any(
+                    kw in (r.other_partner_id.name or '').lower()
+                    for kw in ['swisscom', 'cablex', 'post', 'kein arbeitgeber / arbeitgeber unbekannt']
+                )
+            )
 
             if other_employers:
                 continue
@@ -59,4 +82,8 @@ class ResPartner(models.Model):
             if not valid_unknown:
                 continue
 
-            partner.x_studio_purer_swisscom_rentner = True
+            if swisscom_or_cablex:
+                partner.pure_swisscom_rentner = True
+
+            if post:
+                partner.pure_post_rentner = True
