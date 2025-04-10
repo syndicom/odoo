@@ -80,8 +80,8 @@ class ResPartner(models.Model):
             if not valid_unknown:
                 continue
 
+            # New check: must have at least one Swisscom/Post employer
             if swisscom_employers:
                 partner.pure_swisscom_rentner = True
-
             if post_employers:
                 partner.pure_post_rentner = True
