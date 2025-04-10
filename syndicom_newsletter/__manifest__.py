@@ -1,7 +1,7 @@
 {
-    "name": "Partner Purer Swisscom Rentner",
+    "name": "Partner Purer Swisscom / Post Rentner",
     "version": "1.0",
-    "summary": "Compute Swisscom Rentner status on Partners",
+    "summary": "Compute Swisscom/Post Rentner status on Partners",
     "author": "ChatGPT",
     "category": "Contacts",
     "depends": ["base"],
