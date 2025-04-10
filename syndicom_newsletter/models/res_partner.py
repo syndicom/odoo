@@ -14,11 +14,20 @@ class ResPartner(models.Model):
         store=True
     )
 
+    is_swisscom_company = fields.Boolean(
+        string='Is Swisscom Company',
+        help='Indicates if this partner is a Swisscom employer',
+    )
+    is_post_company = fields.Boolean(
+        string='Is Post Company',
+        help='Indicates if this partner is a Post employer',
+    )
+
     @api.depends(
         'member_retired',
         'is_syndicom_member',
-        'work_partner_relation_ids.other_partner_id.name',
-        'work_partner_relation_ids.other_partner_id.category_id.name',
+        'work_partner_relation_ids.other_partner_id.is_swisscom_company',
+        'work_partner_relation_ids.other_partner_id.is_post_company',
         'work_partner_relation_ids.date_start',
         'work_partner_relation_ids.date_end'
     )
@@ -32,26 +41,14 @@ class ResPartner(models.Model):
 
             relations = partner.work_partner_relation_ids
 
-            # Helper function to check if a partner is an employer
-            def is_employer(rel):
-                return any(
-                    'arbeitgeber' in (cat.name or '').lower()
-                    for cat in rel.other_partner_id.category_id
-                )
-
-            # Swisscom / Cablex employers
-            swisscom_or_cablex = relations.filtered(
-                lambda r: r.other_partner_id and is_employer(r) and (
-                    'swisscom' in (r.other_partner_id.name or '').lower() or
-                    'cablex' in (r.other_partner_id.name or '').lower()
-                )
+            # Swisscom employers
+            swisscom_employers = relations.filtered(
+                lambda r: r.other_partner_id and r.other_partner_id.is_swisscom_company
             )
 
             # Post employers
-            post = relations.filtered(
-                lambda r: r.other_partner_id and is_employer(r) and (
-                    'post' in (r.other_partner_id.name or '').lower()
-                )
+            post_employers = relations.filtered(
+                lambda r: r.other_partner_id and r.other_partner_id.is_post_company
             )
 
             # Unknown employers
@@ -61,9 +58,10 @@ class ResPartner(models.Model):
 
             # Other employers not allowed
             other_employers = relations.filtered(
-                lambda r: r.other_partner_id and is_employer(r) and not any(
-                    kw in (r.other_partner_id.name or '').lower()
-                    for kw in ['swisscom', 'cablex', 'post', 'kein arbeitgeber / arbeitgeber unbekannt']
+                lambda r: r.other_partner_id and not (
+                    r.other_partner_id.is_swisscom_company or
+                    r.other_partner_id.is_post_company or
+                    r.other_partner_id.name == 'kein Arbeitgeber / Arbeitgeber unbekannt'
                 )
             )
 
@@ -82,8 +80,8 @@ class ResPartner(models.Model):
             if not valid_unknown:
                 continue
 
-            if swisscom_or_cablex:
+            if swisscom_employers:
                 partner.pure_swisscom_rentner = True
 
-            if post:
+            if post_employers:
                 partner.pure_post_rentner = True
